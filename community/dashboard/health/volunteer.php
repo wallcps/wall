@@ -1,7 +1,6 @@
 	<div class="btn_slide">
-			<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole" style="margin-right:1%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
-			<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " style="margin-right:1%;">Volunteer Now</button></a>
-	     	<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " >Inquire Here</button></a>
+			<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " style="  margin-right: 4%; margin-left: 20%;">Volunteer Now</button></a>
+     		<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " >Inquire Here</button></a>
 		</div> 
 	<div id="wowslider-container1">
 		
@@ -32,6 +31,8 @@
 		<div class="map">
 			<?php echo $map; ?>
 			<button class="btn invole">Get Involved</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole" style="margin-right:1%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
+		
 		</div>
 	</div>
 	<div style="clear:both"></div>
