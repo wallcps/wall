@@ -61,33 +61,6 @@ if (isset($_POST['submit_contact_cps_admin'])){
     ?>
     <?php
 
-    if(isset($_POST['submit_com_pic'])){
-        $old_image = $_POST['old_image'];
-        $target_dir1 = "uploads/contact/";
-        //for id card..........
-        $temp1 = explode(".",$_FILES["update_pic_com"]["name"]);
-        $filename1 = rand(1,99999) . '.' .end($temp1);
-        $target_file1 = $target_dir1 . basename($filename1);
-        
-        //conditions cannot null.....
-        if($_FILES['update_pic_com']['tmp_name'] == ''){
-            echo 'false';
-        }else{
-            if(move_uploaded_file($_FILES["update_pic_com"]["tmp_name"],$target_file1)){
-               $fileDelete =  $target_dir1.$old_image;
-                unlink($fileDelete);
-            } 
-            else{
-                echo " fail";
-            } 
-            mysqli_query($db," UPDATE com_contact_pic set image = '".$filename1."' where com_id = ".$com_id);
-        }
-        
-    }
-    $imgs = mysqli_query($db,"SELECT image FROM com_contact_pic WHERE com_id = '$com_id'");
-        foreach ($imgs as $img) {
-             $image = $img['image'];
-        }
      $result = mysqli_query($db,"SELECT proj_id,contact_intro,contact_img FROM projects WHERE group_id = '$groupID'");
         foreach ($result as $value) {
             $pro_id = $value['proj_id'];
@@ -96,40 +69,10 @@ if (isset($_POST['submit_contact_cps_admin'])){
           
 
         }
-    
-    
+
     ?>
     
     <!-- start of -->
-    <div>
-                <a href="" style="  top: 60px;position: absolute;" data-toggle="modal" data-target="#edit_pic"><i style="font-size:50px;" class="glyphicon glyphicon-camera" original-title="Edit Contact Picture" data-toggle="modal"></i></a>
-                    <!-- <i class="glyphicon glyphicon-pencil custom-file-input" data-toggle="modal" data-target="#edit_name" original-title="edit name"></i> -->
-                    <div class="modal fade" id="edit_pic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="exampleModalLabel">Edit Community Picture</h4>
-                                </div>
-                                <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
-                                    <div class="modal-body">
-                                        <div class="text-center"><img width="300px" src="<?php echo $base_url; ?>uploads/contact/<?php echo $image; ?>"/></div><br/>
-                                        <input name="update_pic_com" id="com_pic" type="file" value="<?php echo $picture; ?>" accept="image/*"/>
-                                        <input type="hidden" name="old_image" value="<?php echo $image; ?>">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
-                                        <button type="submit" id="submit_com_pic" name="submit_com_pic" class="btn btn-sm btn-primary">Update</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-        <img style="  width: 99.5%;" src="<?php echo $base_url; ?>uploads/contact/<?php echo $image;?>">
-        <div class="contact_title">
-            <h2 style="  padding-top: 10px;text-align: center;">Contact</h2>
-        </div>
-    </div>
     <div class="village_name">
         <div class="village_img">
                 <img src="<?php echo $base_url; ?>uploads/<?php echo $picture; ?>">
@@ -193,7 +136,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
     <hr>
     <form method="post" enctype='multipart/form-data' action="">
         <div class="modal-body">
-            <p class="alert alert-success" style="text-align: center;"><?php echo $message_success; ?></p>
+            <?php if($message_success!=''){ ?><p class="alert alert-success" style="text-align: center;"><?php echo $message_success; ?></p><?php } ?>
             <div class="row">
                 <div class="col-md-6">
                     <span>Please, tell us who you are</span>

@@ -41,29 +41,18 @@
 	        <div class="form-group">
 	      		<label class="form-control-label col-xs-3">Country</label>
 	            <div class="col-xs-8">
-	                	<?php include_once 'country_list.php';?>
+	                <select class="form-control" name="country">
+	                	<option></option>
+	                </select>
 	            </div>
 	        </div>
 	        <div class="form-group">
 	      		<label class="form-control-label col-xs-3">Nationality:
 	      		</label>
 	            <div class="col-xs-8">
-	                <select class="usr_country form-control text-input form-control" name="usr_country">
-                            <?php 
-                            foreach ($country_list as $country_data) {
-                                if($_POST['usr_country'] == $country_data)
-                                {
-                                    $sel = 'selected = "selected"'; 
-                                }
-                                else
-                                {
-                                    $sel = " ";
-                                }
-                                echo '<option value="'.$country_data.'" ' .$sel . ' >'.$country_data.'</option>';
-
-                            }
-                            ?>
-                        </select>
+	                <select class="form-control" name="nationality">
+	                	<option></option>
+	                </select>
 	            </div>
 	        </div>
 	        <div class="form-group">
@@ -75,7 +64,7 @@
 	        <div class="form-group">
 	      		<label class="form-control-label col-xs-3">Phone Number:</label>
 	            <div class="col-xs-2">
-	            	<input type="text" name="usr_phone" id="inputCode" class="text-input form-control" style=" float: left;" value="<?php echo $_POST['usr_phone'];?>" AUTOCOMPLETE='OFF'/>
+	            	<input class="text- form-control" name="pre_phone" type="text" value="+885" />
 	            </div>
 	            <div class="col-xs-6">
 	                <input class="text- form-control" name="phone" type="text"/>
