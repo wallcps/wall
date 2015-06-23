@@ -34,7 +34,7 @@ if($_POST['user'] && $_POST['passcode'] )
                 $_SESSION['user_role'] = $user_type; 
                 if($user_type==1){
                     header("Location:index.php");
-                }else if($user_type=='2'){
+                }else if($user_type=='3'){
                     header("Location:community.php");
                 }
                 //header("Location:index.php");

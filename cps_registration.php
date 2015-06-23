@@ -179,7 +179,11 @@ if(isset($_POST['submit']) & $_SERVER['REQUEST_METHOD'] == "POST")
             $txt = "Dear ".$username.",\n\n"."Here is the code for verification:"."\n".$randomString."\n\n"."Thanks,\nCPS Teams";
             mail($to,$subject,$txt,$headers);
         //    header("Location:index.php");
-            header("Location:cps_verification.php");      
+            if($account_type==3){
+               header("Location:create_community.php"); 
+            }else{
+                header("Location:cps_verification.php"); 
+            }     
     }
 }
 
@@ -249,7 +253,7 @@ if(isset($_POST['submit']) & $_SERVER['REQUEST_METHOD'] == "POST")
                              <tr>
                                 <td class="text-right"><div class="loginLabel">Gender: <label class="text-pink">*</label></div></td>
                                 <td>
-                                    <select class="input text-input form-control" name="account_type">
+                                    <select class="input text-input form-control" name="gender">
                                         <option selected="selected" value="0">-- Please select --</option>
                                         <option value="1">Female</option>
                                         <option value="2">Male</option>
