@@ -177,17 +177,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
 </div>
 <!-- the end of edit recrument -->
    <p class="text-right"></p>
-<div class="text">   
- <div style="width:850px; height:auto; background-color:#F5F5F5;">
-     <?php  $tl_pic = $base_url.'images/'.$contact_img;
-     
-        echo '<div class="recrument-image img_container slider-wrapper"><img src="'.$tl_pic.'"></div>';
-     
-        ?>
-    <!-- <img src="images/socail/contactus_banner.jpg" width="850" height="350"> -->
-</div> 
-
-<br/>
+<div class="text">
     <div><p><?php echo $contact_decr; ?></p></div> 
     <h3>Queries</h3>
     <hr>
