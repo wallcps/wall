@@ -183,7 +183,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
     <hr>
     <form method="post" enctype='multipart/form-data' action="">
         <div class="modal-body">
-            <p class="alert alert-success" style="text-align: center;"><?php echo $message_success; ?></p>
+            <?php if($message_success!=''){ ?><p class="alert alert-success" style="text-align: center;"><?php echo $message_success; ?></p><?php } ?>
             <div class="row">
                 <div class="col-md-6">
                     <span>Please, tell us who you are</span>
