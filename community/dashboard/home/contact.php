@@ -190,7 +190,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
             <div class="row">
                 <div class="col-md-6">
                     <span>Please, tell us who you are</span>
-                    <select class="form-control" name="user_type">
+                    <select class="form-control contact" name="user_type">
                         <option>e.g Community, Visitor...</option>
                         <option>Community</option>
                         <option>Visitor</option>
@@ -198,7 +198,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
                 </div>
                 <div class="col-md-6">
                     <span>Please, select type of issue</span>
-                    <select class="form-control" name="type_issue">
+                    <select class="form-control contact" name="type_issue">
                         <option>e.g Service, Complain...</option>
                         <option>Service</option>
                         <option>Complain</option>
@@ -208,16 +208,16 @@ if (isset($_POST['submit_contact_cps_admin'])){
             <div class="row">
                 <div class="col-md-6">
                     <span>Please tell us your name</span>
-                    <input name="name" type="text" class="form-control" placeholder="Name" required="" value="<?php echo $session_first_name.' '.$session_last_name; ?>"/>
+                    <input class="form-control contact" name="name"  placeholder="Name" required="" value="<?php echo $session_first_name.' '.$session_last_name; ?>"/>
                 </div>
                 <div class="col-md-6">
                     <span>Please inter your email address</span>
-                    <input class="text- form-control" name="email"  value="<?php echo $session_email; ?>" type="email" placeholder="Email" required=""/>
+                    <input class=" form-control contact" name="email"  value="<?php echo $session_email; ?>" type="email" placeholder="Email" required=""/>
                 </div>
             </div>
             <div class="form_contact">
                 <span>Please drop your message here </span>
-                <textarea style="height: 150px;" class="form-control" name="comment" rows="15" cols="40" placeholder="Message" required=""></textarea><br />
+                <textarea style="height: 150px;" class="form-control contact" name="comment" rows="15" cols="40" placeholder="Message" required=""></textarea><br />
             </div>
 
         </div>
@@ -225,3 +225,8 @@ if (isset($_POST['submit_contact_cps_admin'])){
 
     </form>
 </div>
+<style type="text/css">
+    .contact{
+        margin-top: 15px;
+    }
+</style>
