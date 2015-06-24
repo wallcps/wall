@@ -164,7 +164,7 @@
 
 <div class="row text">
     <div role="tabpanel" class="tab-pane" id="pro_socailneed">
-        <span style="font-size: 24px; ">Needs And Aspirations</span> <span class="text-right"><a href="" data-toggle="modal" data-target="#edit_pro_social_need"><i class="glyphicon glyphicon-edit"></i></a></span><hr style="margin-top: 0px;"/>
+        <span style="font-size: 24px; ">Needs And Aspirations</span> <span class="text-right"><a href="" data-toggle="modal" data-target="#edit_pro_social_need"><i class="glyphicon glyphicon-edit" style="float:right;"></i></a></span><hr style="margin-top: 0px;"/>
         <div class="modal fade" id="edit_pro_social_need" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -225,7 +225,7 @@
 
 <div class="row text">
     <div role="tabpanel" class="tab-pane" id="socailneed">
-        <span style="font-size: 24px; ">Social Needs</span> <span class="text-right"><a href="" data-toggle="modal" data-target="#edit_social_need"><i class="glyphicon glyphicon-edit"></i></a></span><hr style="margin-top: 0px;"/>
+        <span style="font-size: 24px; ">Social Needs</span> <span class="text-right"><a href="" data-toggle="modal" data-target="#edit_social_need"><i class="glyphicon glyphicon-edit" style=""></i></a></span><hr style="margin-top: 0px;"/>
         <p class="text-right"><button style="margin-top: -110px;" id="sn_btn" class="btn btn-primary btn-xs btn-add-new" data-toggle="modal" data-target="#add_new_sn">Add Social Need</button></p>
         <div class="modal fade" id="edit_social_need" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -330,7 +330,7 @@
 <!-- cps audit -->
 <div class="row text">
     <div role="tabpanel" class="tab-pane" id="pro_socailneed">
-        <span style="font-size: 24px; ">CPS Audit</span> <span class="text-right"><a href="" data-toggle="modal" data-target="#edit_com_cps_audit"><i class="glyphicon glyphicon-edit"></i></a></span><hr style="margin-top: 0px;"/>
+        <span style="font-size: 24px; ">CPS Audit</span> <span class="text-right"><a href="" data-toggle="modal" data-target="#edit_com_cps_audit"><i class="glyphicon glyphicon-edit" style="float:right;"></i></a></span><hr style="margin-top: 0px;"/>
         <div class="modal fade" id="edit_com_cps_audit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

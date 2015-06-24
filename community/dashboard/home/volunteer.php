@@ -49,7 +49,7 @@
 			<!--<li class='<?php echo $volunteer=="home"?"active":""; ?>'><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer&volunteer=home"><i class="glyphicon glyphicon-home"></i></a></li>-->
 			<li class='<?php echo $volunteer=="deverlopment_plan"?"active":""; ?>'><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer&volunteer=deverlopment_plan">Our Development Plan</a></li>
 			<li class='<?php echo $volunteer=="opportunity"?"active":""; ?>'><a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer&volunteer=opportunity">Volunteer Opportunities</a></li>
-			<li class='<?php echo $volunteer=="important_info"?"active":""; ?>'><a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer&volunteer=important_info">Important Info</a></li>
+			<li class='<?php echo $volunteer=="important_info"?"active":""; ?>'><a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer&volunteer=important_info">Important <br> Info</a></li>
 		</ul>
 	</div>
         <?php }else if($_GET['gid']){ ?>
@@ -65,7 +65,7 @@
 			<!--<li class='<?php echo $volunteer=="home"?"active":""; ?>'><a href="<?php echo $base_url; ?>community_follow.php?gid=<?php echo $gid; ?>&tab=volunteer&volunteer=home"><i class="glyphicon glyphicon-home"></i></a></li>-->
 			<li class='<?php echo $volunteer=="deverlopment_plan"?"active":""; ?>'><a href="<?php echo $base_url; ?>community_follow.php?gid=<?php echo $gid; ?>&tab=volunteer&volunteer=deverlopment_plan">Our Development Plan</a></li>
 			<li class='<?php echo $volunteer=="opportunity"?"active":""; ?>'><a  href="<?php echo $base_url; ?>community_follow.php?gid=<?php echo $gid; ?>&tab=volunteer&volunteer=opportunity">Volunteer Opportunities</a></li>
-			<li class='<?php echo $volunteer=="important_info"?"active":""; ?>'><a  href="<?php echo $base_url; ?>community_follow.php?gid=<?php echo $gid; ?>&tab=volunteer&volunteer=important_info">Important Info</a></li>
+			<li class='<?php echo $volunteer=="important_info"?"active":""; ?>'><a  href="<?php echo $base_url; ?>community_follow.php?gid=<?php echo $gid; ?>&tab=volunteer&volunteer=important_info">Important<br><br> Info</a></li>
 		</ul>
                 
 	</div>

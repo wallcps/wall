@@ -52,7 +52,7 @@
                 ?>
                 <h4 class="media-heading" style="font-weight: bold;"><?php echo $value['title']; ?>
                     <?php if($group_owner_id==$uid){ ?>
-                    <a href="" data-toggle="modal" data-target="#edit_intro"><i class="glyphicon glyphicon-edit" style="margin-left: 10px;"></i></a>
+                    <a href="" data-toggle="modal" data-target="#edit_intro"><i class="glyphicon glyphicon-edit" style="float:right;"></i></a>
                     <?php } ?>
                 </h4>
                 <p><?php echo $value['description']; ?></p>
@@ -95,9 +95,9 @@
             $data_about = mysqli_query($db, "SELECT * FROM com_tab_about WHERE title = 'Goals' and com_id = '$com_id'");
             foreach ($data_about as $value) {
                 ?>
-                <h4 class="media-heading"><?php echo $value['title']; ?>
+                <h4 class="media-heading" style="font-weight:bold;"><?php echo $value['title']; ?>
                     <?php if($group_owner_id==$uid){ ?>
-                    <a href="" data-toggle="modal" data-target="#edit_goal"><i class="glyphicon glyphicon-edit" style="margin-left: 10px;"></i></a>
+                    <a href="" data-toggle="modal" data-target="#edit_goal"><i class="glyphicon glyphicon-edit" style="float:right;"></i></a>
                     <?php } ?>
                 </h4>
                 <p><?php echo $value['description']; ?></p>

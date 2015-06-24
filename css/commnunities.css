@@ -255,6 +255,11 @@ ul.sub-menu, ol {
     font-size: 18px;
     color: #000;
 }
+.volunteer_menu ul li a.active {
+    display: block;
+    font-size: 18px;
+    color: white !important;
+}
 .volunteer_menu ul li a:hover {
     font-size: 18px;
     display: block;
