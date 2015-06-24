@@ -22,7 +22,7 @@
         if($_FILES['update_pic_com']['tmp_name'] == ''){
             echo 'false';
         }else{
-            move_uploaded_file($_FILES["update_pic_com"]["tmp_name"],$target_file1)
+            move_uploaded_file($_FILES["update_pic_com"]["tmp_name"],$target_file1);
             if(mysqli_query($db,"insert into groups (group_id,group_name,group_desc,uid_fk,group_pic) values(null,".$com_name.",".$desc.",".$user_id.",".$filename1.")")){
                 $groups_id = mysqli_query($db,"select group_id from groups where uid_fk = '$user_id' ");
                 foreach ($groups_id as $group_id) {
