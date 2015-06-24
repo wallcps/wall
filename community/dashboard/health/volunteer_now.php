@@ -138,12 +138,12 @@
         </div>
         <div class="form-group" style="padding-left:10%;">
         	<input type="checkbox">
-        	<label>I went to receive more volunteer opportunities from CPS</label>
+        	<label>I want to receive more volunteer opportunities from CPS</label>
         </div>
         <div style="padding-left:30%;">
         	<input type="submit" class="btn btn-primary btn_v" value="Submit" name="save">
-	        <input type="reset" class="btn btn-danger btn_v" value="Reset" name="reset">
-	        <input type="submit" class="btn btn_v" value="Back" name="back">
+	        <input type="reset" class="btn btn-danger btn_v" style="background-color:pink !important; color:#fff !important;" value="Reset" name="reset">
+	        <input type="submit" class="btn btn_v" style="background-color:#fff !important; border:1px solid #ccc;" value="Back" name="back">
         </div>
         
 	</form>
@@ -151,7 +151,7 @@
 </div>
 <style type="text/css">
 	.btn_v{
-    	margin: 0px 30px 0px 0px;
+     margin: 0px 30px 0px 0px;
 	  padding-left: 5%;
 	  padding-right: 5%;
 	}
