@@ -185,7 +185,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
     <center>
         <p class="text-center" style="width:70%;" >Thank you for your interest in us. Please use this form to contact us</p>
     </center>
-         <div class="modal-body">
+         <div class="text">
             <?php if($message_success!=''){ ?><p class="alert alert-success" style="text-align: center;"><?php echo $message_success; ?></p><?php } ?>
             <div class="row">
                 <div class="col-md-6">
@@ -221,7 +221,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
             </div>
 
         </div>
-           <button id="submit_contact_cps_admin" style="  width: 20%;margin-top: -35px;float: right; margin-right: 17px;" name="submit_contact_cps_admin" class="btn btn-primary">Submit</button>
+        <button id="submit_contact_cps_admin" type="submit" style="  width: 20%;margin-top: -35px;float: right; margin-right: 17px;" name="submit_contact_cps_admin" class="btn btn-primary">Submit</button>
 
     </form>
 </div>

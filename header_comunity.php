@@ -12,6 +12,44 @@ if($_GET['com']){
     }  else {
         $page = '';
     }
+    
+    
+    $email_userown = $Wall->userEmail($group_owner_id);
+    $message_success = '';
+    //if "email" variable is filled out, send email
+    if (isset($_POST['submit_contact_cps_admin'])){
+
+        $full_name  = $_POST['name'];
+        $email      = $_POST['email'];
+        $comment    = $_POST['comment'];
+        $user_type  = $_POST['user_type'];
+        $type_issue  = $_POST['type_issue'];
+
+        $subject = 'Community Contact';
+        $to = "king.fc168@gmail.com";
+        $headers = "From: ".$_REQUEST['email']."\n".
+        "CC: ".$ssemail.$email_userown['email']."\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        $message = '<html><body>';
+        $message .= '<p>Dear Administrator</p>';
+        $message .= '<img src="'.$base_url.'/images/email-logo.png" alt="volunteerbetter logo" />';
+        $message .= '<h2>Basic Information</h2>';
+        $message .= '<table rules="all" style="border-color: #666;width:600px;" cellpadding="10">';
+        $message .= "<tr style='background: #eee;'><td><strong>Name:</strong> </td><td>" . strip_tags($full_name) . "</td></tr>";
+        $message .= "<tr style='background: #eee;'><td><strong>Type of issue:</strong> </td><td>" . strip_tags($type_issue) . "</td></tr>";
+        $message .= "<tr style='background: #eee;'><td><strong>Type of User:</strong> </td><td>" . strip_tags($user_type) . "</td></tr>";
+        $message .= "<tr style='background: #eee;'><td><strong>Text:</strong> </td><td>" . strip_tags($comment) . "</td></tr>";
+        $message .= "<tr style='background: #eee;'><td><strong>Community Name:</strong> </td><td>" . strip_tags($com_name) . "</td></tr>";
+
+        $message .= "</table>";
+        $message .= "</body></html>";
+        mail($to,$subject,$message,$headers);
+
+          //Email response
+        $message_success = "Your message have been sent to adminitrator. Thank you for contacting us!";
+
+    }
 ?>
 
 <div id="div-main-menu">
