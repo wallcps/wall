@@ -8,7 +8,7 @@
 			<ul>
                 <?php
                     $slide_data = mysqli_query($db, "SELECT * FROM com_slideshow WHERE com_id = '$com_id'");
-                    foreach ($slide_data as $value) {
+                    foreach ($slide_data as $value){
                 ?>
                 <li>
 	                <center><h3 class="header_cover">Volunteer</h3></center>

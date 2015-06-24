@@ -253,9 +253,8 @@ ul.sub-menu, ol {
 .volunteer_menu ul li a {
     display: block;
     font-size: 18px;
-    color: #000;
 }
-.volunteer_menu ul li a.active {
+.volunteer_menu ul .active a {
     display: block;
     font-size: 18px;
     color: white !important;
@@ -287,4 +286,8 @@ ul.sub-menu, ol {
   height: 50px;
   position: relative;
   opacity: 0.6;
+}
+
+.important_infor .edit-icon{
+    margin-top: -32px;
 }

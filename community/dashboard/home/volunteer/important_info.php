@@ -3,7 +3,7 @@
  ?>
 <div style="clear:both"></div>
 <?php foreach ($important_infos as $important_info) { ?>
-<div class="text">
+<div class="text important_infor">
 	<p style="font-size: 22px;font-weight: bold;"><?php echo $important_info['title'] ;?></p>
 	<span class="edit-icon" ><a href="" data-toggle="modal" data-target='#edit_<?php echo $important_info['id']; ?>'><i class="glyphicon glyphicon-edit"></i></a></span>
 	<hr style="margin-top:-6px;">
