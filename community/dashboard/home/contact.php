@@ -184,7 +184,6 @@ if (isset($_POST['submit_contact_cps_admin'])){
     <h3>Queries</h3>
     <hr>
     <form method="post" enctype='multipart/form-data' action="">
-        <div class="modal-body">
             <?php if($message_success!=''){ ?><p class="alert alert-success" style="text-align: center;"><?php echo $message_success; ?></p><?php } ?>
             <div class="row">
                 <div class="col-md-6">
@@ -218,12 +217,9 @@ if (isset($_POST['submit_contact_cps_admin'])){
                 <span>Please drop your message here </span>
                 <textarea style="height: 150px;" class="form-control" name="comment" rows="15" cols="40" placeholder="Message" required=""></textarea><br />
             </div>
-
-        </div>
-
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button id="submit_contact_cps_admin" name="submit_contact_cps_admin" class="btn btn-primary">Submit</button>
-        </div>
+            <div class="text-right">
+                <button id="submit_contact_cps_admin" name="submit_contact_cps_admin" class="btn btn-primary">Submit</button>
+            </div>
+            
     </form>
 </div>

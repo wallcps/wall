@@ -43,7 +43,7 @@
         $pp_keyword = $_POST['edit_pp_keyword'];
         $old_pp_pic = $_POST['old_pp_pic'];
         
-        $target_dir1 = "images/commnunities/program_and_plan/";
+        $target_dir1 = "images/commnunities/program_plan/";
         //for id card..........
         $temp1 = explode(".",$_FILES["edit_pp_pic"]["name"]);
         $filename1 = rand(1,99999) . '.' .end($temp1); 
@@ -110,7 +110,7 @@
             <div class="row aspiration-text">
                 <div class="col-lg-3">
                     <a href="">
-                        <img class="social-image" src="<?php echo 'images/commnunities/program_and_plan/' . $data_pp['image']; ?>">
+                        <img class="social-image" src="<?php echo 'images/commnunities/program_plan/' . $data_pp['image']; ?>">
                     </a>
                         <!-- <img src="images/commnunities/asp-chadrent.jpg" class="social-image"> -->
                 </div>
@@ -119,7 +119,7 @@
                     <p><?php echo $data_pp['content']; ?></p>
                     <p>Keywords : <?php echo "#".str_replace(","," #",$data_pp['keyword']); ?></p><br/>
                     <div>
-                        <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer&volunteer=opportunity&snid=<?php echo $socil_need_data['id']; ?>">
+                        <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer&volunteer=opportunity&snid=<?php echo $socil_need_data['id']; ?>">
                             <button id="" class="btn btn-social">Get Involved</button>
                         </a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
 

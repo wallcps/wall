@@ -1,6 +1,6 @@
 	<div class="btn_slide">
-			<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " style="  margin-right: 4%; margin-left: 20%;">Volunteer Now</button></a>
-     		<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " >Inquire Here</button></a>
+			<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer_now"><button class="btn invole " style="  margin-right: 4%; margin-left: 20%;">Volunteer Now</button></a>
+     		<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer_now"><button class="btn invole " >Inquire Here</button></a>
 		</div> 
 	<div id="wowslider-container1">
 		
@@ -31,7 +31,7 @@
 		<div class="map">
 			<?php echo $map; ?>
 			<button class="btn invole">Get Involved</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole" style="margin-right:1%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
+			<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer_now"><button class="btn invole" style="margin-right:1%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
 		
 		</div>
 	</div>
@@ -48,9 +48,9 @@
         ?>
                 <ul class="menu_volunteer">
 			<!--<li class='<?php echo $volunteer=="home"?"active":""; ?>'><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer&volunteer=home"><i class="glyphicon glyphicon-home"></i></a></li>-->
-			<li class='<?php echo $volunteer=="deverlopment_plan"?"active":""; ?>'><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer&volunteer=deverlopment_plan">Our Development Plan</a></li>
-			<li class='<?php echo $volunteer=="opportunity"?"active":""; ?>'><a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer&volunteer=opportunity">Volunteer Opportunities</a></li>
-			<li class='<?php echo $volunteer=="important_info"?"active":""; ?>'><a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer&volunteer=important_info">Important Info</a></li>
+			<li class='<?php echo $volunteer=="deverlopment_plan"?"active":""; ?>'><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer&volunteer=deverlopment_plan">Our Development Plan</a></li>
+			<li class='<?php echo $volunteer=="opportunity"?"active":""; ?>'><a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer&volunteer=opportunity">Volunteer Opportunities</a></li>
+			<li class='<?php echo $volunteer=="important_info"?"active":""; ?>'><a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer&volunteer=important_info">Important Info</a></li>
 		</ul>
                 
 	</div>

@@ -3,18 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/wall/community/dashboard/health/about.php</file>
-            <file>file:/C:/xampp/htdocs/wall/community_follow.php</file>
+            <file>file:/C:/xampp/htdocs/wall/community/dashboard/health/contact.php</file>
+            <file>file:/C:/xampp/htdocs/wall/header_comunity.php</file>
             <file>file:/C:/xampp/htdocs/wall/community/dashboard.php</file>
             <file>file:/C:/xampp/htdocs/wall/community/dashboard/health/welcome.php</file>
-            <file>file:/C:/xampp/htdocs/wall/community/dashboard/health/volunteer.php</file>
-            <file>file:/C:/xampp/htdocs/wall/community/ajax_community.php</file>
-            <file>file:/C:/xampp/htdocs/wall/community/dashboard/profile.php</file>
-            <file>file:/C:/xampp/htdocs/wall/index.php</file>
-            <file>file:/C:/xampp/htdocs/wall/group.php</file>
-            <file>file:/C:/xampp/htdocs/wall/login.php</file>
-            <file>file:/C:/xampp/htdocs/wall/community.php</file>
-            <file>file:/C:/xampp/htdocs/wall/my_dashboard.php</file>
+            <file>file:/C:/xampp/htdocs/wall/community/dashboard/health/volunteer_now.php</file>
+            <file>file:/C:/xampp/htdocs/wall/community/dashboard/health.php</file>
         </group>
     </open-files>
 </project-private>

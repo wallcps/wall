@@ -42,7 +42,7 @@
                 $page = $_GET['side'];
 
             } else {
-               $page = "health"; 
+               $page = "home"; 
 
             }  
             include("dashboard/".$page.".php");

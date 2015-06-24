@@ -91,8 +91,6 @@
 <script type="text/javascript">
 	// var select = $(this).val();
 	// $("input").val(select);
-
-	alert('hi')
 	$('body').on('change','#contries', function(){
 		var valueSelected = $(this).val()
 		$('input#inputCode').val(valueSelected)
