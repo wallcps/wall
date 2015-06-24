@@ -1,6 +1,6 @@
 <div class="btn_slide">
     <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " style="  margin-right: 4%; margin-left: 20%;">Volunteer Now</button></a>
-    <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " >Inquire Here</button></a>
+    <a  href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin"><button class="btn invole " >Inquire Here</button></a>
 </div>  
 
 <div id="wowslider-container1">
@@ -125,8 +125,8 @@
     </div>
 </div>
  <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " style="  margin-right: 2%; margin-left: 30%;">Volunteer Now</button></a>
-       <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " >Inquire Here</button></a>
-       <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole" style="margin-left:2%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
+       <a  href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin"><button class="btn invole " >Inquire Here</button></a>
+       <a  href="#"><button class="btn invole" style="margin-left:2%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
        <br>
        <br>
 <script type="text/javascript" src="<?php echo $base_url; ?>js/com_slidshow/wowslider.js"></script>
