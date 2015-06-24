@@ -30,7 +30,7 @@
 		<div class="content">
 			<span class="title"><?php echo $com_name; ?></span>
 			<br><br>
-			<p class="address"><?php echo $location; ?></p>
+                        <p class="address"><i class="glyphicon glyphicon-map-marker"></i> <?php echo $location; ?></p>
 			<p class="body_content"><?php echo $des; ?></p>
 		</div>
 		<div class="map">
