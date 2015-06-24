@@ -245,13 +245,15 @@ ul.sub-menu, ol {
 
 .volunteer_menu ul li {
   display: inline-block;
-  padding: 2%;
+  padding: 1%;
   border-right: 1px solid #ccc;
+  width: 23%;
+  text-align: center;
 }
-
 .volunteer_menu ul li a {
     display: block;
     font-size: 18px;
+    color: #000;
 }
 .volunteer_menu ul li a:hover {
     font-size: 18px;

@@ -61,13 +61,17 @@
     }
 ?>
 
-<div class="text">
-    <h3>Introduction</h3><hr/>
+<div class="text" style="margin-top:-10px;">
+    <p style="font-size: 23px;font-weight: bold;">Introduction</p>
+    <span class="edit-icon" style="  top: -9px;" ><a href="" data-toggle="modal" data-target='#com_opportunity_into'><i class="glyphicon glyphicon-edit"></i></a></span>
+    <hr style="margin:-6px;"/>
+    <br>
+    <p style="font-size: 20px;font-weight: bold;">Introduction</p>
     <div class="row">
         <div class="col-lg-10-12">
         <?php foreach ($data_com_opport_intro as $data) { ?>
             <h4 class="media-heading"><?php echo $data['title']; ?></h4>
-            <span class="edit-icon" ><a href="" data-toggle="modal" data-target='#com_opportunity_into'><i class="glyphicon glyphicon-edit"></i></a></span>
+            
             <p style="text-align:justify;"><?php echo $data['description']; ?></p>
         </div>
     </div>
@@ -210,7 +214,11 @@
         </div>
     </div>
 </div>
-
+       <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " style="  margin-right: 2%; margin-left: 30%;">Volunteer Now</button></a>
+       <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " >Inquire Here</button></a>
+       <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole" style="margin-left:2%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
+       <br>
+       <br>
 <script>
     //update community cps audit description.........
     $('.update_com_opport').click(function(){

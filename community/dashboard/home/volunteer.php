@@ -35,8 +35,7 @@
 		
 		</div>
 	</div>
-	<div style="clear:both"></div>
-	<br>
+	<div style="clear:both"> </div>
         <?php if($group_owner_id==$uid){ ?>
 	<div class="volunteer_menu">
 		<?php
@@ -52,7 +51,6 @@
 			<li class='<?php echo $volunteer=="opportunity"?"active":""; ?>'><a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer&volunteer=opportunity">Volunteer Opportunities</a></li>
 			<li class='<?php echo $volunteer=="important_info"?"active":""; ?>'><a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer&volunteer=important_info">Important Info</a></li>
 		</ul>
-                
 	</div>
         <?php }else if($_GET['gid']){ ?>
 	<div class="volunteer_menu">
