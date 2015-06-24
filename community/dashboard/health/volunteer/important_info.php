@@ -4,9 +4,9 @@
 <div style="clear:both"></div>
 <?php foreach ($important_infos as $important_info) { ?>
 <div class="text">
-	<h3><?php echo $important_info['title'] ;?></h3>
+	<p style="font-size: 22px;font-weight: bold;"><?php echo $important_info['title'] ;?></p>
 	<span class="edit-icon" ><a href="" data-toggle="modal" data-target='#edit_<?php echo $important_info['id']; ?>'><i class="glyphicon glyphicon-edit"></i></a></span>
-	<hr>
+	<hr style="margin-top:-6px;">
 	<p><?php echo $important_info['description'] ;?></p>
 </div>
 <div style="clear:both"></div>
@@ -28,8 +28,13 @@
         </div>
     </div>
 </div>
-<?php } ?>
 
+<?php } ?>
+<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " style="  margin-right: 2%; margin-left: 30%;">Volunteer Now</button></a>
+       <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " >Inquire Here</button></a>
+       <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole" style="margin-left:2%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
+       <br>
+       <br>
 
 <script type="text/javascript">
 	$('.update-text').click(function(){

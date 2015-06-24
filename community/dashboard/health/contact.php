@@ -102,7 +102,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
     
     <!-- start of -->
     <div>
-                <a href="" style="  top: 60px;position: absolute;" data-toggle="modal" data-target="#edit_pic"><i style="font-size:50px;" class="glyphicon glyphicon-camera" original-title="Edit Contact Picture" data-toggle="modal"></i></a>
+                <a href="" style="top: 60px;position: absolute;" data-toggle="modal" data-target="#edit_pic"><i style="font-size: 35px;" class="glyphicon glyphicon-camera" original-title="Edit Contact Picture" data-toggle="modal"></i></a>
                     <!-- <i class="glyphicon glyphicon-pencil custom-file-input" data-toggle="modal" data-target="#edit_name" original-title="edit name"></i> -->
                     <div class="modal fade" id="edit_pic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -177,14 +177,15 @@ if (isset($_POST['submit_contact_cps_admin'])){
 </div>
 <!-- the end of edit recrument -->
    <p class="text-right"></p>
-<div class="text">   
- 
-<br/>
+<div class="text" style="margin-top:-10px;">
     <div><p><?php echo $contact_decr; ?></p></div> 
-    <h3>Queries</h3>
-    <hr>
+    <p style="font-size: 22px;font-weight: bold; margin-top:-15px;">Queries</p>
+    <hr style="margin-top:-6px;">
     <form method="post" enctype='multipart/form-data' action="">
-        <div class="modal-body">
+    <center>
+        <p class="text-center form-control " style="width:70%;" >Thank you for your interest in us. Please use this form to contact us</p>
+    </center>
+         <div class="modal-body">
             <?php if($message_success!=''){ ?><p class="alert alert-success" style="text-align: center;"><?php echo $message_success; ?></p><?php } ?>
             <div class="row">
                 <div class="col-md-6">
@@ -220,10 +221,6 @@ if (isset($_POST['submit_contact_cps_admin'])){
             </div>
 
         </div>
-
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button id="submit_contact_cps_admin" name="submit_contact_cps_admin" class="btn btn-primary">Submit</button>
-        </div>
+           <button id="submit_contact_cps_admin" style="  width: 20%;margin-top: -35px;float: right; margin-right: 17px;" name="submit_contact_cps_admin" class="btn btn-primary">Submit</button>
     </form>
 </div>

@@ -1,9 +1,7 @@
 <?php 
 	$com_welcome_post = mysqli_query($db,"select * from com_tab_welcome  WHERE com_id = '$com_id' AND disabled = 0");
-        //data community .............
-        
+        //data community .............    
  ?>
-<div class="welcome_container">  
 	<div class="btn_slide">
 		<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " style="  margin-right: 4%; margin-left: 20%;">Volunteer Now</button></a>
      	<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " >Inquire Here</button></a>
@@ -18,7 +16,7 @@
                 foreach ($slide_data as $value) {
             ?>
             <li>
-            	<center><h3 class="header_cover">welcome</h3></center>s
+            	<center><p class="header_cover" style="  font-size: 28px;font-weight: bold;padding: 20px;">LOREM CONSECTETUR ADIPSCING ELTLOREM</p></center>
                 <img src="<?php echo $base_url; ?>images/com_slideshows/<?php echo $value['file_name']; ?>"  title="<?php echo $value['slide_des']; ?>" id=""/>
 			</li>
             <?php } ?>
@@ -44,8 +42,7 @@
 	</div>
 
 	<div style="clear:both"></div>
-	<hr style="color:pink;">
-	<div class="what_can_do">
+	<div class="what_can_do text">
 	<?php 
 	$contents = mysqli_query($db,"select * from com_welcome_content where com_id= ".$com_id.";");
  	?>
@@ -58,7 +55,7 @@
 		</center>
 		<?php foreach ($contents as $content) { ?>
 			<div class="row_content2">
-				<h4><?php echo $content['title']; ?></h4>
+				<h4 style="font-weight:bold;"><?php echo $content['title']; ?></h4>
 				<p class="p"><?php echo $content['content']; ?></p>
 			</div>
 		<center>
@@ -82,32 +79,36 @@
 		    </div>
 		</div>
 		<?php } ?>
-	<hr style="color:pink;">
-			<p><span>What can you do here?</span>
-                        <?php if($group_owner_id==$uid){ ?>
-			<span class="edit-icon"><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=edit_com_welcome"><i class="glyphicon glyphicon-edit"></i></a></span>
-			<?php } ?>
-                        </p>
-		</center>
-		<div class="row_container">
-		<?php 
-			  foreach ($com_welcome_post as $res) {
-		?>
-			<div class="row">
-				<div class="row_img">
-					<img src="<?php echo $base_url; ?>images/commnunities/welcome/<?php echo $res['image'];?>">
-				</div>
-				<div class="row_content">
-					<h4><?php echo $post_title = $res['title']; ?></h4>
-					<p class="p"><?php echo  $post_content = $res['decription'];?></p>
-				</div>
-			</div><br/><br/>
-			<?php } ?>
 		</div>
-	</div>
-        
-</div>
-
+		<div class="text">
+			<center>
+				<p><span style="font-size:25px;">What can you do here?</span>
+	                        <?php if($group_owner_id==$uid){ ?>
+				<span class="edit-icon" style="  margin-top: 7px;"><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=edit_com_welcome"><i class="glyphicon glyphicon-edit"></i></a></span>
+				<?php } ?>
+	            </p>
+			</center>
+			<div class="row_container">
+			<?php 
+				  foreach ($com_welcome_post as $res) {
+			?>
+				<div class="row">
+					<div class="row_img">
+						<img src="<?php echo $base_url; ?>images/commnunities/welcome/<?php echo $res['image'];?>">
+					</div>
+					<div class="row_content">
+						<h4 style="font-weight: bold;"><?php echo $post_title = $res['title']; ?></h4>
+						<p class="p"><?php echo  $post_content = $res['decription'];?></p>
+					</div>
+				</div><br/><br/>
+				<?php } ?>
+			</div>
+		</div>
+	   <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " style="  margin-right: 2%; margin-left: 30%;">Volunteer Now</button></a>
+       <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " >Inquire Here</button></a>
+       <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole" style="margin-left:2%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
+       <br>
+       <br>
 <!--slidshow communities-->
 <script type="text/javascript" src="<?php echo $base_url; ?>js/com_slidshow/wowslider.js"></script>
 <script type="text/javascript" src="<?php echo $base_url; ?>js/com_slidshow/script.js"></script>

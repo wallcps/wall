@@ -1,3 +1,24 @@
+<div class="btn_slide">
+    <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " style="  margin-right: 4%; margin-left: 20%;">Volunteer Now</button></a>
+    <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " >Inquire Here</button></a>
+</div>  
+
+<div id="wowslider-container1">
+
+<div class="ws_images">
+    <ul>
+        <?php
+            $slide_data = mysqli_query($db, "SELECT * FROM com_slideshow WHERE com_id = '$com_id'");
+            foreach ($slide_data as $value) {
+        ?>
+        <li>
+            <center><p class="header_cover" style="  font-size: 28px;font-weight: bold;padding: 20px;">LOREM CONSECTETUR ADIPSCING ELTLOREM</p></center>
+            <img src="<?php echo $base_url; ?>images/com_slideshows/<?php echo $value['file_name']; ?>"  title="<?php echo $value['slide_des']; ?>" id=""/>
+        </li>
+        <?php } ?>
+    </ul>
+</div>
+</div>
 <div class="village_name text">
         <div class="village_img">
                 <img src="<?php echo $base_url; ?>uploads/<?php echo $picture; ?>">
@@ -15,8 +36,9 @@
         </div>
 </div>
  <div style="clear:both"></div>
-<div class="text">
-    <h3>Theory of change Dashboard</h3><hr/>
+<div class="text" style="  margin-top: -10px;">
+    <p style="font-weight: bold;font-size: 22px;">About Us</p>
+    <hr style="margin:-8px;" />
     <div class="media">
         <div class="media-left media-middle">
             <a href="#">
@@ -28,7 +50,7 @@
             $data_about = mysqli_query($db, "SELECT * FROM com_tab_about WHERE title='Introduction' AND com_id='$com_id'");
             foreach ($data_about as $value) {
                 ?>
-                <h4 class="media-heading"><?php echo $value['title']; ?>
+                <h4 class="media-heading" style="font-weight: bold;"><?php echo $value['title']; ?>
                     <?php if($group_owner_id==$uid){ ?>
                     <a href="" data-toggle="modal" data-target="#edit_intro"><i class="glyphicon glyphicon-edit" style="margin-left: 10px;"></i></a>
                     <?php } ?>
@@ -102,7 +124,11 @@
         <p class="text-right text-primary"><i class="glyphicon glyphicon-plus-sign"></i> Read More</p>
     </div>
 </div>
- 
+ <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " style="  margin-right: 2%; margin-left: 30%;">Volunteer Now</button></a>
+       <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole " >Inquire Here</button></a>
+       <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole" style="margin-left:2%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
+       <br>
+       <br>
  <script>
     $('.update_text').click(function(){
         var desc = $('#desc').val();

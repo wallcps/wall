@@ -2,7 +2,39 @@
 	ob_start("ob_gzhandler");
 	error_reporting(0);
 	include_once 'includes/db.php';
-
+    session_start();
+    $user_id = $_SESSION['uid'];
+    if (isset($_POST['save'])) {
+        $com_name = $_POST['name'];
+        $address = $_POST['address'];
+        $language = $_POST['language'];
+        $role = $_POST['position'];
+        $map = $_POST['map'];
+        $desc = $_POST['introduction'];
+    //upload community image
+        $target_dir1 = "uploads";
+        //for id card..........
+        $temp1 = explode(".",$_FILES["update_pic_com"]["name"]);
+        $filename1 = rand(1,99999) . '.' .end($temp1);
+        $target_file1 = $target_dir1 . basename($filename1);
+        
+        //conditions cannot null.....
+        if($_FILES['update_pic_com']['tmp_name'] == ''){
+            echo 'false';
+        }else{
+            move_uploaded_file($_FILES["update_pic_com"]["tmp_name"],$target_file1)
+            if(mysqli_query($db,"insert into groups (group_id,group_name,group_desc,uid_fk,group_pic) values(null,".$com_name.",".$desc.",".$user_id.",".$filename1.")")){
+                $groups_id = mysqli_query($db,"select group_id from groups where uid_fk = '$user_id' ");
+                foreach ($groups_id as $group_id) {
+                    $group = $group_id['group_id'];
+                    mysqli_query($db,"insert into community (com_id,location,language,role,map) values ()");
+                }
+            }
+            else{
+                echo "fail";
+            }
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,11 +56,11 @@
 	<div class="text">
 		<center>
 		<h2 style="color:pink;">Create a Page for Your Community!</h2>
-		<p>Despicable Me 2 Minion Wallpapers: Movies are indeed a great source of entertainment.</p>
+		<p>Duis eleifend facilisis diam, id mollis ante tincidunt nec. Nullalac inia, elit non eleifend iaculis, neque nisl sus cipit lorem</p>
 		</center>
 		<hr>
-	<form method="post" style="width:850px;" class="form-contact">
-		<h4>Community Information</h4>
+	<form action="" method="POST" enctype="multipart/form-data" style="width:850px;" class="form-contact">
+		<h3>Community Information</h3>
 		<br>
 		<div class="row">
             <div class="col-md-6">
@@ -80,7 +112,7 @@
 	    </div>
 	    <div class="row">
 	        <div class="col-md-6">
-                <p>Do you have your community document ? </p>
+                <p>Do you have your community image ? </p>
             </div>
             <div class="col-md-6">
            		<input type="file" name="doc">
