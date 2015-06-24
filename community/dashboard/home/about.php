@@ -129,6 +129,9 @@
        <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole" style="margin-left:2%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
        <br>
        <br>
+<script type="text/javascript" src="<?php echo $base_url; ?>js/com_slidshow/wowslider.js"></script>
+<script type="text/javascript" src="<?php echo $base_url; ?>js/com_slidshow/script.js"></script>
+
  <script>
     $('.update_text').click(function(){
         var desc = $('#desc').val();
