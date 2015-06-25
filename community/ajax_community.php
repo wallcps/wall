@@ -76,3 +76,16 @@ if(isset($_POST['edit_com_opport'])=='edit_com_opport'){
     $content    = $_POST['data'];
     mysqli_query($db,"update com_opportunity_intro set description = '$content' where id = '$id'");
 }
+//Google doc for deverlopment Plan
+if(isset($_POST['doc_about'])=='doc_about'){
+    $id         = $_POST['id'];
+    $content    = $_POST['content'];
+    mysqli_query($db,"update com_about_doc set content = '$content' where id = '$id'");
+}
+//Google doc for about
+if(isset($_POST['doc_welcome'])=='doc_welcome'){
+    $id         = $_POST['id'];
+    $content    = $_POST['content'];
+    mysqli_query($db,"update com_welcome_doc set content = '$content' where id = '$id'");
+}
+
