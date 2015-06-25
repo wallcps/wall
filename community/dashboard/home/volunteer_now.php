@@ -46,7 +46,7 @@
         $message .= "</body></html>";
         mail($to,$subject,$message,$headers);
         
-        echo '<script>window.location = "'.$base_url.'community.php?gid='.$gid.'&com=dashboard&tab=home";</script>';
+        echo '<script>window.location = "'.$base_url.'community.php?gid='.$gid.'&com=dashboard&tab=welcome";</script>';
        
     }
 
@@ -155,7 +155,7 @@
             <hr>
             <div class="form-group"style="padding-left:2%;">
                 <div class="col-xs-11">
-                    <span>If you would like to volunteer/visit us, when can you com?</span>
+                    <span>If you would like to volunteer/visit us, when can you come?</span>
                 </div>
                 <div class="col-xs-11">
                     <textarea style="height:80px;width:100%;" name="q2"></textarea>
