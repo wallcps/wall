@@ -80,8 +80,41 @@
     </div>
 </div>
 <div class="text text-center">
+<?php 
+    $docs = mysqli_query($db, "SELECT * FROM com_about_doc WHERE com_id = '$com_id'");
+ ?>
+    <div class="doc">
     <h4>Theory of change dashboard</h4>
-    <h4>(Embeded From Google Doc)</h4>
+    <span class="edit-icon" ><a href="" data-toggle="modal" data-target='#docs'><i class="glyphicon glyphicon-edit"></i></a></span>
+        <?php 
+            foreach ($docs as $doc) {
+                $document = $doc['content'];
+                if ($document) {
+                    echo $document;
+                }
+                else{
+                    echo "<h4>(Embeded From Google Doc)</h4>";
+                } 
+         ?> 
+            <div class="modal fade" id="docs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="exampleModalLabel">Embbeded your Google Doc here</h4>
+                        </div>
+                        <div class="modal-body">
+                            <textarea style="height:150px; width:100%;" name="des" id="document"><?php echo $document ; ?></textarea>
+                        </div>
+                        <div class="modal-footer">
+                                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
+                                <button id="<?php echo $doc['id'] ; ?>" name="save_doc" class="btn btn-sm btn-primary update_doc">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
 </div>
 <div class="text">
     <div class="media">
@@ -162,6 +195,25 @@
                desc    :desc,
                id      :id,
                update_type  :'edit_com_about_intro',
+            },
+            success:function(data){
+                location.reload();
+            },error:function(data){
+                alert(data);
+            }
+        });
+    });
+    $('.update_doc').click(function(){
+        var id = $(this).attr('id');
+        var content = $('#document').val();
+
+        $.ajax({
+            type:'POST',
+            url:'<?php echo $base_url; ?>community/ajax_community.php',
+            data:{
+               content      :content,
+               id           : id,
+               doc_about  :'doc_about',
             },
             success:function(data){
                 location.reload();

@@ -294,3 +294,7 @@ ul.sub-menu, ol {
 .contact{
     margin-top: 15px;
 }
+.doc > iframe{
+  width: 100%;
+  height: 500px;
+}
