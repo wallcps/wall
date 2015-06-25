@@ -31,8 +31,8 @@
     </div>
     <div class="map">
         <?php echo $map; ?>
-        <button class="btn invole">Get Involved</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer_now"><button class="btn invole" style="margin-right:1%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
+        <a  href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin"><button class="btn invole " >Get Involved</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a  href="#"><button class="btn invole" style="margin-right:1%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
 
     </div>
 </div>
