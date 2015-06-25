@@ -143,7 +143,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
         <div class="map">
                 <?php echo $map; ?>
                 <a  href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin"><button class="btn invole " >Get Involved</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button class="btn invole"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button>
+                <a href="http://www.facebook.com/share.php?u=<?php echo 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>&title=[TITLE]"><button class="btn invole" ><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
         </div>
     </div>
      <div style="clear:both"></div>

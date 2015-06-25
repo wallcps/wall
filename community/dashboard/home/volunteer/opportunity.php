@@ -123,7 +123,7 @@
                     <p><?php echo $data_pp['content']; ?></p>
                     <p>Keywords : <?php echo "#".str_replace(","," #",$data_pp['keyword']); ?></p><br/>
                     <div>
-                        <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer&volunteer=opportunity&snid=<?php echo $socil_need_data['id']; ?>">
+                        <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=create_project&pp=<?php echo $data_pp['id']; ?>">
                             <button id="" class="btn btn-social">Get Involved</button>
                         </a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
 

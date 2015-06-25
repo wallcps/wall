@@ -53,7 +53,6 @@ if($_GET['com']){
 ?>
 
 <div id="div-main-menu">
-    <?php if($login) { ?>
     <div id="div-menu-top">
         <div class="header_left">
             <div>
@@ -147,10 +146,6 @@ if($_GET['com']){
     </div>
     </div>
 </div>
-<?php } else { ?>
-<li><a href="<?php echo $base_url; ?>">Login</a></li>
-<li><a href="<?php echo $base_url; ?>">Sign Up</a></li>
-<?php	} ?>
 
 
 
