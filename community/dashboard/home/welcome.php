@@ -35,8 +35,8 @@ $com_welcome_post = mysqli_query($db, "select * from com_tab_welcome  WHERE com_
     </div>
     <div class="map">
         <?php echo $map; ?>
-        <button class="btn invole " >Get Involved</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=volunteer_now"><button class="btn invole" style="margin-right:1%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
+        <a href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin"><button class="btn invole " >Get Involved</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer_now"><button class="btn invole" style="margin-right:1%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
 
     </div>
 </div>
@@ -86,7 +86,7 @@ $com_welcome_post = mysqli_query($db, "select * from com_tab_welcome  WHERE com_
     <center>
         <p><span style="font-size:25px;">What can you do here?</span>
             <?php if ($group_owner_id == $uid) { ?>
-                <span class="edit-icon" style="  margin-top: 7px;"><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=edit_com_welcome"><i class="glyphicon glyphicon-edit"></i></a></span>
+                <span class="edit-icon" style="  margin-top: 7px;"><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=edit_com_welcome"><i class="glyphicon glyphicon-edit"></i></a></span>
 <?php } ?>
         </p>
         <p>Ut scelerisque tellus nec ipsum fermentum, eget mollis eros commdo.</p>

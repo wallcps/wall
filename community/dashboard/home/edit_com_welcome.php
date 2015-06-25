@@ -25,7 +25,7 @@
                 echo '<td valign="center" class="text-center" width="700">'.$post_title.'</td>';
                 echo '<td valign="center" class="text-center" width="380">'.$post_content.'</td>';
                 echo '<td valign="center" class="text-center" width="380"><img width="98" height="auto" src="'.$base_url.'images/commnunities/welcome/'.$post_img.'"></td>';
-                echo '<td valign="center" class="text-center" width="120"><a href="'.$base_url.'community.php?gid='.$gid.'&com=dashboard&side=health&tab=edit_com_welcome_post&post_id='.$post_id.'">Edit</a></td>';
+                echo '<td valign="center" class="text-center" width="120"><a href="'.$base_url.'community.php?gid='.$gid.'&com=dashboard&tab=edit_com_welcome_post&post_id='.$post_id.'">Edit</a></td>';
                 echo '</tr>';
                 $count++;
             }

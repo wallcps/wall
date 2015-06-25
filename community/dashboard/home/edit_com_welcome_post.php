@@ -28,7 +28,7 @@ if (isset($_POST['save_edit_post'])){
         }
     
         $com_welcome_post = mysqli_query($db,"update com_tab_welcome set title='".htmlspecialchars($_POST['post_title'],ENT_QUOTES)."' ,decription='".htmlspecialchars($_POST['post_content'],ENT_QUOTES)."',image='$filename1',disabled='".$_POST['disabled']."' where id=".$_POST['post_id']);
-       echo '<script>window.location = "'.$base_url.'community.php?gid='.$gid.'&com=dashboard&side=health&tab=edit_com_welcome";</script>';
+       echo '<script>window.location = "'.$base_url.'community.php?gid='.$gid.'&com=dashboard&tab=edit_com_welcome";</script>';
        die();        
     }
     ?>
