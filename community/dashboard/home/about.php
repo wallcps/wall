@@ -95,7 +95,7 @@
                 else{
                     echo "<h4>(Embeded From Google Doc)</h4>";
                 } 
-         ?>    <?php } ?>
+         ?> 
             <div class="modal fade" id="docs" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -113,6 +113,7 @@
                     </div>
                 </div>
             </div>
+        <?php } ?>
     </div>
 </div>
 <div class="text">
