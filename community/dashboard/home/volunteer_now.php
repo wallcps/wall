@@ -54,7 +54,7 @@
 
 <div class="text">
     <h3 class="text-center">Please give us your persional information</h3>
-    <h4>Basic Information</h4>
+    <h4 style="font-weight:bold;">Basic Information</h4>
     <hr>
     <?php
     $com_admin = mysqli_query($db, "SELECT * FROM users WHERE users.uid = '$uid'");
@@ -64,20 +64,20 @@
     <form method="post" class="form-horizontal" action="">
             <div style="padding-left:10%;">
                 <div class="form-group">
-                    <label class="form-control-label col-xs-3">Firstname:</label>
+                    <span class="form-control-span col-xs-3">First Name:</span>
                     <div class="col-xs-8">
                         <input class="text- form-control" value="<?php echo $value['first_name']; ?>" name="fname" type="text"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label col-xs-3">Lastname:</label>
+                    <span class="form-control-span col-xs-3">Last Name:</span>
 
                     <div class="col-xs-8">
                         <input class="text- form-control" name="lname" type="text" value="<?php echo $value['last_name']; ?>"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label col-xs-3">Gender</label>
+                    <span class="form-control-span col-xs-3">Gender:</span>
                     <div class="col-xs-8">
                         <select class="form-control" name="gender">
                             <option value="1" <?php echo $value['gender'] == 1 ? "selected" : "" ?>>Male</option>
@@ -86,20 +86,20 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label col-xs-3">Date of Birth:</label>
+                    <span class="form-control-span col-xs-3">Date of Birth:</span>
                     <div class="col-xs-8">
                         <input class="text- form-control" name="dob" type="date" value="<?php echo $value['birthday']; ?>"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label col-xs-3">Country</label>
+                    <span class="form-control-span col-xs-3">Country:</span>
                     <div class="col-xs-8">
                         <?php include 'country_list.php'; ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label col-xs-3">Nationality:
-                    </label>
+                    <span class="form-control-span col-xs-3">Nationality:
+                    </span>
                     <div class="col-xs-8">
                         <select class="usr_country form-control text-input form-control" name="nationality">
                             <?php
@@ -117,13 +117,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label col-xs-3">Email Address:</label>
+                    <span class="form-control-span col-xs-3">Email Address:</span>
                     <div class="col-xs-8">
                         <input class="text- form-control" name="email" type="email" value="<?php echo $value['email']; ?>"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label col-xs-3">Phone Number:</label>
+                    <span class="form-control-span col-xs-3">Phone Number:</span>
                     <div class="col-xs-2">
                         <input type="text" name="usr_phone" id="inputCode" class="text-input form-control" style=" float: left;" value="<?php echo $_POST['usr_phone']; ?>" AUTOCOMPLETE='OFF'/>
                     </div>
@@ -132,18 +132,18 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label col-xs-3">Mailing Address:</label>
+                    <span class="form-control-span col-xs-3">Mailing Address:</span>
                     <div class="col-xs-8">
                         <textarea style="height:80px;width:100%;" name="mailing"></textarea>
                     </div>
                 </div>
             </div>
-            <h4>Support us</h4>
+            <h4 style="font-weight:bold;">Support us</h4>
             <hr>
             <div style="padding-left:2%;">
                 <div class="form-group">
                     <div class="col-xs-11">
-                        <label>How would you like to support us?</label>
+                        <span>How would you like to support us?</span>
                     </div>
                     <div class="col-xs-11">
                         <input type="text" class="form-control" name="q1" placeholder="E.g Visit us, Donate us, Volunteer with us">
@@ -151,11 +151,11 @@
                 </div>
             </div>
 
-            <h4>Volunteer/Visit us </h4>
+            <h4 style="font-weight:bold;">Volunteer/Visit us </h4>
             <hr>
             <div class="form-group"style="padding-left:2%;">
                 <div class="col-xs-11">
-                    <label>If you would like to volunteer/visit us, when can you com?</label>
+                    <span>If you would like to volunteer/visit us, when can you com?</span>
                 </div>
                 <div class="col-xs-11">
                     <textarea style="height:80px;width:100%;" name="q2"></textarea>
@@ -163,7 +163,7 @@
             </div>
             <div class="form-group"style="padding-left:2%;">
                 <div class="col-xs-11">
-                    <label>What would you like to do?</label>
+                    <span>What would you like to do?</span>
                 </div>
                 <div class="col-xs-11">
                     <textarea style="height:80px;width:100%;" name="q3"></textarea>
@@ -171,17 +171,17 @@
             </div>
             <div class="form-group"style="padding-left:2%;">
                 <div class="col-xs-11">
-                    <label>Why are you interesting in coming?</label>
+                    <span>Why are you interesting in coming?</span>
                 </div>
                 <div class="col-xs-11">
                     <textarea style="height:80px;width:100%;" name="q4"></textarea>
                 </div>
             </div>
-            <h4>Other Information</h4>
+            <h4 style="font-weight:bold;">Other Information</h4>
             <hr>
             <div class="form-group"style="padding-left:2%;">
                 <div class="col-xs-11">
-                    <label>Is there anything else that you would to ask or tell us?</label>
+                    <span>Is there anything else that you would to ask or tell us?</span>
                 </div>
                 <div class="col-xs-11">
                     <textarea style="height:80px;width:100%;" name="q5"></textarea>
@@ -190,7 +190,7 @@
 
             <div class="form-group" style="padding-left:10%;">
                 <input type="checkbox">
-                <label>I want to receive more volunteer opportunities from CPS</label>
+                <span>I want to receive more volunteer opportunities from CPS</span>
 
             </div>
             <div style="padding-left:30%;">
