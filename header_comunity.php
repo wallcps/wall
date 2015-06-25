@@ -170,7 +170,7 @@ if($_GET['com']){
                     <div class="row">
                         <div class="col-md-6">
                             <span>Please, tell us who you are</span>
-                            <select class="form-control">
+                            <select class="form-control contact">
                                 <option>e.g Community, Visitor...</option>
                                 <option>Community</option>
                                 <option>Visitor</option>
@@ -178,7 +178,7 @@ if($_GET['com']){
                         </div>
                         <div class="col-md-6">
                             <span>Please, tell us who you are</span>
-                            <select class="form-control">
+                            <select class="form-control contact">
                                 <option>e.g Service, Complain...</option>
                                 <option>Service</option>
                                 <option>Complain</option>
@@ -188,16 +188,16 @@ if($_GET['com']){
                     <div class="row">
                         <div class="col-md-6">
                             <span>Please tell us your name</span>
-                            <input name="name" type="text" class="form-control" placeholder="Name" required="" value="<?php echo $session_first_name.' '.$session_last_name; ?>"/>
+                            <input name="name" class="form-control contact" placeholder="Name" required="" value="<?php echo $session_first_name.' '.$session_last_name; ?>"/>
                         </div>
                         <div class="col-md-6">
                             <span>Please inter your email address</span>
-                            <input class="text- form-control" name="email"  value="<?php echo $session_email; ?>" type="email" placeholder="Email" required=""/>
+                            <input class="text- form-control contact" name="email"  value="<?php echo $session_email; ?>" type="email" placeholder="Email" required=""/>
                         </div>
                     </div>
                     <div class="form_contact">
                         <span>Please drop your message here </span>
-                        <textarea style="height: 150px;" class="form-control" name="comment" rows="15" cols="40" placeholder="Message" required=""></textarea><br />
+                        <textarea style="height: 150px;" class="form-control contact" name="comment" rows="15" cols="40" placeholder="Message" required=""></textarea><br />
                     </div>
 
                 </div>

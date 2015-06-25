@@ -284,10 +284,13 @@ ul.sub-menu, ol {
   margin-top: -10%;
   margin-bottom: 2%;
   height: 50px;
-  position: relative;
+  position: relative; 
   opacity: 0.6;
 }
 
 .important_infor .edit-icon{
     margin-top: -32px;
+}
+.contact{
+    margin-top: 15px;
 }
