@@ -165,16 +165,14 @@ if($_GET['com']){
                     <div class="row">
                         <div class="col-md-6">
                             <span>Please, tell us who you are</span>
-                            <select class="form-control contact">
-                                <option>e.g Community, Visitor...</option>
+                            <select class="form-control contact" name="user_type">
                                 <option>Community</option>
                                 <option>Visitor</option>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <span>Please, tell us who you are</span>
-                            <select class="form-control contact">
-                                <option>e.g Service, Complain...</option>
+                            <select class="form-control contact" name="type_issue">
                                 <option>Service</option>
                                 <option>Complain</option>
                             </select>
