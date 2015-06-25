@@ -89,6 +89,7 @@ $com_welcome_post = mysqli_query($db, "select * from com_tab_welcome  WHERE com_
                 <span class="edit-icon" style="  margin-top: 7px;"><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health&tab=edit_com_welcome"><i class="glyphicon glyphicon-edit"></i></a></span>
 <?php } ?>
         </p>
+        <p>Ut scelerisque tellus nec ipsum fermentum, eget mollis eros commdo.</p>
     </center>
     <div class="row_container">
         <?php
