@@ -46,7 +46,7 @@
         $message .= "</body></html>";
         mail($to,$subject,$message,$headers);
         
-        echo '<script>window.location = "'.$base_url.'community.php?gid='.$gid.'&com=dashboard&tab=home";</script>';
+        echo '<script>window.location = "'.$base_url.'community.php?gid='.$gid.'&com=dashboard&tab=welcome";</script>';
        
     }
 
