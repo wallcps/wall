@@ -19,7 +19,7 @@
         </ul>
     </div>
 </div>
-<div class="village_name text">
+<div class="village_name">
         <div class="village_img">
                 <img src="<?php echo $base_url; ?>uploads/<?php echo $picture; ?>">
         </div>
