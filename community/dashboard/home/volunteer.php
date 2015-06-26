@@ -12,8 +12,8 @@
             foreach ($slide_data as $value) {
                 ?>
                 <li>
-                <center><p class="header_cover" style="  font-size: 28px;font-weight: bold;padding: 20px;">LOREM CONSECTETUR ADIPSCING ELTLOREM</p></center>
-                <img src="<?php echo $base_url; ?>images/com_slideshows/<?php echo $value['file_name']; ?>"  title="<?php echo $value['slide_des']; ?>" id=""/>
+                     <label class="header_cover"><p style="  font-size: 28px;font-weight: bold;float:right;  margin-top: 11px;">LOREM CONSECTETUR ADIPSCING ELTLOREM</p></label>
+               <img src="<?php echo $base_url; ?>images/com_slideshows/<?php echo $value['file_name']; ?>"  title="<?php echo $value['slide_des']; ?>" id=""/>
                 </li>
             <?php } ?>
         </ul>

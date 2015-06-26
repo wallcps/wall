@@ -5,19 +5,19 @@
 
 <div id="wowslider-container1">
 
-<div class="ws_images">
-    <ul>
-        <?php
+    <div class="ws_images">
+        <ul>
+            <?php
             $slide_data = mysqli_query($db, "SELECT * FROM com_slideshow WHERE com_id = '$com_id'");
             foreach ($slide_data as $value) {
-        ?>
-        <li>
-            <center><p class="header_cover" style="  font-size: 28px;font-weight: bold;padding: 20px;">LOREM CONSECTETUR ADIPSCING ELTLOREM</p></center>
-            <img src="<?php echo $base_url; ?>images/com_slideshows/<?php echo $value['file_name']; ?>"  title="<?php echo $value['slide_des']; ?>" id=""/>
-        </li>
-        <?php } ?>
-    </ul>
-</div>
+                ?>
+                <li>
+                     <label class="header_cover"><p style="  font-size: 28px;font-weight: bold;float:right;  margin-top: 11px;">LOREM CONSECTETUR ADIPSCING ELTLOREM</p></label>
+               <img src="<?php echo $base_url; ?>images/com_slideshows/<?php echo $value['file_name']; ?>"  title="<?php echo $value['slide_des']; ?>" id=""/>
+                </li>
+            <?php } ?>
+        </ul>
+    </div>
 </div>
 <div class="village_name text">
         <div class="village_img">
