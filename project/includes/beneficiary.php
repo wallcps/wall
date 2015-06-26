@@ -55,7 +55,7 @@
             <p><?php if($description){
                 echo $description; 
              }else{
-                echo "<p>Please write about the community here</p>";
+                echo "<p style='font-size:15px;'>There is empty Here, Please decribe your Community in Beneficiary Tab</p>";
             }?></p>
            <!--  <table style="width:100%; hegith:100%">
                 <tr>

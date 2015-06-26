@@ -112,8 +112,8 @@ class User
         $md5_password=md5($password);
     
 	$time=time();
-        $query=mysqli_query($this->db,"INSERT INTO users(username,password,email,user_role,first_name,last_name, birthday, last_login, "
-                . "phone, country, address, verification_code) VALUES ('$username','$md5_password','$email','$account_type', '$firstname',"
+        $query=mysqli_query($this->db,"INSERT INTO users(username,password,email,first_name,last_name, birthday, last_login, "
+                . "phone, country, address, verification_code) VALUES ('$username','$md5_password','$email', '$firstname',"
                 . "'$lastname', '$birthday','$time', '$phone', '$country', '$address', '$code')");
         $sql=mysqli_query($this->db,"SELECT uid FROM users WHERE username='$username'");
         $row=mysqli_fetch_array($sql,MYSQLI_ASSOC);

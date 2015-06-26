@@ -3,6 +3,7 @@ ob_start("ob_gzhandler");
 error_reporting(0);
 include_once 'includes/db.php';
 include_once 'includes/User.php';
+include_once 'includes/js.php';
 session_start();
 $session_uid=$_SESSION['uid'];
 $_SESSION['login']=false;
@@ -12,13 +13,14 @@ header("location:index.php");
 }
 
 $User = new User($db);
-
 //Login
-$login_error='';
-if($_POST['user'] && $_POST['passcode'] )
+$reg_error='';
+
+if($_POST['user'] && $_POST['passcode'])
 {
     $username=$_POST['user'];
     $password=$_POST['passcode'];
+
     if (strlen($username)>0 && strlen($password)>0)
     {
     $login=$User->User_Login($username,$password);
@@ -27,31 +29,55 @@ if($_POST['user'] && $_POST['passcode'] )
         {
         $_SESSION['uid']=$login;
         $status = $User->User_Status($_SESSION['uid']);
-        echo $status;
             if(strcmp($status,'approved')==0){
                 $_SESSION['login']=true;
                 $user_type = $User->User_type($_SESSION['uid']);
                 $_SESSION['user_role'] = $user_type; 
-                if($user_type==1){
-                    header("Location:index.php");
-                }else if($user_type=='3'){
+                if($user_type==1){ 
+                    header("Location:index.php");          
+                }else if($user_type==3){
                     header("Location:community.php");
                 }
                 //header("Location:index.php");
             }else if(strcmp($status, 'pending')==0){
                 header("Location:cps_verification.php");
             }else{
+                
                 $login_error="<span class='error'>Username or Password is invalid</span>";
+                echo $login_error;
              }
-        }
+        }else{
+
+           $login_error="<span class='error'>Username or Password is invalid</span>";
+           echo $login_error;
+            }
+    }else{
+
+        $login_error="<span class='error'>Username or Password is invalid</span>";
     }
-}else{
-    $reg_error="<span class='error'>Give valid Email/Username and Password.</span>";
-    
+      $login_error="<span class='error'>Username or Password is invalid</span>";
+         
 }
 
 
+
 ?>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+$("#login").hide();
+$("#btn_login").click(function(){
+    $("#login").show();
+});
+$(".close").click(function(){
+    $("#login").hide();
+});
+});
+</script>
+
+<div class="">
+    <p></p>
+</div>
 <html lang='en'>
     <head>
         <title>CPS - Login</title>
@@ -174,7 +200,8 @@ if($_POST['user'] && $_POST['passcode'] )
                                 <input  type="password" class="form-control" name="passcode" placeholder="Password" required="">
                             </div>
                             <br/>
-                            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                            <span><?php echo $reg_error; ?></span>
+                            <button class="btn btn-lg btn-primary btn-block" id="btn_login" type="submit">Login</button>
                             <br/>
                             <div class="row">
                                 <div class="create_account account-color"><h4><a href="<?php echo $base_url.'cps_registration.php';?>">Create New Account</a></h4></div>
@@ -190,9 +217,9 @@ if($_POST['user'] && $_POST['passcode'] )
 
                 <div class="row omb_row-sm-offset-3 omb_socialButtons">
                     <div class="col-xs-4 col-sm-3">
-                        <a href="#" data-toggle="modal" data-target="#comingsoon" class="btn btn-lg btn-block omb_btn-twitter">
+                        <a href="facebook_login.php" data-toggle="modal" data-target="#comingsoon" class="btn btn-lg btn-block omb_btn-twitter">
                             <i class="fa fa-twitter visible-xs"></i>
-                            <span class="hidden-xs">Facebook</span>
+                            <span class="facebook_login.php">Facebook</span>
                         </a>
                     </div>  
                     <div class="col-xs-4 col-sm-3">
@@ -214,7 +241,7 @@ if($_POST['user'] && $_POST['passcode'] )
 
     </body>
 </html>
-<div class="modal fade" id="comingsoon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="comingsoon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -230,6 +257,6 @@ if($_POST['user'] && $_POST['passcode'] )
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 

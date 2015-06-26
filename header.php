@@ -64,18 +64,18 @@ if($_GET['p']){
 
 <?php 
 if (isset($_POST['submit_contact_cps_admin'])){
-  
-    $to = "rottanaly@gmail.com";
+
+     		
+    $to = "it-support@volunteerbetter.com";
     $subject = $_REQUEST['subject'];
-    $txt = $_REQUEST['comment'];
-    $headers = "From: ".$_REQUEST['email']."\n"."CC: yanchun@carepositioningsystem.org";
+    $txt = "Type: ".$_REQUEST['mail_type']."\n\nMessage:\n".$_REQUEST['comment'];
+    $headers = "From: " .$_REQUEST['email']. "\r\n" ."CC: phansaorin@gmail.com";
 
     mail($to,$subject,$txt,$headers);
 
     //Email response
     $message = "Your message have been sent to CPS Administrator. Thank you for contacting us!";
-    //echo $message;
-	//echo $to.$subject.$txt.$headers;  
+     
 	echo "<script type='text/javascript'>alert('$message');</script>";
 }
 ?>
@@ -88,7 +88,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
                     <img src="<?php echo $base_url; ?>images/logo.png"/>
                 </div>
                 <div class="search-box">
-                <input type="text" class="topbarSearch" id="searchinput" placeholder="Communities, Organizations Projects and Valenteers"  data-step="2" data-intro="Search for Friends and Groups."/>
+                <input type="text" class="topbarSearch" id="searchinput" placeholder="Can search only Project and Community"  data-step="2" data-intro="Search for Friends and Groups."/>
                 <div id="display" ></div>
                 </div>
             </div>
@@ -126,10 +126,10 @@ if (isset($_POST['submit_contact_cps_admin'])){
                 </li>
                 <li class="focus-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-cog"></i> Account</a>
-                    <ul class="dropdown-menu text-right" role="menu" id="dropdown-account">
+                   <ul class="dropdown-menu text-right" role="menu" id="dropdown-account">
                         <li><a href="#" data-toggle="modal" data-target="#send_mail_to_cps_admin">Report a problem</a></li>
-                        <li><a href="#">Privacy  </a></li>
-                        <li><a href="#">Setting </a></li>
+                        <li><a href="#">Policy </a></li>
+                        <li><a href="index.php?p=setting">Setting</a></li>
                         <li><a href="<?php echo $base_url.'logout.php'; ?>">Log Out </a></li>
 
                     </ul>
@@ -158,20 +158,20 @@ if (isset($_POST['submit_contact_cps_admin'])){
 
         <div id="right-menu-main">
             <ul class="nav navbar-nav navbar-right">
-                <li>
+                 <li>
                     <label class="white-text">Viewing as:</label>
                     <select class="view-select" onChange="window.location.href=this.value">
                         <option value="volunteer">Volunteer</option>
                         <option value="<?php echo $base_url; ?>index.php?p=own_community">Community</option>
-                        <option value="organization">Organization</option>
+                       <!--  <option value="organization">Organization</option> -->
                     </select>
                 </li>
                 <li>
                     <a href="#" class="dropdown-toggle white-text" data-toggle="dropdown" role="button" aria-expanded="false">Create Listing <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu" id="create-list">
                         <li><a href="<?php echo $base_url . 'index.php?p=my_createproject'; ?>">Create a Project &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="glyphicon glyphicon-exclamation-sign text-right"></label></a></li>
-                        <li><a href="#">List a Community &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-exclamation-sign text-right"></span></a></li>
-                        <li><a href="#">List an Organization <span class="glyphicon glyphicon-exclamation-sign text-right"></span></a></li>
+                        <!-- <li><a href="#">List a Community &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-exclamation-sign text-right"></span></a></li>
+                        <li><a href="#">List an Organization <span class="glyphicon glyphicon-exclamation-sign text-right"></span></a></li>-->
                     </ul>
                 </li>
 
@@ -196,21 +196,41 @@ if (isset($_POST['submit_contact_cps_admin'])){
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="exampleModalLabel"> Contact CPS Admin </h4>
+                <p><i>Please kindly send us your feedbacks, suggestions, or compliants for our CPS improvement</i></p>
               </div>
               
             <div class="modal-body">
              
                      <div class="row">
-                        <div class="col-md-6">
-                            <input name="name" type="text" class="form-control" placeholder="Name" required=""/>
+                     	<div class="col-md-12">
+                        Email Type:
+                        <select name="mail_type">
+                          <option value="" disabled selected>Please select:</option>
+                          <option value="Help">Help</option>
+                          <option value="Report">Report</option>
+                          <option value="Complaint">Complaint</option>
+                          <option value="Suggestion">Suggestion</option>
+                          <option value="Feedback">Feedback</option>
+                          <option value="Support">Support</option>
+                        </select>
                         </div>
                         <div class="col-md-6">
-                            <input class="text- form-control" name="email" type="email" placeholder="Email" required=""/>
+                            <p class="text-help">Admin's name</p>
+                            <input name="name" type="text" class="form-control" placeholder="Name" readonly value="<?php echo ucfirst($session_username); ?>" style="padding:6px 12px;" readonly/>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="text-help">Admin's email</p>
+                            <input name="email" type="email" class="form-control" placeholder="Email" readonly value="<?php echo $session_email; ?>"/>
                         </div>
                     </div>
-                    <div class="row" style="margin-bottom:10px;"><input class="text-input form-control" name="subject" type="text" placeholder="Subject" required=""/></div>
+
+                    <div class="row" style="margin-bottom:10px;">
+                        <p>Please enter your subject here</p>
+                        <input class="form-control" name="subject" type="text" placeholder="Subject" required="" style="padding:6px 12px;"/>
+                    </div>
                     <div class="form_contact">
-                        <textarea style="height: 150px;" class="form-control" name="comment" rows="15" cols="40" placeholder="Message" required=""></textarea><br />
+                        <p>Please enter your message here</p>
+                        <textarea style="height: 150px;" class="form-control" name="comment" rows="15" cols="40" placeholder="Message" required></textarea><br />
                     </div>
                   
             </div>
@@ -225,6 +245,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
         </div> 
 
 <!-- End Popup -->
+
 
 <script type="text/javascript">
     $("#link-down").hide();
