@@ -389,9 +389,42 @@
         </div>
     </div>
 </div>
-<div style="clear:both"></div>
 <div class="text text-center">
-    <h1>CPS Audit</h1>
+<?php 
+    $docs1 = mysqli_query($db, "SELECT * FROM com_audit_doc WHERE com_id = '$com_id'");
+ ?>
+    <div class="doc">
+    <h4>Theory of change dashboard</h4>
+    <span class="edit-icon" ><a href="" data-toggle="modal" data-target='#docs1'><i class="glyphicon glyphicon-edit"></i></a></span>
+        <?php 
+            foreach ($docs1 as $doc1) {
+                $document1 = $doc1['content'];
+                if ($document1) {
+                    echo $document1;
+                }
+                else{
+                    echo "<h4>(Embeded From Google Doc)</h4>";
+                } 
+         ?>
+            <div class="modal fade" id="docs1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="exampleModalLabel">Embbeded your Google Doc here</h4>
+                        </div>
+                        <div class="modal-body">
+                            <textarea style="height:150px; width:100%;" name="des" id="document1"><?php echo $document1 ; ?></textarea>
+                        </div>
+                        <div class="modal-footer">
+                                <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
+                                <button id="<?php echo $doc['id'] ; ?>" name="save_doc" class="btn btn-sm btn-primary update_doc2">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?> 
+    </div>
 </div>
 <div style="clear:both"></div>
 <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer_now"><button class="btn invole " style="  margin-right: 2%; margin-left: 30%;">Volunteer Now</button></a>
@@ -581,6 +614,25 @@ $('.update_doc1').click(function(){
                content      :content,
                id           : id,
                doc_welcome  :'doc_welcome',
+            },
+            success:function(data){
+                location.reload();
+            },error:function(data){
+                alert(data);
+            }
+        });
+    });
+$('.update_doc2').click(function(){
+        var id = $(this).attr('id');
+        var content = $('#document1').val();
+
+        $.ajax({
+            type:'POST',
+            url:'<?php echo $base_url; ?>community/ajax_community.php',
+            data:{
+               content      :content,
+               id           : id,
+               doc_audit  :'doc_audit',
             },
             success:function(data){
                 location.reload();

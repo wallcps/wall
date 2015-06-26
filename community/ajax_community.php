@@ -88,4 +88,10 @@ if(isset($_POST['doc_welcome'])=='doc_welcome'){
     $content    = addslashes($_POST['content']);
     mysqli_query($db,"update com_welcome_doc set content = '$content' where id = '$id'");
 }
+//Google doc for audit in development plan
+if(isset($_POST['doc_audit'])=='doc_audit'){
+    $id         = $_POST['id'];
+    $content    = $_POST['content'];
+    mysqli_query($db,"update com_audit_doc set content = '$content' where id = '$id'");
+}
 
