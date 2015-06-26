@@ -10,6 +10,7 @@
         $com_id = $value['com_id'];
         $com_name = $value['com_name'];
         $des =      $value['com_desc'];
+        $admin_des =      $value['admin_desc'];
         $picture =      $value['pic'];
         $location =      $value['location'];
         $map =      $value['map'];

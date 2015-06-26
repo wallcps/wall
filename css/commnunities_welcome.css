@@ -52,10 +52,7 @@
 	width: 45%;
 	margin-right: 4%;
 }
-.why_should_u span , .what_can_do span{
-	font-size: 25px;
-	position: relative;
-}
+
 .why_should_u i , .what_can_do i{
 	font-size: 15px;
 	top : 20px;

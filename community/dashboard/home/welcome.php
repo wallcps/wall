@@ -55,7 +55,7 @@ $com_welcome_post = mysqli_query($db, "select * from com_tab_welcome  WHERE com_
     $contents = mysqli_query($db, "select * from com_welcome_content where com_id= " . $com_id . ";");
     ?>
     <center>
-        <p><span>What can you do here?</span>
+        <p><h3>What can you do here?</h3>
             <?php if ($group_owner_id == $uid) { ?>
                 <span class="edit-icon"><a data-toggle="modal" data-target='#edit_title' href=""><i class="glyphicon glyphicon-edit"></i></a></span>
             <?php } ?>
@@ -66,7 +66,6 @@ $com_welcome_post = mysqli_query($db, "select * from com_tab_welcome  WHERE com_
             <h4 style="font-weight:bold;"><?php echo $content['title']; ?></h4>
             <p class="p"><?php echo $content['content']; ?></p>
         </div>
-        <center>
 
             <div class="modal fade" id="edit_title" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -75,9 +74,9 @@ $com_welcome_post = mysqli_query($db, "select * from com_tab_welcome  WHERE com_
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="exampleModalLabel">Edit What you can do here</h4>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" id="editor_1">
                             <input type="text" class="form-control" name="title" id="title" value="<?php echo $content['title']; ?>"/>
-                            <textarea style="height:150px; width:100%;" name="content" id="content"> <?php echo $content['content']; ?></textarea>
+                            <textarea class="sn_editor" style="height:150px; width:100%;" name="content" id="content"> <?php echo $content['content']; ?></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
@@ -92,7 +91,7 @@ $com_welcome_post = mysqli_query($db, "select * from com_tab_welcome  WHERE com_
 </div>
 <div class="text">
     <center>
-        <p><span style="font-size:25px;">What can you do here?</span>
+        <p><h3>What can you do here?</h3>
             <?php if ($group_owner_id == $uid) { ?>
                 <span class="edit-icon" style="  margin-top: 7px;"><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=edit_com_welcome"><i class="glyphicon glyphicon-edit"></i></a></span>
 <?php } ?>
@@ -124,10 +123,19 @@ $com_welcome_post = mysqli_query($db, "select * from com_tab_welcome  WHERE com_
 <script type="text/javascript" src="<?php echo $base_url; ?>js/com_slidshow/wowslider.js"></script>
 <script type="text/javascript" src="<?php echo $base_url; ?>js/com_slidshow/script.js"></script>
 <script type="text/javascript">
-    $('.update-content').click(function () {
+    
+    //text editor......
+    qy210(".sn_editor").Editor();
+    var ele1 = document.getElementById('editor_1').getElementsByClassName('Editor-editor');
+    ele1[0].innerHTML = $("#content").val();
+    
+    
+    
+    $('.update-content').click(function (){
         var id = $(this).attr('id');
         var title = $('#title').val();
-        var content = $('#content').val();
+        //document.getElementById("content").value += $("#editor_1 .Editor-editor").html();
+        var content = $("#editor_1 .Editor-editor").html();
         $.ajax({
             type: 'POST',
             url: '<?php echo $base_url; ?>community/ajax_community.php',

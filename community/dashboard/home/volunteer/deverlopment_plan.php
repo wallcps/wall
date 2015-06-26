@@ -111,7 +111,7 @@
                 <h4 class="modal-title" id="exampleModalLabel">Edit Introduction</h4>
             </div>
             <div class="modal-body">
-                <textarea style="height:150px; width:100%;" name="des" id="des1"><?php echo $dev_plan['description'] ; ?></textarea>
+                <textarea  style="height:150px; width:100%;" name="des" id="des1"><?php echo $dev_plan['description'] ; ?></textarea>
             </div>
             <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
@@ -207,7 +207,7 @@
                             <h4 class="modal-title" id="exampleModalLabel">Edit Needs And Aspirations</h4>
                         </div>
                         <div class="modal-body">
-                            <textarea name="des_need_and_aspri" id="des_need_and_aspri"  style="width:540px; height:200px;"><?php echo $des_need_and_aspri; ?></textarea>
+                            <textarea  name="des_need_and_aspri" id="des_need_and_aspri"  style="width:540px; height:200px;"><?php echo $des_need_and_aspri; ?></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -398,6 +398,11 @@
     <h1>CPS Audit</h1>
 </div>
 <div style="clear:both"></div>
+<a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer_now"><button class="btn invole " style="  margin-right: 2%; margin-left: 30%;">Volunteer Now</button></a>
+<a  href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin"><button class="btn invole " >Inquire Here</button></a>
+<a href="http://www.facebook.com/share.php?u=<?php echo 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>&title=[TITLE]"><button class="btn invole" style="margin-left:2%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
+<br>
+<br>
 
 <!-- Add New Social Need -->
 <div class="modal fade" id="add_new_sn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -433,11 +438,6 @@
         </div>
     </div>
 </div> 
-       <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer_now"><button class="btn invole " style="  margin-right: 2%; margin-left: 30%;">Volunteer Now</button></a>
-       <a  href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin"><button class="btn invole " >Inquire Here</button></a>
-       <a href="http://www.facebook.com/share.php?u=<?php echo 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>&title=[TITLE]"><button class="btn invole" style="margin-left:2%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
-       <br>
-       <br>
 <!-- End Popup -->
 
 

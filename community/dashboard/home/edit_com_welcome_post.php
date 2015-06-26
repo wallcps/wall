@@ -44,10 +44,10 @@ if (isset($_POST['save_edit_post'])){
                  <input type="text" class="form-control" name='post_title' style="width:400px;" value="<?php echo $post_title; ?>"/>
              </div>
          </div>
-         <div class="form-group">
+        <div class="form-group" id="editor_1">
             <label for="post_content" class="control-label col-xs-3">Content :</label>
              <div class="col-xs-6">
-                 <textarea name="post_content" class="" style="width:90%; height:200px; margin-bottom:10px;"><?php echo $post_content; ?></textarea>
+                 <textarea name="post_content" id="post_content" class="sn_editor" style="width:90%; height:200px; margin-bottom:10px;"><?php echo $post_content; ?></textarea>
              </div>
          </div>
         <div class="form-group">
@@ -68,9 +68,19 @@ if (isset($_POST['save_edit_post'])){
          </div>
         <div class="form-group">
             <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
-            <input type="submit" class="wallbutton" name="save_edit_post" value="Save" />
+            <input type="submit" class="wallbutton" id="save_edit_post" name="save_edit_post" value="Save" />
             <input type="reset" class="wallbutton" value="Clear"/>
         </div>
     </form>
 </div>
 
+<script>
+    //text editor......
+    qy210(".sn_editor").Editor();
+    var ele1 = document.getElementById('editor_1').getElementsByClassName('Editor-editor');
+    ele1[0].innerHTML = $("#post_content").val();
+    
+    $('#save_edit_post').click(function(){
+        document.getElementById("post_content").value= $("#editor_1 .Editor-editor").html();
+        });
+</script>
