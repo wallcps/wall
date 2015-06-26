@@ -272,7 +272,6 @@
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                         <input type="button" class="btn btn-primary update_decom_social_need" id="<?php echo $decom_social_need_id; ?>" name="update_decom_social_need" value="Save" />
                     </div>
-
                 </div>
             </div>
         </div>
