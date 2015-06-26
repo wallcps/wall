@@ -33,43 +33,43 @@ if (isset($_POST['save_edit_post'])){
     }
     ?>
 
-<h3 class="text-center text-pink">Edit Your Post </h3><br>
-
-<div id="div-whole" align="center">  
-   
+<div id="div-whole" class="text">  
+    <h3 class="text-center text-pink">Edit Your Post </h3><br>
     <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="post_title" class="control-label col-xs-3">Title :</label>
-             <div class="col-xs-6">
-                 <input type="text" class="form-control" name='post_title' style="width:400px;" value="<?php echo $post_title; ?>"/>
+            <label for="post_title" class="control-label col-xs-2">Title :</label>
+             <div class="col-xs-8">
+                 <input type="text" class="form-control" name='post_title'  value="<?php echo $post_title; ?>"/>
              </div>
          </div>
         <div class="form-group" id="editor_1">
-            <label for="post_content" class="control-label col-xs-3">Content :</label>
-             <div class="col-xs-6">
+            <label for="post_content" class="control-label col-xs-2">Content :</label>
+             <div class="col-xs-8">
                  <textarea name="post_content" id="post_content" class="sn_editor" style="width:90%; height:200px; margin-bottom:10px;"><?php echo $post_content; ?></textarea>
              </div>
          </div>
         <div class="form-group">
-            <label for="post_content" class="control-label col-xs-3">Disabled :</label>
-                <div class="col-xs-6">
-                    <select class="form-control" style="width:90%;" name="disabled">
+            <label for="post_content" class="control-label col-xs-2">Disabled :</label>
+                <div class="col-xs-8">
+                    <select class="form-control" name="disabled">
                         <option value="0" <?php echo $disabled==0?'selected':'' ?>>No</option>
                         <option value="1" <?php echo $disabled==1?'selected':'' ?>>Yes</option>
                     </select>
                 </div>
          </div>
          <div class="form-group">
-            <label for="post_content" class="control-label col-xs-3">Image :</label>
+            <label for="post_content" class="control-label col-xs-2">Image :</label>
                 <div class="col-xs-4">
                     <input name="update_pic_welcom" id="update_pic_welcom" type="file"  accept="image/*"/>
                     <input name="old_pic" id="old_pic" type="hidden" value="<?php echo $post_img; ?>"/>
                 </div>
          </div>
-        <div class="form-group">
-            <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
-            <input type="submit" class="wallbutton" id="save_edit_post" name="save_edit_post" value="Save" />
-            <input type="reset" class="wallbutton" value="Clear"/>
+        <div class="form-group text-right">
+            <div class="col-xs-10">
+                <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+                <input type="submit" class="wallbutton" id="save_edit_post" name="save_edit_post" value="Save" />
+                <input type="reset" class="wallbutton" value="Clear"/>
+            </div>
         </div>
     </form>
 </div>
