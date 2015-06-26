@@ -2,10 +2,10 @@
 include_once '../includes/db.php';
 
 if(isset($_POST['post_type'])=='edit_community'){
-    $com_name   = $_POST['com_name'];
-    $com_des    = $_POST['com_des'];
+    $com_name       = addslashes($_POST['com_name']);
+    $com_des        = addslashes($_POST['com_des']);
     $com_location   = $_POST['com_location'];
-    $gid         = $_POST['gid'];
+    $gid            = $_POST['gid'];
     
     mysqli_query($db,"UPDATE groups INNER JOIN community ON groups.group_id = community.group_id
             SET groups.group_name='$com_name',
@@ -21,7 +21,7 @@ if(isset($_POST['post_type'])=='delete_slide'){
 
 
 if(isset($_POST['update_type'])=='edit_com_about_intro'){
-    $about_des   = $_POST['desc'];
+    $about_des   = addslashes($_POST['desc']);
     $id          = $_POST['id'];
     
     mysqli_query($db,"UPDATE com_tab_about SET description = '$about_des' WHERE  id='$id'");
@@ -30,42 +30,42 @@ if(isset($_POST['update_type'])=='edit_com_about_intro'){
 
 if(isset($_POST['edit_important_info'])=='edit_important_info'){
     $id         = $_POST['id'];
-    $content    = $_POST['content'];
+    $content    = addslashes($_POST['content']);
     mysqli_query($db,"update com_volunteer_important_info set description = '$content' where id = ".$id);
 }
 if(isset($_POST['welcome'])=='welcome'){
     $id         = $_POST['id'];
-    $content    = $_POST['content'];
-    $title      =  $_POST['title'];
+    $content    =   addslashes($_POST['content']);
+    $title      =   addslashes($_POST['title']);
     mysqli_query($db,"update com_welcome_content set title = '$title' , content = '$content' where id = '$id'");
 }
 if(isset($_POST['dev_plan'])=='dev_plan'){
     $id         = $_POST['id'];
-    $content    = $_POST['content'];
+    $content    = addslashes($_POST['content']);
     mysqli_query($db,"update com_volunteer_dev_plan set description = '$content' where id = '$id'");
 }
 if(isset($_POST['dev_plan2'])=='dev_plan2'){
     $id         = $_POST['id'];
-    $content    = $_POST['content'];
+    $content    = addslashes($_POST['content']);
     mysqli_query($db,"update com_volunteer_dev_plan set description = '$content' where id = '$id'");
 }
 
 if(isset($_POST['need_and_Asp'])=='need_and_Asp'){
     $id         = $_POST['id'];
-    $content    = $_POST['data'];
+    $content    = addslashes($_POST['data']);
     mysqli_query($db,"update com_need_and_aspirations set description = '$content' where id = '$id'");
 }
 
 if(isset($_POST['edit_social'])=='edit_social'){
     $id         = $_POST['id'];
-    $content    = $_POST['data'];
+    $content    = addslashes($_POST['data']);
     mysqli_query($db,"update com_social_need_des set description = '$content' where id = '$id'");
 }
 
 
 if(isset($_POST['edit_cps_audit'])=='edit_cps_audit'){
     $id         = $_POST['id'];
-    $content    = $_POST['data'];
+    $content    = addslashes($_POST['data']);
     mysqli_query($db,"update com_cps_audit_des set description = '$content' where id = '$id'");
 }
 
@@ -73,19 +73,19 @@ if(isset($_POST['edit_cps_audit'])=='edit_cps_audit'){
 //community oportunity introduction........
 if(isset($_POST['edit_com_opport'])=='edit_com_opport'){
     $id         = $_POST['id'];
-    $content    = $_POST['data'];
+    $content    = addslashes($_POST['data']);
     mysqli_query($db,"update com_opportunity_intro set description = '$content' where id = '$id'");
 }
 //Google doc for deverlopment Plan
 if(isset($_POST['doc_about'])=='doc_about'){
     $id         = $_POST['id'];
-    $content    = $_POST['content'];
+    $content    = addslashes($_POST['content']);
     mysqli_query($db,"update com_about_doc set content = '$content' where id = '$id'");
 }
 //Google doc for about
 if(isset($_POST['doc_welcome'])=='doc_welcome'){
     $id         = $_POST['id'];
-    $content    = $_POST['content'];
+    $content    = addslashes($_POST['content']);
     mysqli_query($db,"update com_welcome_doc set content = '$content' where id = '$id'");
 }
 

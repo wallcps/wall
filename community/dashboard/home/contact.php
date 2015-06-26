@@ -139,6 +139,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
                 <br><br>
                 <p class="address"><i class="glyphicon glyphicon-map-marker"></i> <?php echo $location; ?></p>
                 <p class="body_content"><?php echo $des; ?></p>
+                <p class="body_content"><?php echo $admin_des; ?></p>
         </div>
         <div class="map">
                 <?php echo $map; ?>

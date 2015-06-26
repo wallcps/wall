@@ -40,6 +40,7 @@ $com_welcome_post = mysqli_query($db, "select * from com_tab_welcome  WHERE com_
         <br><br>
         <p class="address"><i class="glyphicon glyphicon-map-marker"></i> <?php echo $location; ?></p>
         <p class="body_content"><?php echo $des; ?></p>
+        <p class="body_content"><?php echo $admin_des; ?></p>
     </div>
     <div class="map">
         <?php echo $map; ?>
@@ -80,9 +81,7 @@ $com_welcome_post = mysqli_query($db, "select * from com_tab_welcome  WHERE com_
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
-                            <button id="<?php echo $content['id'];
-    ;
-        ?>" name="save" class="btn btn-sm btn-primary update-content">Update</button>
+                            <button id="<?php echo $content['id']; ?>" name="save" class="btn btn-sm btn-primary update-content">Update</button>
                         </div>
                     </div>
                 </div>

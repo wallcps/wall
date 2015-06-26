@@ -65,8 +65,8 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title" id="exampleModalLabel">Edit Introduction</h4>
                             </div>
-                            <div class="modal-body">
-                                <textarea name="desc" id="desc" style="width:100%; height:150px;"><?php echo $value['description']; ?></textarea>
+                            <div class="modal-body" id="editor_1">
+                                <textarea class="sn_editor" name="desc" id="desc" style="width:100%; height:150px;"><?php echo $value['description']; ?></textarea>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -143,8 +143,8 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                     <h4 class="modal-title" id="exampleModalLabel">Edit Introduction</h4>
                                 </div>
-                                <div class="modal-body">
-                                    <textarea name="desc1" id="desc1" style="width:100%; height:150px;"><?php echo $value['description']; ?></textarea>
+                            <div class="modal-body" id="editor_2">
+                                <textarea name="desc1" class="sn_editor1" id="desc1" style="width:100%; height:150px;"><?php echo $value['description']; ?></textarea>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -167,8 +167,18 @@
 <script type="text/javascript" src="<?php echo $base_url; ?>js/com_slidshow/script.js"></script>
 
  <script>
+     
+     //text editor......
+    qy210(".sn_editor").Editor();
+    qy210(".sn_editor1").Editor();
+    var ele1 = document.getElementById('editor_1').getElementsByClassName('Editor-editor');
+    ele1[0].innerHTML = $("#desc").val();
+         
+    var ele2 = document.getElementById('editor_2').getElementsByClassName('Editor-editor');
+    ele2[0].innerHTML = $("#desc1").val();
+     
     $('.update_text').click(function(){
-        var desc = $('#desc').val();
+        var desc = $("#editor_1 .Editor-editor").html();
         var id  = $(this).attr('id');
         $.ajax({
             type:'POST',
@@ -187,7 +197,7 @@
         });
     });
     $('.update_goals').click(function(){
-        var desc = $('#desc1').val();
+        var desc = $("#editor_2 .Editor-editor").html();
         var id  = $(this).attr('id');
         $.ajax({
             type:'POST',

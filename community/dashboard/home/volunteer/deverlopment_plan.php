@@ -110,8 +110,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="exampleModalLabel">Edit Introduction</h4>
             </div>
-            <div class="modal-body">
-                <textarea  style="height:150px; width:100%;" name="des" id="des1"><?php echo $dev_plan['description'] ; ?></textarea>
+            <div class="modal-body" id="editor_1">
+                <textarea class="des"  style="height:150px; width:100%;" name="des" id="des1"><?php echo $dev_plan['description'] ; ?></textarea>
             </div>
             <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
@@ -122,7 +122,7 @@
 </div>
 <?php } ?>
 <div style="clear:both"></div>
-<div class="text text-center">
+<div class="text">
 <?php 
     $docs = mysqli_query($db, "SELECT * FROM com_welcome_doc WHERE com_id = '$com_id'");
  ?>
@@ -146,8 +146,8 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="exampleModalLabel">Embbeded your Google Doc here</h4>
                         </div>
-                        <div class="modal-body">
-                            <textarea style="height:150px; width:100%;" name="des" id="document"><?php echo $document ; ?></textarea>
+                        <div class="modal-body" id="editor_2">
+                            <textarea class="embad_doc" style="height:150px; width:100%;" name="document" id="document"><?php echo $document ; ?></textarea>
                         </div>
                         <div class="modal-footer">
                                 <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
@@ -170,21 +170,21 @@
         <div class="media-body">
         <?php foreach ($dev_plan2 as $dev_plan22) { ?>
             <h4 class="media-heading" style="font-weight:bold;"><?php echo $dev_plan22['title']; ?></h4>
-            <span class="edit-icon" ><a href="" data-toggle="modal" data-target='#description'><i class="glyphicon glyphicon-edit"></i></a></span>
+            <span class="edit-icon" ><a href="" data-toggle="modal" data-target='#goals'><i class="glyphicon glyphicon-edit"></i></a></span>
             <p style="text-align:justify;"><?php echo $dev_plan22['description']; ?></p>
         </div>
         <p class="text-right text-primary"><i class="glyphicon glyphicon-plus-sign"></i> Read More</p>
     </div>
 </div>
-<div class="modal fade" id="description" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="goals" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="exampleModalLabel">Edit Introduction</h4>
             </div>
-            <div class="modal-body">
-                <textarea style="height:150px; width:100%;" name="des" id="des2"><?php echo $dev_plan22['description'] ; ?></textarea>
+            <div class="modal-body" id="editor_3">
+                <textarea class="goals" style="height:150px; width:100%;" name="des2" id="des2"><?php echo $dev_plan22['description'] ; ?></textarea>
             </div>
             <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
@@ -201,19 +201,17 @@
         <div class="modal fade" id="edit_pro_social_need" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="post" action="">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="exampleModalLabel">Edit Needs And Aspirations</h4>
                         </div>
-                        <div class="modal-body">
-                            <textarea  name="des_need_and_aspri" id="des_need_and_aspri"  style="width:540px; height:200px;"><?php echo $des_need_and_aspri; ?></textarea>
+                        <div class="modal-body" id="editor_4">
+                            <textarea class="des_need_and_aspri" name="des_need_and_aspri" id="des_need_and_aspri"  style="width:540px; height:200px;"><?php echo $des_need_and_aspri; ?></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                             <input type="submit" class="btn btn-primary update_des_need_and_aspri" id="<?php echo $des_need_and_aspri_id; ?>" name="update_des_need_and_aspri" value="Save" />
                         </div>
-                    </form>
 
                 </div>
             </div>
@@ -263,25 +261,23 @@
         <div class="modal fade" id="edit_social_need" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="post" action="">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="exampleModalLabel">Edit Description Social Need</h4>
-                        </div>
-                        <div class="modal-body">
-                            <textarea name="des_socical_need" id="des_socical_need"  style="width:540px; height:200px;"><?php echo $decom_social_need; ?></textarea>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                            <input type="button" class="btn btn-primary update_decom_social_need" id="<?php echo $decom_social_need_id; ?>" name="update_decom_social_need" value="Save" />
-                        </div>
-                    </form>
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Edit Description Social Need</h4>
+                    </div>
+                    <div class="modal-body" id="editor_5">
+                        <textarea class="des_socical_need" name="des_socical_need" id="des_socical_need"  style="width:540px; height:200px;"><?php echo $decom_social_need; ?></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <input type="button" class="btn btn-primary update_decom_social_need" id="<?php echo $decom_social_need_id; ?>" name="update_decom_social_need" value="Save" />
+                    </div>
 
                 </div>
             </div>
         </div>
         <div class="col-lg-2">
-            <img width="100px" src="<?php echo $base_url; ?>images/commnunities/icon/social_need.png">
+            <img width="95px" src="<?php echo $base_url; ?>images/commnunities/socail-need.png">
         </div>
         
         <div class="col-lg-10 text-style">
@@ -446,7 +442,29 @@
      
     
      
-    qy210(".sn_editor").Editor(); 
+    qy210(".sn_editor").Editor();
+    qy210(".des_socical_need").Editor();
+    var social_need = document.getElementById('editor_5').getElementsByClassName('Editor-editor');
+    social_need[0].innerHTML = $("#des_socical_need").val();
+    
+    //goads.......
+    qy210(".des_need_and_aspri").Editor();
+    var goals = document.getElementById('editor_4').getElementsByClassName('Editor-editor');
+    goals[0].innerHTML = $("#des_need_and_aspri").val();
+    
+    //goads.......
+    qy210(".goals").Editor();
+    var goals = document.getElementById('editor_3').getElementsByClassName('Editor-editor');
+    goals[0].innerHTML = $("#des2").val();
+    
+    //for embade document..........
+    qy210(".embad_doc").Editor();
+    var des = document.getElementById('editor_2').getElementsByClassName('Editor-editor');
+    des[0].innerHTML = $("#document").val();
+    
+    qy210(".des").Editor();
+    var des = document.getElementById('editor_1').getElementsByClassName('Editor-editor');
+    des[0].innerHTML = $("#des1").val();
 
 
     $('#submit-social-need').click(function(){
@@ -455,7 +473,7 @@
      
     $('.update-des1').click(function(){
         var id = $(this).attr('id');
-        var content = $('#des1').val();
+        var content = $("#editor_1 .Editor-editor").html();
 
         $.ajax({
             type:'POST',
@@ -477,7 +495,7 @@
      
     $('.update-des2').click(function(){
         var id = $(this).attr('id');
-        var content = $('#des2').val();
+        var content = $("#editor_3 .Editor-editor").html();
 
         $.ajax({
             type:'POST',
@@ -496,7 +514,7 @@
     });
     
     $('.update_des_need_and_aspri').click(function(){
-        var content = $("#des_need_and_aspri").val();
+        var content = $("#editor_4 .Editor-editor").html();
         var id = $(this).attr('id');
         $.ajax({
             type:'POST',
@@ -515,7 +533,7 @@
     });
     
     $('.update_decom_social_need').click(function(){
-        var content = $("#des_socical_need").val();
+        var content = $("#editor_5 .Editor-editor").html();
         var id = $(this).attr('id');
         $.ajax({
             type:'POST',
@@ -554,7 +572,7 @@
     });
 $('.update_doc1').click(function(){
         var id = $(this).attr('id');
-        var content = $('#document').val();
+        var content = $("#editor_2 .Editor-editor").html();
 
         $.ajax({
             type:'POST',

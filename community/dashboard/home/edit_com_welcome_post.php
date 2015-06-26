@@ -27,7 +27,7 @@ if (isset($_POST['save_edit_post'])){
             move_uploaded_file($_FILES["update_pic_welcom"]["tmp_name"],$target_file1);
         }
     
-        $com_welcome_post = mysqli_query($db,"update com_tab_welcome set title='".htmlspecialchars($_POST['post_title'],ENT_QUOTES)."' ,decription='".htmlspecialchars($_POST['post_content'],ENT_QUOTES)."',image='$filename1',disabled='".$_POST['disabled']."' where id=".$_POST['post_id']);
+        $com_welcome_post = mysqli_query($db,"update com_tab_welcome set title='".htmlspecialchars($_POST['post_title'],ENT_QUOTES)."' ,decription='".addslashes($_POST['post_content'])."',image='$filename1',disabled='".$_POST['disabled']."' where id=".$_POST['post_id']);
        echo '<script>window.location = "'.$base_url.'community.php?gid='.$gid.'&com=dashboard&tab=edit_com_welcome";</script>';
        die();        
     }
