@@ -11,6 +11,7 @@
     }
     foreach ($get_com_id as $value) {
         $com_id = $value['com_id'];
+        $com_name = $value['com_name'];
         $gid = $value['group_id'];
         $group_owner_id = $value['group_owner_id'];
     }  
