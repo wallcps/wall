@@ -196,7 +196,7 @@
             <div style="padding-left:30%;">
                 <input type="submit" class="btn btn-primary btn_v" value="Submit" name="submit_volunteer_now">
                 <input type="reset" class="btn btn-danger btn_v" style="background-color:pink !important; color:#fff !important;" value="Reset" name="reset">
-                <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=home"><input type="button" class="btn btn_v" style="background-color:#fff !important; border:1px solid #ccc;" value="Back" name="back"></a>
+                <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=home"><input type="button" class="btn btn_v btn_back" style="background-color:#fff !important; border:1px solid #ccc;" value="Back" name="back"></a>
             </div>
 
 
@@ -208,5 +208,8 @@
         margin: 0px 30px 0px 0px;
         padding-left: 5%;
         padding-right: 5%;
+    }
+    .btn_back:hover{
+        color:black;
     }
 </style>

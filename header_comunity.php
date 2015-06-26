@@ -100,7 +100,7 @@ if($_GET['com']){
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-cog"></i> Account</a>
                     <ul class="dropdown-menu text-right" role="menu" id="dropdown-account">
                         <li><a href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin">Report a problem</a></li>
-                        <li><a href="#">Privacy  </a></li>
+                        <li><a href="#">Policy  </a></li>
                         <li><a href="#">Setting </a></li>
                         <li><a href="<?php echo $base_url.'logout.php'; ?>">Log Out </a></li>
 
@@ -171,7 +171,7 @@ if($_GET['com']){
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <span>Please tell us who you are</span>
+                            <span>Please select type of issue</span>
                             <select class="form-control contact" name="type_issue">
                                 <option>Service</option>
                                 <option>Complain</option>

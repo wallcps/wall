@@ -179,6 +179,5 @@ a = 1;
     </div>
     <div class="sidebar-right-dabshoard">
         <?php include_once 'block_right.php'; ?>
-
     </div>
 </div>
