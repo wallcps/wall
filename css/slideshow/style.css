@@ -47,7 +47,7 @@
 }
 .header_cover{
 	  position: absolute;
-	  margin-top: -40.2%;
+	  margin-top: -39.2%;
 	  margin-left: -10px;
 	  background-color: rgba(255, 255, 255, 0.7);
 	  width: 100%;
@@ -94,7 +94,7 @@
 	  width: 100%;
 	  font-size: 0.9em;
 	  color: #fff;
-	  margin-top: 34%;
+	  margin-top: 36%;
 	  position: absolute;
 	  padding: 18px;
 	  background-color: rgba(0, 0, 0, 0.6);
@@ -419,7 +419,7 @@
 }
 
 #wowslider-container1 .ws-title div{
-    margin-top: 0.5em;
+    margin-top: 0.6em;
 	font-size: 0.8em;
 	line-height: 0.8em;
 

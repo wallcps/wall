@@ -164,7 +164,7 @@ if($_GET['com']){
                     <label class="alert alert-heading">Thank you for your interest in us. Please use this form to contact us</label>
                     <div class="row">
                         <div class="col-md-6">
-                            <span>Please, tell us who you are</span>
+                            <span>Please tell us who you are</span>
                             <select class="form-control contact">
                                 <option>e.g Community, Visitor...</option>
                                 <option>Community</option>
@@ -172,7 +172,7 @@ if($_GET['com']){
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <span>Please, tell us who you are</span>
+                            <span>Please tell us who you are</span>
                             <select class="form-control contact">
                                 <option>e.g Service, Complain...</option>
                                 <option>Service</option>

@@ -2,6 +2,14 @@
 $com_welcome_post = mysqli_query($db, "select * from com_tab_welcome  WHERE com_id = '$com_id' AND disabled = 0");
 //data community .............    
 ?>
+<style type="text/css">
+    .slide_cover{
+        position: absolute;
+        width: 100%;
+        height: auto;
+        background-color: #000;
+    }
+</style>
 <div class="btn_slide">
     <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer_now"><button class="btn invole " style="  margin-right: 4%; margin-left: 20%;">Volunteer Now</button></a>
     <a  href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin"><button class="btn invole " >Inquire Here</button></a>
@@ -16,8 +24,8 @@ $com_welcome_post = mysqli_query($db, "select * from com_tab_welcome  WHERE com_
             foreach ($slide_data as $value) {
                 ?>
                 <li>
-                <center><p class="header_cover" style="  font-size: 28px;font-weight: bold;padding: 20px;">LOREM CONSECTETUR ADIPSCING ELTLOREM</p></center>
-                <img src="<?php echo $base_url; ?>images/com_slideshows/<?php echo $value['file_name']; ?>"  title="<?php echo $value['slide_des']; ?>" id=""/>
+                     <label class="header_cover"><p style="  font-size: 28px;font-weight: bold;float:right;  margin-top: 11px;">LOREM CONSECTETUR ADIPSCING ELTLOREM</p></label>
+               <img src="<?php echo $base_url; ?>images/com_slideshows/<?php echo $value['file_name']; ?>"  title="<?php echo $value['slide_des']; ?>" id=""/>
                 </li>
             <?php } ?>
         </ul>
@@ -35,8 +43,8 @@ $com_welcome_post = mysqli_query($db, "select * from com_tab_welcome  WHERE com_
     </div>
     <div class="map">
         <?php echo $map; ?>
-        <a href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin"><button class="btn invole " >Get Involved</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="http://www.facebook.com/share.php?u=<?php echo 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>&title=[TITLE]"><button class="btn invole" ><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
+        <a href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin"><button class="btn invole v_name_btn">Get Involved</button></a>
+        <a href="http://www.facebook.com/share.php?u=<?php echo 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>&title=[TITLE]"><button class="btn invole " ><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
 
     </div>
 </div>

@@ -142,7 +142,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
         </div>
         <div class="map">
                 <?php echo $map; ?>
-                <a  href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin"><button class="btn invole " >Get Involved</button></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a  href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin"><button class="btn invole v_name_btn" >Get Involved</button></a>
                 <a href="http://www.facebook.com/share.php?u=<?php echo 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>&title=[TITLE]"><button class="btn invole" ><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
         </div>
     </div>
@@ -189,7 +189,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
             <?php if($message_success!=''){ ?><p class="alert alert-success" style="text-align: center;"><?php echo $message_success; ?></p><?php } ?>
             <div class="row">
                 <div class="col-md-6">
-                    <span>Please, tell us who you are</span>
+                    <span>Please tell us who you are</span>
                     <select class="form-control contact" name="user_type">
                         <option>e.g Community, Visitor...</option>
                         <option>Community</option>
@@ -197,7 +197,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
                     </select>
                 </div>
                 <div class="col-md-6">
-                    <span>Please, select type of issue</span>
+                    <span>Please select type of issue</span>
                     <select class="form-control contact" name="type_issue">
                         <option>e.g Service, Complain...</option>
                         <option>Service</option>

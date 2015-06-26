@@ -47,6 +47,10 @@
 	border-radius: 5px;
 	color: #FFF;
 }
+.v_name_btn{
+	width: 45%;
+	margin-right: 4%;
+}
 .why_should_u span , .what_can_do span{
 	font-size: 25px;
 	position: relative;
