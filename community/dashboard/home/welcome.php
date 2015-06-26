@@ -134,7 +134,6 @@ $com_welcome_post = mysqli_query($db, "select * from com_tab_welcome  WHERE com_
     $('.update-content').click(function (){
         var id = $(this).attr('id');
         var title = $('#title').val();
-        //document.getElementById("content").value += $("#editor_1 .Editor-editor").html();
         var content = $("#editor_1 .Editor-editor").html();
         $.ajax({
             type: 'POST',
