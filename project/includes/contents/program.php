@@ -83,6 +83,7 @@ function editProgPlan(id, title, keyword, content){
                 </div>
                 <div class="col-lg-10 text-style">
                     <?php 
+                    if($program){
                        
                         if (strlen($program) >= 300) {
                         $trimstring = substr($program, 0, 300). '&nbsp;<div class="redmore"><a href="#remoreText">Read More...</a></div>';
@@ -93,19 +94,23 @@ function editProgPlan(id, title, keyword, content){
                         } else {
                         echo $program;
                         }
+                    }else{
+                        echo "This Section documents the activities carried out by our team";
+                    }
                         ?>
                  
 
         <?php
         if($_GET['sn_id']){
-            $intro = "<h3>Choose the existing Solution Plan</h3>";
+            
             $data = $Wall->Get_Each_SN_Program_Plan($_GET['sn_id']);
         }else{
-            $intro = "";
+            // $intro = "<h3>Choose the existing Solution Plan</h3>";
+            // echo $intro;
             $data = $Wall->Get_Project_Prog_Plan($proj_id);
         }
         
-        echo $intro;
+        
         $alreadyfollow = $Wall->checkalreadyfollowproject($uid,$group_id);
         
         foreach ($data as $value) {

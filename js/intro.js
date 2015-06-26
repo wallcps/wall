@@ -247,7 +247,7 @@
    * @api private
    * @method _goToStep
    */
-  function _goToStep(step) {
+  function _goToSteps(step) {
     //because steps starts with zero
     this._currentStep = step - 2;
     if (typeof (this._introItems) !== 'undefined') {
@@ -261,7 +261,7 @@
    * @api private
    * @method _nextStep
    */
-  function _nextStep() {
+  function _nextSteps() {
     this._direction = 'forward';
 
     if (typeof (this._currentStep) === 'undefined') {

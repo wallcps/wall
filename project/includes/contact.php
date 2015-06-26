@@ -100,7 +100,7 @@ if (isset($_REQUEST['submit'])){
      if($contact_img){
         echo '<div class="recrument-image img_container slider-wrapper"><img src="'.$tl_pic.'"></div>';
     }else{
-        echo "<center>Data no found !</center>";
+        echo "<center>Please upload the picture here</center>";
     }
         // echo '<div class="recrument-image"><img src="'.$tl_pic.'/></div>';
         

@@ -187,8 +187,8 @@ h1, h2, h3, footer, .gallery {
       }?>
 
         </div>
-   <a class="left carousel-control arrow-left-pro "  href="#LeftCarousel" role="button" data-slide="prev"><img class="consol_arrow" src="images/ddd.png"></a>
-  <a class="right carousel-control arrow-right-pro "  href="#LeftCarousel"  role="button" data-slide="next"><img class="consol_arrow" src="images/right.png"></a>
+   <a class="left carousel-control arrow-left-pro"  href="#LeftCarousel" role="button" data-slide="prev"><img src="images/ddd.png"></a>
+  <a class="right carousel-control arrow-right-pro"  href="#LeftCarousel"  role="button" data-slide="next"><img src="images/right.png"></a>
     </div>
  
 <!--/div--> <!-- end new_project -->
@@ -223,7 +223,7 @@ h1, h2, h3, footer, .gallery {
   
 </div>--> <!-- ent news_communities -->
 </div>
-
+<p></p>
 <!-- the end of two slide -->
 
 <!-- start of table project -->
@@ -383,7 +383,7 @@ h1, h2, h3, footer, .gallery {
                  <div class="question" data-max-answers="4">
                     Please select up to four projects to display! <br>
                     <?php if($project_detail){
-              $count_manage_project = 0;
+      $count_manage_project = 0;
                          foreach ($project_detail as $rs) {
                               $group_name = $rs['group_name'];
                               $group_id = $rs['group_id'];
@@ -524,23 +524,9 @@ h1, h2, h3, footer, .gallery {
                 <h4 class="modal-title" id="exampleModalLabel">Edit Learn and Teach Content <?php echo $content_id;?></h4>
               </div>
               <div class="modal-body">
-                <div class="">
-                    <p class="col-md-12">What is your title?</p>
-                    <div class="col-md-12">
-                        <input type="text" name='<?php echo 'tl_content_title_'.$content_id; ?>' style="width:100%; margin-bottom:10px;" value="<?php echo $content_title; ?>" class="text-input form-control" required="" />
-                    </div>
-                </div> 
-                <div class="row">
-                    <p class="col-md-12">What is your content?</p>
-                    <div class="col-md-12">
-                        <input type="url" name='<?php echo 'tl_content_url_'.$content_id; ?>' style="width:100%; margin-bottom:10px;" value="<?php echo $content_url; ?>" class="text-input form-control" required="" />
-                    </div>
-                </div> 
-                <div class="row">
-                    <p class="col-md-12">Please choose your image </p>
-                    <div class="col-md-12">
-                      <input type="file" name="<?php echo 'tl_image_'.$content_id; ?>" id="<?php echo 'tl_image_'.$content_id; ?>" style="display:inline;">                    </div>
-                </div> 
+                  Title: <input type="text" name='<?php echo 'tl_content_title_'.$content_id; ?>' style="width:90%; margin-bottom:10px;" value="<?php echo $content_title; ?>" class="text-input" required="" />
+                  URL: <input type="url" name='<?php echo 'tl_content_url_'.$content_id; ?>' style="width:90%; margin-bottom:10px;" value="<?php echo $content_url; ?>" class="text-input" required="" />
+                  Image:  <input type="file" name="<?php echo 'tl_image_'.$content_id; ?>" id="<?php echo 'tl_image_'.$content_id; ?>" style="display:inline;">
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -669,28 +655,9 @@ h1, h2, h3, footer, .gallery {
                 <h4 class="modal-title" id="exampleModalLabel">Edit Step <?php echo $step_id;?></h4>
               </div>
               <div class="modal-body">
-                <div class="row">
-                      <p class="col-md-12">What is your title?</p>
-                      <div class="col-md-12">
-                          <input type="text" name='<?php echo 'step_title_'.$step_id; ?>' style="width:100%; margin-bottom:10px;" value="<?php echo $step_title; ?>" class="text-input form-control" required="" />
-                      </div>
-                </div> 
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                      <p class="col-md-12">What is your content?</p>
-                      <div class="col-md-12">
-                          <textarea name='<?php echo 'step_content_'.$step_id; ?>' style="width:100%; height:150px;"><?php echo $step_content; ?></textarea>
-                      </div>
-                </div> 
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                      <p class="col-md-12">Please choose your image</p>
-                      <div class="col-md-12">
-                          <input type="file" name="<?php echo 'step_image_'.$step_id; ?>" id="<?php echo 'step_image_'.$step_id; ?>" style="display:inline;">
-                      </div>
-                </div> 
+                  Title: <input type="text" name='<?php echo 'step_title_'.$step_id; ?>' style="width:90%; margin-bottom:10px;" value="<?php echo $step_title; ?>" class="text-input" required="" />
+                  Content: <textarea name='<?php echo 'step_content_'.$step_id; ?>' style="width:100%; height:150px;"><?php echo $step_content; ?></textarea>
+                  Image:  <input type="file" name="<?php echo 'step_image_'.$step_id; ?>" id="<?php echo 'step_image_'.$step_id; ?>" style="display:inline;">
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -851,7 +818,6 @@ h1, h2, h3, footer, .gallery {
                       <h4 class="modal-title" id="exampleModalLabel">Edit Your Text</h4>
                     </div>
                     <div class="modal-body" id="editor-1">
-                    <P>Please describe your information here</P>
                        <textarea id="volunteer_one" maxlength="100" style="width:540px; height:100px;" name="volunteer_one" class="txtEditor1"></textarea>
                        <!-- <input type="file" name="guide_image_4" id="guide_image_4" style="display:inline; margin-bottom:10px;"> -->
                     </div>
@@ -874,8 +840,7 @@ h1, h2, h3, footer, .gallery {
                       <h4 class="modal-title" id="exampleModalLabel">Edit Your Text</h4>
                     </div>
                     <div class="modal-body" id="editor-2">
-                      <P>Please describe your information here</P>
-                    <textarea id="volunteer_two" maxlength="100" style="width:540px; height:100px;" name="volunteer_two" class="txtEditor2"></textarea>
+                       <textarea id="volunteer_two" maxlength="100" style="width:540px; height:100px;" name="volunteer_two" class="txtEditor2"></textarea>
                        <!-- <input type="file" name="guide_image_5" id="guide_image_5" style="display:inline; margin-bottom:10px;"> -->
                     </div>
                     <p class="notes">* You can type only 100 characters</p>
@@ -896,10 +861,9 @@ h1, h2, h3, footer, .gallery {
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                       <h4 class="modal-title" id="exampleModalLabel">Edit Your Text</h4>
-                      </div>
+                    </div>
                     <div class="modal-body" id="editor-3">
-                       <P>Please describe your information here</P>
-                    <textarea id="volunteer_three" name="volunteer_three" maxlength="100" style="width:540px; height:100px;" class="txtEditor3"></textarea>      
+                       <textarea id="volunteer_three" name="volunteer_three" maxlength="100" style="width:540px; height:100px;" class="txtEditor3"></textarea>      
                        <!-- <input type="file" name="guide_image_1" id="guide_image_1" style="display:inline; margin-bottom:10px;"> -->
                     </div>
                     <p class="notes">* You can type only 100 characters</p>
@@ -920,10 +884,9 @@ h1, h2, h3, footer, .gallery {
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                       <h4 class="modal-title" id="exampleModalLabel">Edit Your Text</h4>
-                     </div>
+                    </div>
                     <div class="modal-body" id="editor-4">
-                        <P>Please describe your information here</P>
-                    <textarea id="volunteer_four" name="volunteer_four" maxlength="100" style="width:540px; height:100px;" class="txtEditor4"></textarea>
+                       <textarea id="volunteer_four" name="volunteer_four" maxlength="100" style="width:540px; height:100px;" class="txtEditor4"></textarea>
                        <!-- <input type="file" name="guide_image_2" id="guide_image_2" style="display:inline; margin-bottom:10px;"> -->
                     </div>
                     <p class="notes">* You can type only 100 characters</p>
@@ -944,10 +907,9 @@ h1, h2, h3, footer, .gallery {
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                       <h4 class="modal-title" id="exampleModalLabel">Edit Your Text</h4>
-                      </div>
+                    </div>
                     <div class="modal-body" id="editor-5">
-                       <P>Please describe your information here</P>
-                    <textarea id="volunteer_five" name="volunteer_five" maxlength="100" style="width:540px; height:100px;" class="txtEditor5"></textarea>
+                       <textarea id="volunteer_five" name="volunteer_five" maxlength="100" style="width:540px; height:100px;" class="txtEditor5"></textarea>
                        <!-- <input type="file" name="guide_image_5" id="guide_image_5" style="display:inline; margin-bottom:10px;"> -->
                     </div>
                     <p class="notes">* You can type only 100 characters</p>
@@ -1048,20 +1010,8 @@ h1, h2, h3, footer, .gallery {
                      <h4 class="modal-title" id="exampleModalLabel">How to make volunteerism better </h4>
                    </div>
                    <div class="modal-body">
-                      <div class="row">
-                            <p class="col-md-12">What is your title?</p>
-                            <div class="col-md-12">
-                                <input type="text" name='<?php echo 'vol_better_title_'.$vol_better_id; ?>' style="width:90%; margin-bottom:10px;" value="<?php echo $vol_better_title; ?>" class="text-input" required="" />
-                            </div>
-                      </div> 
-                   </div>
-                   <div class="modal-body">
-                      <div class="row">
-                            <p class="col-md-12">Please choose your logo</p>
-                            <div class="col-md-12">
-                                <input type="file" name="<?php echo 'vol_better_logo_'.$vol_better_id; ?>" id="<?php echo 'vol_better_logo_'.$vol_better_id; ?>" style="display:inline;">
-                            </div>
-                      </div> 
+                       Title: <input type="text" name='<?php echo 'vol_better_title_'.$vol_better_id; ?>' style="width:90%; margin-bottom:10px;" value="<?php echo $vol_better_title; ?>" class="text-input" required="" />
+                       Logo:  <input type="file" name="<?php echo 'vol_better_logo_'.$vol_better_id; ?>" id="<?php echo 'vol_better_logo_'.$vol_better_id; ?>" style="display:inline;">
                    </div>
                    <div class="modal-footer">
                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

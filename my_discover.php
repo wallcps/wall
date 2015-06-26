@@ -188,7 +188,7 @@
                         <label for="date2" class="add-on"><i class="glyphicon glyphicon-calendar"></i></label>      
             
                 <br><br>
-                <input type="submit" value="Search" name="left_search" class="btn btn-default btn-cps"/>
+                <input type="submit" value="Search" name="left_search" class="btn btn-cps"/>
             </div>
 
             <!--<div class="discover-left-sidebar">
@@ -225,7 +225,7 @@
                             <?php } ?>
                         </select>
                     </td>-->
-                    <td width="30%"><i> </i><br> <input class="btn btn-default btn-cps" type="submit" value="Discover" name = "top_search" class="btn btn-submit"/></td>
+                    <td width="30%"><i> </i><br> <input class="btn btn-cps" type="submit" value="Discover" name = "top_search" class="btn btn-submit"/></td>
                 </tr>
             </table>
             <!-- <form>-->
@@ -269,13 +269,82 @@
                                                 <p>Status : </p>
                                                 <p><?php echo $sn_content; ?></p>
                                                 <p class="bold"> <?php echo $res['com_location'].' | '.$res['language'].''; ?></p>
-                                                
-                                                <a  target="_blank" href="<?php echo $base_url; ?>group.php?gid=<?php echo $res['group_id']; ?>&ptab=contents&p=program&sn_id=<?php echo $res['sn_id']; ?>">
-                                            <button type="button" class="btn btn-default btn-cps">Get Involved</button>
-                                        </a>
-                                                <button type="button" class="btn btn-default btn-cps btn-follow"  data-toggle="modal" data-target="#get_invlve">Follow
-                                                </button>&nbsp;&nbsp;
-                                                <button type="button" class="btn btn-default btn-cps btn-share">Share</button>
+                                                <!-- 
+                                                <a  target="_blank" href="<?php// echo $base_url; ?>group.php?gid=<?php //echo $res['group_id']; ?>&ptab=contents&p=program&sn_id=<?php //echo $res['sn_id']; ?>">
+                                            <button type="button" class="btn btn-default btn-cps">Get Involved saorin</button>
+                                        </a>  -->
+<span class="text-right"><a href="" data-toggle="modal" data-target="#edit_social_need"><i class="glyphicon glyphicon-edit"></i></a></span>
+<div class="modal fade" id="edit_social_need" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form method="post" action="">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="exampleModalLabel">Edit Social</h4>
+                            </div>
+                            <div class="modal-body">
+                              <p>Plese edit your description.</p>
+                                <textarea name="para_socical_need"  style="width:540px; height:200px;"><?php echo $social_need; ?></textarea>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <input type="submit" class="btn btn-primary" name="submit_para_social_need" value="Save" />
+                            </div>
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+                <!-- pop up bring to social need -->                
+                <a href="<?php echo $res['sn_id']; ?>" data-toggle="modal" data-target="#popup_bring"><button class="btn btn-social" data-toggle="modal">Get Involved</button></a>
+               <div class="modal fade" id="popup_bring" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <!-- <h4 class="modal-title" id="exampleModalLabel">Edit Social</h4> -->
+                            </div>
+                            
+                              <h4><b><center>We will bring you to the Soluction Plan of that Social Need</center></b></h4>
+                                <!-- <textarea name="para_socical_need"  style="width:540px; height:200px;"><?php //echo $social_need; ?></textarea> --> 
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-no" data-dismiss="modal">No</button>
+                               <a href="<?php echo $base_url; ?>group.php?gid=<?php echo $res['group_id']; ?>&ptab=contents&p=program&sn_id=<?php echo $res['sn_id']; ?>">
+                                   <input typ="submit" class="btn btn-primary socail_need" value="Ok" id="<?php echo $res['sn_id'];?>">
+                                </a> 
+                            </div>
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        <!-- The end of bring to social need -->
+
+                                                <?php 
+                             
+                                $role_in_project = -1;
+                                $role_in_project = $Wall->check_status_project($res['group_id'], $session_uid);
+                                $session_follow = 0;
+                                $session_follow = $Wall->Check_Status_Follow_Project($session_uid, $res['group_id']);
+                            
+                            if($role_in_project>=1){
+                                echo '<button type="button" class="btn btn-cps btn-follow" style="background-color:orange;">Admin</button>';
+                            }else if($role_in_project==0){
+                                echo '<button type="button" class="btn btn-cps btn-follow" style="background-color:orange;">Member</button>';
+                            }else{
+                                if($session_follow==0){
+                                    echo '<button type="button" class="btn btn-cps btn-follow" onclick="FollowProject('.$res['group_id'].')">Follow</button>';  
+                                }else{
+                                    echo '<button type="button" class="btn btn-cps btn-follow" onclick="UnfollowProject('.$res['group_id'].')">Unfollow</button>';
+                                }
+                
+                            } 
+                        
+                        ?>
+                                                <!--button type="button" class="btn btn-default btn-cps btn-follow" onclick="FollowProject(<?php //echo $res['group_id'] ?>)">Like
+                                                </button-->&nbsp;&nbsp;
+                                                <button type="button" class="btn btn-cps btn-share">Share</button>
                                            </div>
 
                                         </div>
@@ -285,44 +354,6 @@
                                 ?>
                             </div>
                         </div>
-                        <!-- follow button -->
-                        <!-- popup get involved....... -->
-<div class="modal fade" id="get_invlve" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title text-center" id="exampleModalLabel">What do you want ?</h4>
-            </div>
-            <div class="modal-body row" align="center">
-            <div class="col-lg-3 col-lg-offset-1" >
-                <a href="<?php echo $base_url; ?>index.php?p=my_createproject"><img class="img-responsive" style="width:100px; text-align: center;" src="<?php echo $base_url; ?>images/search/view_pages.png"></a>
-                <div class="caption">
-                    <a href="<?php echo $base_url; ?>index.php?p=my_createproject"><h5><b>View Page</b></h5></a>
-                </div>
-            </div>
-            <div class="col-lg-3"  align="center">
-                <a href="<?php echo $base_url; ?>index.php?p=my_dashboard"><img class="img-responsive" width="100px;" src="<?php echo $base_url; ?>images/search/back_to_dashboard.png"></a>
-                <div class="caption">
-                    <a href="<?php echo $base_url; ?>index.php?p=my_dashboard"><h5><b>Dashboard</b></h5></a>
-                </div>
-            </div>
-            <div class="col-lg-3"  align="center">
-                <a href=""><img class="img-responsive" data-dismiss="modal" width="100px;" src="<?php echo $base_url; ?>images/search/stay.png"></a>
-                <div class="caption">
-                    <a href="" data-dismiss="modal"><h5><b>Stay</b></h5></a>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
-</div>
-                        <!-- the end of follow botton -->
-
-
-
-
-
                         <div role="tabpanel" class="tab-pane" id="baneficiary">
                             <!--        <input id="Button1" type="button" value="Click" onclick="switchVisible();"/>-->
                             <div id="data-discover-project">
@@ -351,9 +382,9 @@
                                                 <p><?php echo $com_content; ?>
                                                 </p>
                                                 <p class="bold"><?php echo  $com_loc." | (".$com_language.")"; ?></p>
-                                                <button type="button" class="btn btn-default btn-cps btn-invole">Get Involved</button>
-                                                <button type="button" class="btn btn-default btn-cps btn-follow" onclick="FollowProject(<?php echo $community['group_id'] ?>)">Like</button>&nbsp;&nbsp;
-                                                <button type="button" class="btn btn-default btn-cps btn-share">Share</button>
+                                                <button type="button" class="btn btn-cps btn-invole">Get Involved</button>
+                                                <button type="button" class="btn btn-cps btn-follow" onclick="FollowProject(<?php echo $community['group_id'] ?>)">Like</button>&nbsp;&nbsp;
+                                                <button type="button" class="btn btn-cps btn-share">Share</button>
                                             </div>
                                         </div>
                                     <?php
@@ -435,10 +466,58 @@
                                                 ?></p>
                                                 <p><?php echo $data_pro['start_date'] . " to " . $data_pro['end_date']; ?></p>
                                                 <a  target="_blank" href="<?php echo $base_url; ?>group.php?gid=<?php echo $data_pro['group_id']; ?>">
-                                                <button type="button" class="btn btn-default btn-cps btn-invole">Get Involved</button>
+                                                <button type="button" class="btn btn-cps btn-invole">Get Involvedss</button>
                                                 </a>
-                                                <button type="button" class="btn btn-default btn-cps btn-follow" onclick="FollowProject(<?php echo $data_pro['group_id'] ?>)">Like</button>&nbsp;&nbsp;
-                                                <button type="button" class="btn btn-default btn-cps btn-share">Share</button>
+                <!-- pop up bring to social need -->                
+                                                <button id="<?php echo $sn_id;?>" class="btn btn-social" data-toggle="modal" data-target="#popup<?php echo $sn_id; ?>">Get Involved</button>
+                                                 <div class="modal fade" id="popup<?php echo $sn_id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+               
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form>
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <!-- <h4 class="modal-title" id="exampleModalLabel">Edit Social</h4> -->
+                            </div>
+                            
+                              <h4><b><center>We will bring you to the Soluction Plan of that Social Need</center></b></h4>
+                                <!-- <textarea name="para_socical_need"  style="width:540px; height:200px;"><?php //echo $social_need; ?></textarea> --> 
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-no" data-dismiss="modal">No</button>
+                                
+                                <a href="<?php echo $base_url; ?>group.php?gid=<?php echo $groupID; ?>&ptab=contents&p=program&sn_id=<?php echo $sn_id; ?>">
+                                   <input typ="submit" class="btn btn-primary socail_need" value="Ok" id="<?php echo $sn_id;?>">
+                                </a>
+                            </div>
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        <!-- The end of bring to social need -->
+                                                 <?php                
+                                $role_in_project = -1;
+                                $role_in_project = $Wall->check_status_project($data_pro['group_id'], $session_uid);
+                                $session_follow = 0;
+                                $session_follow = $Wall->Check_Status_Follow_Project($session_uid, $data_pro['group_id']);
+                            
+                            if($role_in_project>=1){
+                                echo '<button type="button" class="btn btn-cps btn-follow" style="background-color:orange;">Admin</button>';
+                            }else if($role_in_project==0){
+                                echo '<button type="button" class="btn btn-cps btn-follow" style="background-color:orange;">Member</button>';
+                            }else{
+                                if($session_follow==0){
+                                    echo '<button type="button" class="btn btn-cps btn-follow" onclick="FollowProject('.$data_pro['group_id'].')">Follow</button>'; 
+                                }else{
+                                    echo '<button type="button" class="btn btn-cps btn-follow" onclick="UnfollowProject('.$data_pro['group_id'].')">Unfollow</button>';
+                                }
+                
+                            } ?>
+                                                
+                                                
+                                               
+                                                <!--button type="button" class="btn btn-default btn-cps btn-follow" onclick="FollowProject(<?php //echo $data_pro['group_id'] ?>)">Like</button-->&nbsp;&nbsp;
+                                                <button type="button" class="btn btn-cps btn-share">Share</button>
                                             </div>
                                         </div>
                                     <?php
@@ -480,7 +559,7 @@
         $('#date2').datepicker('setEndDate', null);
     });
     
-        function FollowProject(id)
+         function FollowProject(id)
         {
             var ID = id;
             var dataString = 'gid='+ ID;
@@ -497,10 +576,35 @@
                     }else{
                         alert(r);
                     }
+                    location.reload();
                 }
                 });
  
         }
+        
+         function UnfollowProject(id)
+        {
+            var ID = id;
+            var dataString = 'gid='+ ID;
+            var URL=$.base_url+'group_unfollow_ajax.php';
+             $.ajax({
+                type: "POST",
+                url: URL,
+                data: dataString,
+                cache: false,
+                dataType: "html",
+                success: function(r){
+                    if(r){
+                        alert(r);
+                    }else{
+                        alert(r);
+                    }
+                    location.reload();
+                }
+                });
+ 
+        }
+
 
     
     function selectallareafocus() {

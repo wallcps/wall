@@ -1,3 +1,4 @@
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <?php
 include_once 'includes.php';
 
@@ -32,6 +33,14 @@ $outcome = $ProjectDetails['outcome'];
 $proj_location = $ProjectDetails['location'];
 $com_id = $ProjectDetails['com_id'];
 $contact_email = $ProjectDetails['contact_email'];
+
+$group_admin = $Wall->check_group_admin($session_uid, $groupID);
+if($group_admin || ($group_owner_id == $session_uid) || $session_cps_admin){
+	$session_group_admin = true;
+}else{
+	$session_group_admin = false;
+}
+
 
 if($ProjectDetails['com_id']!=0){
     
@@ -110,10 +119,12 @@ if(isset($_POST['submit_para_program'])){
     $program = $_POST['para_program'];
     $Wall->Update_Para_Program($program,$group_id);
 }
+
 // recruiment
 if(isset($_POST['submit_recruiment'])){
     $file_data = "recruit_image";
     $recruitment_des = $_POST['recruitment_des'];
+    $pro_id = $_POST['proj_id'];
     $save_image = true;
        if($_FILES["$file_data"]['size'] > 0){
                if($_FILES["$file_data"]['size'] > 2000000){
@@ -136,14 +147,13 @@ if(isset($_POST['submit_recruiment'])){
                $target_dir = "images/";
                $target_file = $target_dir . basename($_FILES["$file_data"]["name"]);
                move_uploaded_file($_FILES["$file_data"]["tmp_name"], $target_file);
-                $update_recruitment = $Wall->Update_recruitment($recruitment_des, $_FILES["$file_data"]['name']);
+                $update_recruitment = $Wall->Update_recruitment($pro_id,$recruitment_des, $_FILES["$file_data"]['name']);
                }else{
-                $update_recruitment = $Wall->Update_recruitment2($recruitment_des);
+                $update_recruitment = $Wall->Update_recruitment2($pro_id,$recruitment_des);
 
                }
 }
 // the end recruiment
-
 
 if(isset($_POST['submit_para_outcome'])){
     $outcome = $_POST['para_outcome'];
@@ -263,64 +273,21 @@ if(isset($_POST['submit_new_sn']) and $_SERVER['REQUEST_METHOD'] == "POST")
         $target_dir = "images/";
         $target_file = $target_dir . basename($_FILES["$file_data"]["name"]);
         move_uploaded_file($_FILES["$file_data"]["tmp_name"], $target_file);
-        $add_social_need = $Wall->Insert_Social_Need($uid, $new_sn_title, $new_sn_content, $new_sn_keyword, $_FILES["$file_data"]['name'], $sn_gid, $sn_pid);
+        $add_social_need = $Wall->Insert_Social_Need($uid, $new_sn_title, $new_sn_content, $new_sn_keyword, $_FILES["$file_data"]['name'], $sn_gid, $proj_id);
     }else{
-        $add_social_need = $Wall->Insert_Social_Need($uid, $new_sn_title, $new_sn_content, $new_sn_keyword, "", $sn_gid, $sn_pid);
+        $add_social_need = $Wall->Insert_Social_Need($uid, $new_sn_title, $new_sn_content, $new_sn_keyword, "", $sn_gid, $proj_id);
     
     }
 }
-/* End of Add new Social*/
-if(isset($_POST['save_map'])){
-    $ben_com_id = $_POST['com_id_map'];
-    $grd   = $_POST['grd_id_map'];
-    $map = $_POST['ben_map'];
-   $Wall->Update_Beneficiary_Map($ben_com_id, $map);
-   //header('Location: http://localhost/wall/group.php?gid=15&ptab=beneficiary');
-   $mapUrl = $base_url.'group.php?gid='.$grd.'&ptab=beneficiary';
-   header('Location:'.$mapUrl);
-}
-// the end recruiment
+/* End of Add new Social Need*/
 
-// recruiment
-if(isset($_POST['submit_recruiment'])){
-    $file_data = "recruit_image";
-    $recruitment_des = $_POST['recruitment_des'];
-    $pro_id = $_POST['proj_id'];
-    $save_image = true;
-       if($_FILES["$file_data"]['size'] > 0){
-               if($_FILES["$file_data"]['size'] > 2000000){
-                   $save_image = false;
-                   echo "<script type='text/javascript'>alert('Image size should be smaller than 2MB!');</script>";
-               }
-               else{
-                   $allowedExts = array('png', 'jpg', 'jpeg', 'gif', 'PNG', 'JPG', 'JPEG', 'GIF');
-                   $extension = pathinfo($_FILES["$file_data"]['name'], PATHINFO_EXTENSION);
-                   if (!in_array($extension, $allowedExts))
-                   {
-                       $save_image = false;
-                       echo "<script type='text/javascript'>alert('This is invalid image file!');</script>";
-                   }
-               }
-           }else{
-               $save_image = false;
-           }
-           if($save_image){
-               $target_dir = "images/";
-               $target_file = $target_dir . basename($_FILES["$file_data"]["name"]);
-               move_uploaded_file($_FILES["$file_data"]["tmp_name"], $target_file);
-                $update_recruitment = $Wall->Update_recruitment($pro_id,$recruitment_des, $_FILES["$file_data"]['name']);
-               }else{
-                $update_recruitment = $Wall->Update_recruitment2($pro_id,$recruitment_des);
-
-               }
-}
 /* Add new Program/Plan */
 
 if(isset($_POST['submit_new_pp']) and $_SERVER['REQUEST_METHOD'] == "POST")
 {
     $pp_gid = $_POST['group_id'];
     $pp_pid = $_POST['proj_id'];
-    $pp_sn_id = $_POST['sn_id'];
+    $pp_sn_id = $_POST['pp_id'];
     $new_pp_title = $_POST['new_pp_title'];
     $new_pp_content = $_POST['new_pp_content'];
     $new_pp_keyword = $_POST['new_pp_keyword'];
@@ -354,6 +321,208 @@ if(isset($_POST['submit_new_pp']) and $_SERVER['REQUEST_METHOD'] == "POST")
     }
 }
 /* End of Add new Program/Plan*/
+
+/* Add new Outcome */
+
+if(isset($_POST['submit_new_outcome']) and $_SERVER['REQUEST_METHOD'] == "POST")
+{
+    $outcome_gid = $_POST['group_id'];
+    $outcome_pid = $_POST['proj_id'];
+    $outcome_pp_id = $_POST['outcome_pp_id'];
+    $new_outcome_title = $_POST['new_outcome_title'];
+    $new_outcome_content = $_POST['new_outcome_content'];
+    $new_outcome_keyword = $_POST['new_outcome_keyword'];
+    $file_data = "new_outcome_pic";
+    $save_image = true;
+    if($_FILES["$file_data"]['size'] > 0){ 
+        if($_FILES["$file_data"]['size'] > 2000000){
+                $save_image = false;
+                echo "<script type='text/javascript'>alert('Image size should be smaller than 2MB!');</script>";
+            }
+            else{
+                $allowedExts = array('png', 'jpg', 'jpeg', 'gif', 'PNG', 'JPG', 'JPEG', 'GIF');
+                $extension = pathinfo($_FILES["$file_data"]['name'], PATHINFO_EXTENSION);
+                if (!in_array($extension, $allowedExts))
+                {
+                    $save_image = false;
+                    echo "<script type='text/javascript'>alert('This is invalid image file!');</script>";
+                }
+            }
+        }else{
+            $save_image = false;
+        }
+    if($save_image){
+        $target_dir = "images/";
+        $target_file = $target_dir . basename($_FILES["$file_data"]["name"]);
+        move_uploaded_file($_FILES["$file_data"]["tmp_name"], $target_file);
+        $add_social_need = $Wall->Insert_Outcome($uid, $new_outcome_title, $new_outcome_content, $new_outcome_keyword, $_FILES["$file_data"]['name'], $outcome_gid, $outcome_pid, $outcome_pp_id);
+    }else{
+        $add_social_need = $Wall->Insert_Outcome($uid, $new_outcome_title, $new_outcome_content, $new_outcome_keyword, "", $outcome_gid, $outcome_pid, $outcome_pp_id);
+    
+    }
+}
+/* End of Add new Outcome */
+
+/* Submit edit Social Need */
+if(isset($_POST['submit_edit_sn']) and $_SERVER['REQUEST_METHOD'] == "POST")
+{
+    $edit_sn_id = $_POST['edit_sn_id'];
+    $edit_sn_title = $_POST['edit_sn_title'];
+    $edit_sn_content = $_POST['edit_sn_content'];
+    $edit_sn_keyword = $_POST['edit_sn_keyword'];
+    $file_data = "edit_sn_pic";
+    $save_image = true;
+    if($_FILES["$file_data"]['size'] > 0){ 
+        if($_FILES["$file_data"]['size'] > 2000000){
+                $save_image = false;
+                echo "<script type='text/javascript'>alert('Image size should be smaller than 2MB!');</script>";
+            }
+            else{
+                $allowedExts = array('png', 'jpg', 'jpeg', 'gif', 'PNG', 'JPG', 'JPEG', 'GIF');
+                $extension = pathinfo($_FILES["$file_data"]['name'], PATHINFO_EXTENSION);
+                if (!in_array($extension, $allowedExts))
+                {
+                    $save_image = false;
+                    echo "<script type='text/javascript'>alert('This is invalid image file!');</script>";
+                }
+            }
+        }else{
+            $save_image = false;
+        }
+    if($save_image){
+        $target_dir = "images/";
+        $target_file = $target_dir . basename($_FILES["$file_data"]["name"]);
+        move_uploaded_file($_FILES["$file_data"]["tmp_name"], $target_file);
+        $update_social_need = $Wall->Update_Each_Social_Need($edit_sn_id, $edit_sn_title, $edit_sn_content, $edit_sn_keyword, $_FILES["$file_data"]['name']);
+    }else{
+        $update_social_need = $Wall->Update_Each_Social_Need($edit_sn_id, $edit_sn_title, $edit_sn_content, $edit_sn_keyword, "");
+    
+    }
+}
+/* End of Add new Social Need*/
+
+/* Submit edit Program/Plan */
+if(isset($_POST['submit_edit_prog']) and $_SERVER['REQUEST_METHOD'] == "POST")
+{
+    $edit_prog_id = $_POST['edit_prog_id'];
+    $edit_prog_title = $_POST['edit_prog_title'];
+    $edit_prog_content = $_POST['edit_prog_content'];
+    $edit_prog_keyword = $_POST['edit_prog_keyword'];
+    $file_data = "edit_prog_pic";
+    $save_image = true;
+    if($_FILES["$file_data"]['size'] > 0){ 
+        if($_FILES["$file_data"]['size'] > 2000000){
+                $save_image = false;
+                echo "<script type='text/javascript'>alert('Image size should be smaller than 2MB!');</script>";
+            }
+            else{
+                $allowedExts = array('png', 'jpg', 'jpeg', 'gif', 'PNG', 'JPG', 'JPEG', 'GIF');
+                $extension = pathinfo($_FILES["$file_data"]['name'], PATHINFO_EXTENSION);
+                if (!in_array($extension, $allowedExts))
+                {
+                    $save_image = false;
+                    echo "<script type='text/javascript'>alert('This is invalid image file!');</script>";
+                }
+            }
+        }else{
+            $save_image = false;
+        }
+    if($save_image){
+        $target_dir = "images/";
+        $target_file = $target_dir . basename($_FILES["$file_data"]["name"]);
+        move_uploaded_file($_FILES["$file_data"]["tmp_name"], $target_file);
+        $update_prog_plan = $Wall->Update_Each_Prog_Plan($edit_prog_id, $edit_prog_title, $edit_prog_content, $edit_prog_keyword, $_FILES["$file_data"]['name']);
+    }else{
+        $update_prog_plan = $Wall->Update_Each_Prog_Plan($edit_prog_id, $edit_prog_title, $edit_prog_content, $edit_prog_keyword, "");
+    
+    }
+}
+/* End of edit Program/Plan */
+
+/* Submit edit Outcome */
+if(isset($_POST['submit_edit_outcome']) and $_SERVER['REQUEST_METHOD'] == "POST")
+{
+    $edit_outcome_id = $_POST['edit_outcome_id'];
+    $edit_outcome_title = $_POST['edit_outcome_title'];
+    $edit_outcome_content = $_POST['edit_outcome_content'];
+    $edit_outcome_keyword = $_POST['edit_outcome_keyword'];
+    $file_data = "edit_outcome_pic";
+    $save_image = true;
+    if($_FILES["$file_data"]['size'] > 0){ 
+        if($_FILES["$file_data"]['size'] > 2000000){
+                $save_image = false;
+                echo "<script type='text/javascript'>alert('Image size should be smaller than 2MB!');</script>";
+            }
+            else{
+                $allowedExts = array('png', 'jpg', 'jpeg', 'gif', 'PNG', 'JPG', 'JPEG', 'GIF');
+                $extension = pathinfo($_FILES["$file_data"]['name'], PATHINFO_EXTENSION);
+                if (!in_array($extension, $allowedExts))
+                {
+                    $save_image = false;
+                    echo "<script type='text/javascript'>alert('This is invalid image file!');</script>";
+                }
+            }
+        }else{
+            $save_image = false;
+        }
+    if($save_image){
+        $target_dir = "images/";
+        $target_file = $target_dir . basename($_FILES["$file_data"]["name"]);
+        move_uploaded_file($_FILES["$file_data"]["tmp_name"], $target_file);
+        $update_outcome = $Wall->Update_Each_Outcome($edit_outcome_id, $edit_outcome_title, $edit_outcome_content, $edit_outcome_keyword, $_FILES["$file_data"]['name']);
+    }else{
+        $update_outcome = $Wall->Update_Each_Outcome($edit_outcome_id, $edit_outcome_title, $edit_outcome_content, $edit_outcome_keyword, "");
+    
+    }
+    
+}
+/* End of edit Outcome */
+if(isset($_POST['save_map'])){
+    $ben_com_id = $_POST['com_id_map'];
+    $grd   = $_POST['grd_id_map'];
+    $map = $_POST['ben_map'];
+   $Wall->Update_Beneficiary_Map($ben_com_id, $map);
+   //header('Location: http://localhost/wall/group.php?gid=15&ptab=beneficiary');
+   $mapUrl = $base_url.'group.php?gid='.$grd.'&ptab=beneficiary';
+   header('Location:'.$mapUrl);
+}
+// the end recruiment
+
+// organization
+if(isset($_POST['submit_organization'])){
+    $file_data = "org_image";
+    $org_des = $_POST['org_des'];
+    $group_id = $_POST['group_id'];
+    //echo $org_des.' '.$group_id;
+    $save_image = true;
+       if($_FILES["$file_data"]['size'] > 0){
+               if($_FILES["$file_data"]['size'] > 2000000){
+                   $save_image = false;
+                   echo "<script type='text/javascript'>alert('Image size should be smaller than 2MB!');</script>";
+               }
+               else{
+                   $allowedExts = array('png', 'jpg', 'jpeg', 'gif', 'PNG', 'JPG', 'JPEG', 'GIF');
+                   $extension = pathinfo($_FILES["$file_data"]['name'], PATHINFO_EXTENSION);
+                   if (!in_array($extension, $allowedExts))
+                   {
+                       $save_image = false;
+                       echo "<script type='text/javascript'>alert('This is invalid image file!');</script>";
+                   }
+               }
+           }else{
+               $save_image = false;
+           }
+           if($save_image){
+               $target_dir = "uploads/";
+               $target_file = $target_dir . basename($_FILES["$file_data"]["name"]);
+               move_uploaded_file($_FILES["$file_data"]["tmp_name"], $target_file);
+                $update_organization = $Wall->Update_organization($group_id,$org_des, $_FILES["$file_data"]['name']);
+               }else{
+                $update_organization = $Wall->Update_organization2($group_id,$org_des);
+
+               }
+}
+// the end organization
 ?>
 
 <!DOCTYPE html>

@@ -200,52 +200,6 @@ $jm161(document).ready(function(){
         ?>
         </div><br/>
 
-        <div id="show-organization" class="small_text_upper" onclick="showHideOrg();"><b style="text-decoration:underline;position: absolute;">Organizations </b><div class="counts gets"><?php echo $count3;?></div></div> 
-         <div class="dashboard-left-org">
-            <?php 
-            if($org_detail){
-                $count = 0;
-                foreach ($org_detail as $rs) {
-                        $count ++;
-                       $group_name = $rs['group_name'];
-                       $group_id = $rs['group_id'];
-                       $group_owner = $rs['group_owner_id'];
-                                               
-                        if($rs['group_pic']){
-                            $group_pic = $base_url.'uploads/'.$rs['group_pic'];
-                        }else{
-                            $group_pic = $base_url.'wall_icons/default.png';
-                        }
-                        if($group_owner==$uid)
-                        {
-                            // $edit='<a href="" class="edit" original-title="Edit Group"></a>';
-                        }
-                        if($count >= 6){
-                            if($count == 6){?>
-                            <div class="readmore_org">View More...</div>
-                                <?php
-                                //echo $count;
-                                 echo '<div class="list_org groupListDiv">'.$edit.'<a href="'.$base_url.'group.php?gid='.$group_id.'" ><img src="'.$group_pic.'" class="groupIcon"><div class="groupSmallTitle">'.$group_name.'</div></a></div>';?>
-                            
-                            <?php }else{
-                           echo '<div class="list_org groupListDiv">'.$edit.'<a href="'.$base_url.'group.php?gid='.$group_id.'" ><img src="'.$group_pic.'" class="groupIcon"><div class="groupSmallTitle">'.$group_name.'</div></a></div>';
-                            }
-                    }else { 
-                        //echo '<div class="groupListDiv">'.$edit.'<a href="'.$base_url.'group.php?gid='.$group_id.'" ><img src="'.$group_pic.'" class="groupIcon"><div class="groupSmallTitle">'.$group_name.'</div></a></div>';   
-                        echo '<div class="groupListDiv">'.$edit.'<a href="" data-toggle="modal" data-target="#comming_soon"><img src="'.$group_pic.'" class="groupIcon"><div class="groupSmallTitle">'.$group_name.'</div></a></div>';   
-                    
-                    }
-                        //class="groupListDiv"
-                      //  echo '<div class="groupListDiv">'.$edit.'<a href="'.$base_url.'group.php?gid='.$group_id.'" ><img src="'.$group_pic.'" class="groupIcon"><div class="groupSmallTitle">'.$group_name.'</div></a></div>';
-                       // if($count++ == 5) break;
-                }
-            }else{ 
-                echo '<div class="display_box" align="left" style="width:200px;">';
-                echo 'No Organizations found!';
-                echo '</div>';
-            }
-            ?>
-            </div><br/>
     <div  id="show-communities" class="small_text_upper" onclick="showHideCom();"><b style="text-decoration:underline;position: absolute; margin-top: 3px;">Communities</b><div class="counts gets"><?php echo $count2;?></div></div>   
 <div class="dashboard-left-com">
    

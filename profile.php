@@ -154,3 +154,19 @@ if($username)
         format: 'yyyy-mm-dd'
     });
 </script>
+<script>
+function UnfollowProject(item, gid, uid){
+	var elem = document.getElementById('unfollow-proj-'+item);
+	elem.parentElement.removeChild(elem);
+	 var dataString = 'uid='+ uid+'&gid='+gid;
+	  $.ajax({
+            type:'POST',
+            url:'<?php echo $base_url; ?>unfollow_project_ajax.php',
+            data: dataString,
+            cache: false,
+            dataType: "html",
+            success:function(data){
+            }
+        });
+}
+</script>

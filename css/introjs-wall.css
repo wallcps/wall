@@ -1,5 +1,5 @@
 .introjs-overlay {
-  position: absolute;
+  /*position: absolute;
   z-index: 999999;
   background: #525252;
   opacity: 0;
@@ -8,7 +8,7 @@
      -moz-transition: all 0.3s ease-out;
       -ms-transition: all 0.3s ease-out;
        -o-transition: all 0.3s ease-out;
-          transition: all 0.3s ease-out;
+          transition: all 0.3s ease-out;*/
 }
 
 .introjs-fixParent {

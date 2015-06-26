@@ -709,17 +709,18 @@ public function Insert_Aspiration($uid,$title,$content,$picture,$group_id,$com_i
 
 }
 
-public function Insert_Social_Need($uid,$title,$content,$keyword,$picture,$group_id,$proj_id)
+public function Insert_Social_Need($uid,$title,$content,$short_content,$keyword,$picture,$group_id,$proj_id)
 {
 	$title=mysqli_real_escape_string($this->db,$title);
 	$content=mysqli_real_escape_string($this->db,$content);
-        $keyword =mysqli_real_escape_string($this->db,$keyword);
+	$short_content=mysqli_real_escape_string($this->db,$short_content);
+    $keyword =mysqli_real_escape_string($this->db,$keyword);
 	$picture =mysqli_real_escape_string($this->db,$picture);
-        $cate_id = 2;
+    $cate_id = 2;
 	$time=time();
 	$ip=$_SERVER['REMOTE_ADDR'];
 	
-	$query = mysqli_query($this->db,"INSERT INTO `messages` (msg_title,message, uid_fk, ip,created,group_id_fk,cate_id) VALUES ('$title','$content','$uid','$ip','$time','$group_id','$cate_id')") or die(mysqli_error($this->db));
+	$query = mysqli_query($this->db,"INSERT INTO `messages` (msg_title,message ,short_message, uid_fk, ip,created,group_id_fk,cate_id) VALUES ('$title','$content','$short_content','$uid','$ip','$time','$group_id','$cate_id')") or die(mysqli_error($this->db));
 	$v = mysqli_query($this->db,"UPDATE `groups` SET group_updates=group_count+1 WHERE group_id='$group_id'") or die(mysqli_error($this->db));
 	
         $b= mysqli_query($this->db,"SELECT msg_id FROM messages WHERE uid_fk='$uid' ORDER BY msg_id DESC LIMIT 1") or die(mysqli_error($this->db));
@@ -2041,7 +2042,7 @@ public function Delete_Outcome($outcome_id)
 
 /* Get Project Social Needs */
 public function Get_Project_Social_Need($proj_id){	
-        $query=mysqli_query($this->db,"SELECT SN.sn_id, SN.msg_id, M.msg_title, M.message, SN.sn_keywords, SN.sn_image from proj_social_needs SN INNER JOIN messages M on SN.msg_id = M.msg_id where M.cate_id = '2' AND SN.sn_pid = '$proj_id'");
+        $query=mysqli_query($this->db,"SELECT SN.sn_id, SN.msg_id, M.msg_title, M.message,M.short_message,SN.sn_keywords, SN.sn_image from proj_social_needs SN INNER JOIN messages M on SN.msg_id = M.msg_id where M.cate_id = '2' AND SN.sn_pid = '$proj_id'");
 	while($row=mysqli_fetch_array($query,MYSQLI_ASSOC))
 	{
 	$data[]=$row;

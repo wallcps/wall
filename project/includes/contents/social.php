@@ -27,10 +27,11 @@ $(document).ready(function(){
         });
 });
 
-function editSocialNeed(id, title, keyword, content){
+function editSocialNeed(id, title, keyword, content,short_content){
         $('#edit_sn_id').val(id);
         $('#edit_sn_title').val(title);
         $('#edit_sn_keyword').val(keyword);
+        $('#edit_sh_content').val(short_content);
        
         var ele = document.getElementById('edit-social-need-editor').getElementsByClassName('Editor-editor');
         ele[0].innerHTML = content;
@@ -106,6 +107,7 @@ function editSocialNeed(id, title, keyword, content){
                     $sn_msg_id = $value['msg_id'];
                     $sn_title = $value['msg_title'];
                     $sn_content = $value['message'];
+                    $sh_content = $value['short_message']; 
                     $sn_keyword = $value['sn_keywords'];
                     $sn_image = $value['sn_image'];
                 ?>
@@ -122,15 +124,15 @@ function editSocialNeed(id, title, keyword, content){
                             
                        <p>
                     <?php 
-                        if (strlen($sn_content) >= 200) {
+                        if (strlen($sh_content) >= 200) {
                             
-                        $sn_content1 = strip_tags($sn_content);
+                        $sn_content1 = strip_tags($sh_content);
                         $trimstrings = (substr($sn_content1, 0, 200));
                         echo $trimstrings;?>
                         <a href="<?php echo $base_url;?>group.php?gid=<?php echo $groupID;?>&ptab=contents&p=each_social&sn_id=<?php echo $sn_id;?>">Read More</a>
                         
                        <?php } else {
-                        echo $sn_content;?>
+                        echo $sh_content;?>
                         <a href="<?php echo $base_url;?>group.php?gid=<?php echo $groupID;?>&ptab=contents&p=each_social&sn_id=<?php echo $sn_id;?>">Read More</a>
                       <?php  }
                     ?>
@@ -155,14 +157,14 @@ function editSocialNeed(id, title, keyword, content){
                                 <!-- <h4 class="modal-title" id="exampleModalLabel">Edit Social</h4> -->
                             </div>
                             
-                              <h4><b><center>Do you want to go solution plan page ?</center></b></h4>
+                              <h4><b><center>We will bring you to the Soluction Plan of that Social Need</center></b></h4>
                                 <!-- <textarea name="para_socical_need"  style="width:540px; height:200px;"><?php //echo $social_need; ?></textarea> -->
                            
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-default btn-no" data-dismiss="modal">No</button>
                                 
                                 <a href="<?php echo $base_url; ?>group.php?gid=<?php echo $groupID; ?>&ptab=contents&p=program&sn_id=<?php echo $sn_id; ?>">
-                                   <input typ="submit" class="btn btn-primary socail_need" value="Save" id="<?php echo $sn_id;?>">
+                                   <input typ="submit" class="btn btn-primary socail_need" value="Ok" id="<?php echo $sn_id;?>">
                                 </a>
                             </div>
                         </form>
@@ -182,7 +184,7 @@ function editSocialNeed(id, title, keyword, content){
                         
                         <?php if ($session_group_admin) { ?>
                         <a href="" data-toggle="modal" data-target="#edit_sn">
-                            <button class="btn btn-social" onclick="editSocialNeed(<?php echo $sn_id ?>, '<?php echo $sn_title ?>', '<?php echo $sn_keyword ?>', '<?php echo htmlspecialchars(addslashes($sn_content)) ?>')">
+                            <button class="btn btn-social" onclick="editSocialNeed(<?php echo $sn_id ?>, '<?php echo $sn_title ?>', '<?php echo $sn_keyword ?>','<?php echo $sh_content;?>','<?php echo htmlspecialchars(addslashes($sn_content)) ?>')">
                                 Edit
                             </button>
                         </a>
@@ -222,8 +224,9 @@ function editSocialNeed(id, title, keyword, content){
         </div>
             <!-- Social Needs -->
             <ul class="pager">
-                <li class="previous"><a class='<?php echo $p=="program"?"active":""; ?>' href="<?php echo $base_url; ?>group.php?gid=<?php echo $groupID; ?>&ptab=contents&p=program">&larr;Solution Plan</a></li>
-                <li class="next"><a class='<?php echo $p=="outcome"?"active":""; ?>' href="<?php echo $base_url; ?>group.php?gid=<?php echo $groupID; ?>&ptab=contents&p=outcome">Outcomes &rarr;</a></li>
+                <li class="previous"><a class='<?php echo $p=="outcome"?"active":""; ?>' href="<?php echo $base_url; ?>group.php?gid=<?php echo $groupID; ?>&ptab=contents&p=outcome">&larr; Outcomes </a></li>
+                <li class="next"><a class='<?php echo $p=="program"?"active":""; ?>' href="<?php echo $base_url; ?>group.php?gid=<?php echo $groupID; ?>&ptab=contents&p=program"> Solution Plan &rarr;</a></li>
+                
             </ul>
             <div id="social-need-to-minimize">
 
@@ -248,6 +251,8 @@ function editSocialNeed(id, title, keyword, content){
                     <input type="text" name="new_sn_title" id="sn_title" class="form-control" placeholder="Title" required=""/><br/>
                     <p>What is the social need keyword ?</p>
                     <input type="text" id="sn_keyword" name='new_sn_keyword' class="form-control" data-role="tagsinput"  value="" placeholder="Keyword" required=""/><br/>
+                    <p>What is the social need introduction ?</p>
+                    <textarea name="new_sh_content" id="add_sh_content"  class="form-control" style="width:100%; height:80px !important" placeholder="Introduction"></textarea>
                     <p>What is the social need content ?</p>
                     <textarea name="new_sn_content" id="add_sn_content"  class="sn_editor" style="width:100%; height:100px;" placeholder="Content"></textarea>
                     <input type="file" name="new_sn_pic" id="new_sn_pic" style="display:inline;" required="">
@@ -330,6 +335,8 @@ function editSocialNeed(id, title, keyword, content){
                     <input type="text" name="edit_sn_title" id="edit_sn_title" class="form-control" required="" value=""><br/>
                     <p>What is the social need keyword ?</p>
                     <input type="text" id="edit_sn_keyword" name='edit_sn_keyword' class="form-control" data-role="tagsinput"  value="" placeholder="Keyword" required=""/><br/>
+                    <p>What is the social need content ?</p>
+                    <textarea name="edit_sh_content" id="edit_sh_content"  class="form-control" style="width:100%; height:80px; !important" placeholder="Content"></textarea>
                     <p>What is the social need content ?</p>
                     <textarea name="edit_sn_content" id="edit_sn_content"  class="edit_sn_editor" style="width:100%; height:100px;" placeholder="Content"></textarea>
                     <input type="file" name="edit_sn_pic" id="new_sn_pic" style="display:inline;">

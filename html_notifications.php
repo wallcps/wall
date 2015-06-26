@@ -115,8 +115,8 @@ $notification_url=$base_url.'index.php?p=each_profile_user&profile_id='.$n_msg_s
 
 }
 }
-// else
-// {
-// echo '<h5 id="noupdates">No Notifications Found</h5>';
-// }
+else
+ {
+ echo '<h5 id="noupdates">There is No Notification Found.</h5>';
+ }
 ?>

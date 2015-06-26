@@ -35,11 +35,15 @@ $com_id = $ProjectDetails['com_id'];
 $contact_email = $ProjectDetails['contact_email'];
 
 $group_admin = $Wall->check_group_admin($session_uid, $groupID);
-if($group_admin || ($group_owner_id == $session_uid) || $session_cps_admin){
+$role_in_project = -1;
+$role_in_project = $Wall->check_status_project($groupID, $session_uid);
+if($group_admin || ($group_owner_id == $session_uid) || $session_cps_admin || $role_in_project>=1){
 	$session_group_admin = true;
 }else{
 	$session_group_admin = false;
 }
+$session_follow = 0;
+$session_follow = $Wall->Check_Status_Follow_Project($session_uid, $groupID);
 
 
 if($ProjectDetails['com_id']!=0){
@@ -56,12 +60,12 @@ $memberslist=$Wall->Group_Followers($group_id,'', '', 35);
 $groupStatus=$Wall->Group_Status_Check($uid,$groupID);
 if($groupStatus=='0')
 {
-header("Location:$url404");
+//header("Location:$url404");
 }
 
 if(empty($group_id))
 {
-header("Location:$url404");
+//header("Location:$url404");
 }
 
 if(isset($_POST['submit_proj_intro'])){
@@ -249,6 +253,7 @@ if(isset($_POST['submit_new_sn']) and $_SERVER['REQUEST_METHOD'] == "POST")
     $sn_pid = $_POST['proj_id'];
     $new_sn_title = $_POST['new_sn_title'];
     $new_sn_content = $_POST['new_sn_content'];
+    $new_sh_content = $_POST['new_sh_content'];
     $new_sn_keyword = $_POST['new_sn_keyword'];
     $file_data = "new_sn_pic";
     $save_image = true;
@@ -273,9 +278,9 @@ if(isset($_POST['submit_new_sn']) and $_SERVER['REQUEST_METHOD'] == "POST")
         $target_dir = "images/";
         $target_file = $target_dir . basename($_FILES["$file_data"]["name"]);
         move_uploaded_file($_FILES["$file_data"]["tmp_name"], $target_file);
-        $add_social_need = $Wall->Insert_Social_Need($uid, $new_sn_title, $new_sn_content, $new_sn_keyword, $_FILES["$file_data"]['name'], $sn_gid, $proj_id);
+        $add_social_need = $Wall->Insert_Social_Need($uid, $new_sn_title, $new_sn_content,$new_sh_content, $new_sn_keyword, $_FILES["$file_data"]['name'], $sn_gid, $proj_id);
     }else{
-        $add_social_need = $Wall->Insert_Social_Need($uid, $new_sn_title, $new_sn_content, $new_sn_keyword, "", $sn_gid, $proj_id);
+        $add_social_need = $Wall->Insert_Social_Need($uid, $new_sn_title, $new_sn_content,$new_sh_content, $new_sn_keyword, "", $sn_gid, $proj_id);
     
     }
 }
@@ -487,7 +492,6 @@ if(isset($_POST['save_map'])){
    header('Location:'.$mapUrl);
 }
 // the end recruiment
-
 // organization
 if(isset($_POST['submit_organization'])){
     $file_data = "org_image";
@@ -522,6 +526,8 @@ if(isset($_POST['submit_organization'])){
 
                }
 }
+// the end organization
+
 // the end organization
 ?>
 
@@ -584,6 +590,54 @@ qy161(document).ready(function(){
   });
 
 });
+</script>
+
+<script>
+    function FollowProject(id)
+        {
+            var ID = id;
+            var dataString = 'gid='+ ID;
+            var URL=$.base_url+'group_follow_ajax.php';
+             $.ajax({
+                type: "POST",
+                url: URL,
+                data: dataString,
+                cache: false,
+				dataType: "html",
+                success: function(r){
+					if(r){
+                    	alert(r);
+					}else{
+						alert(r);
+					}
+					location.reload();
+                }
+                });
+ 
+        }
+		
+		 function UnfollowProject(id)
+        {
+            var ID = id;
+            var dataString = 'gid='+ ID;
+            var URL=$.base_url+'group_unfollow_ajax.php';
+             $.ajax({
+                type: "POST",
+                url: URL,
+                data: dataString,
+                cache: false,
+				dataType: "html",
+                success: function(r){
+					if(r){
+                    	alert(r);
+					}else{
+						alert(r);
+					}
+					location.reload();
+                }
+                });
+ 
+        }
 </script>
        
     </head>

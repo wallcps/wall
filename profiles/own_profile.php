@@ -134,7 +134,7 @@
                     </td>
             </tr>
             <tr>
-                <td>Country</td>
+                <td>Combo box</td>
                 <td><span class="text-profile"><?php echo $country; ?></span></td>
                     <td>
                         <a href="" data-toggle="modal" data-target="#edit_country"><i class="glyphicon glyphicon-edit custom-file-input" original-title="Edit Country" data-toggle="modal"></i></a>
@@ -159,10 +159,10 @@
                     </td>
             </tr>
              <tr>
-                <td>Address</td>
+                <td>Mailing Address</td>
                 <td><span class="text-profile"><?php echo $address; ?></span></td>
                     <td>
-                        <a href="" data-toggle="modal" data-target="#edit_address"><i class="glyphicon glyphicon-edit custom-file-input" original-title="Edit Country" data-toggle="modal"></i></a>
+                        <a href="" data-toggle="modal" data-target="#edit_address"><i class="glyphicon glyphicon-edit custom-file-input" original-title="Edit Mailing Address" data-toggle="modal"></i></a>
                         <!-- <i class="glyphicon glyphicon-pencil custom-file-input" data-toggle="modal" data-target="#edit_address" original-title="edit addres"></i> -->
                         <div class="modal fade" id="edit_address" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -184,7 +184,7 @@
                     </td>
             </tr>
             </table>
-            <h4>Skills and Interests</h4>
+            <h4>Skill and Interest</h4>
             <hr class="all-hr-project">
             <table class="table">
              <tr>
@@ -242,7 +242,7 @@
                         </span>
                     </td>
                     <td>
-                        <a href="" data-toggle="modal" data-target="#edit_interest"><i class="glyphicon glyphicon-edit custom-file-input" original-title="Edit Skill" data-toggle="modal"></i></a>
+                        <a href="" data-toggle="modal" data-target="#edit_interest"><i class="glyphicon glyphicon-edit custom-file-input" original-title="Edit Interests" data-toggle="modal"></i></a>
                         <!-- <i class="glyphicon glyphicon-pencil custom-file-input" data-toggle="modal" data-target="#edit_interests" original-title="edit interest"></i> -->
                         <div class="modal fade" id="edit_interest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -293,6 +293,7 @@
         </div>
         <br/> 
         <div class="following row">
+        <div class="following row">
         <h4>Project Following</h4>
         <hr class="all-hr-project">
         <?php $project_follow = $Wall->User_Project_Follow($uid);
@@ -307,22 +308,75 @@
                         }else{
                             $group_image = $base_url.'wall_icons/default.png';
                         }
-                          echo '<div class="list_project_follow"><a href="'.$base_url.'group.php?gid='.$group_id.'" ><img src="'.$group_image.'" class="groupIcond custom-file-input" original-title="'.$group_name.'"><div class="groupSmallTitles"></div></a></div>';
-
-                       
+                       echo '<div class="list_project_follow"><a href="'.$base_url.'group.php?gid='.$group_id.'" ><img src="'.$group_image.'" class="groupIcond custom-file-input" original-title="'.$group_name.'"><div class="groupSmallTitles"></div></a></div>';
                    }    
                     ?>  
 
                     <!-- <button class="btn btn_user_console"><a href='<?php // echo $base_url . 'cps_search.php'; ?>' data-tooltip="tooltip" title="Discower Needs!">Discover Needs</a></button> -->
                     <div><a href="<?php echo $base_url;?>cps_search.php" class="custom-file-input" original-title="Discower Needs!"><img src="images/profiles/btn_add.png"></a></div>                 
                <?php }else{
-                    echo "This volunteer have not follow any project !";
+                    echo "You can follow our projects today!";
                 }
                    
               
         ?>
+        <a href="" data-toggle="modal" data-target="#edit_projects_following"><i class="glyphicon glyphicon-edit custom-file-input" original-title="Edit Project Following" data-toggle="modal"></i></a>
         </div>
         <br/>
+        
+        <!-- Popup Edit Projects Following -->
+        <div class="modal fade" id="edit_projects_following" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="exampleModalLabel">Your Projects Following</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                     <?php	if($project_follow){
+										 $i=1;
+                    						foreach ($project_follow as $rs) {
+                        					$group_name = $rs['group_name'];
+                         					$group_id = $rs['group_id'];
+                         					$group_pic = $rs['group_pic'];
+											$role_in_project = $Wall->check_status_project($group_id, $uid);
+                        					if($group_pic){
+												$group_image = $base_url.'uploads/'.$group_pic;
+											}else{
+												$group_image = $base_url.'wall_icons/default.png';
+											}
+											
+											 echo '<div class="groupListDiv" id="unfollow-proj-'.$i.'"><div style="float:left; width:350px;"><a href="'.$base_url.'group.php?gid='.$group_id.'" ><img src="'.$group_image.'" class="groupIcon"><div class="groupSmallTitle">'.$group_name.'</div></a></div>';
+											 echo '<div style="float:left; margin-top: 5px;">';
+											 if($role_in_project>=1){
+											 	echo '<button class="btn btn-primary" style="width:90px; background-color:orange;">Admin</button>';
+											 }else if($role_in_project==0){
+											 	echo '<button class="btn btn-primary" style="width:90px; background-color:orange;">Member</button>';
+											 }else{
+											 	echo '<button class="btn btn-primary" style="width:90px;" onclick=UnfollowProject('.$i.','.$group_id.','.$uid.');>Unfollowed</button>';
+											 }
+											 echo '</div></div>';
+											 $i++;
+                                          }    
+                     }else{
+                    echo "You can follow our projects today!";
+                } ?>
+                                        
+                                        
+                                        
+                                        
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" onclick="location.reload();">Close</button>
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+        
+        
+        <!-- End -->
+        </div>
 
          <!-- <div class="communities row">
          <h4>Communities Following</h4>
@@ -384,4 +438,3 @@
         <br/><br/>  
     </div> -->
     </div>
-

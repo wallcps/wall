@@ -154,7 +154,7 @@ $login_error="<span class='error'>Username or Email is not found. </span>";
                  </ul>
                 </div>
             </div>
-                 <button class="btn-primarybtn-block"><a href="<?php echo $base_url;?>">Login</a></button>
+                 <button class="btn-primarybtn-block"><a href="<?php echo $base_url;?>">LOG IN</a></button>
             </div>
         </div>
     </div>
@@ -168,7 +168,7 @@ $login_error="<span class='error'>Username or Email is not found. </span>";
       <form method="post" style="width:400px;margin:0 auto;" class="form-contact">
 			<div class="rows">
 	            <div class="col-md-12">
-	                <p>Please input your email address</p>
+	                <p style="font-size:14px;">Please input your email address</p>
 	            </div>
 	   </div>
      <div class="rows">
