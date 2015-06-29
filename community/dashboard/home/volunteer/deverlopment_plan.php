@@ -339,14 +339,10 @@
                     ?>
                     </p>
                     <div>
+                        <button id="<?php echo $sn_id; ?>" class="btn btn-social" onclick="FollowProject(<?php echo $groupID ?>)">Follow</button>
                         <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer&volunteer=opportunity&snid=<?php echo $socil_need_data['id']; ?>">
                             <button id="" class="btn btn-social">Get Involved</button>
-                        </a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-
-                       
-                            <a href="" data-toggle="modal" data-target="#edit_sn<?php echo $socil_need_data['id']; ?>"><button class="btn btn-social">Edit</button></a>
-                        <button id="<?php echo $sn_id; ?>" class="btn btn-social" onclick="FollowProject(<?php echo $groupID ?>)">Like</button>
-                        
+                        </a>
                     </div>
 
                     &nbsp;
@@ -789,9 +785,6 @@
             $("#new_pp_content").val(content);
         });
     });
-<<<<<<< HEAD
-=======
     
         
->>>>>>> 1ee69ad6b27f92afc6fde78c897273d5935c0808
 </script>

@@ -407,29 +407,10 @@ $query = mysqli_query($db, "SELECT com_id FROM projects WHERE group_id = '$group
   
   
         <div class="text">
-            <p class="text-orange text-title"><?php echo $title.'Hello world'; ?></p>
+            <p class="text-orange text-title"><?php echo $title; ?></p>
             <div>
-              <?php if($img){?>
-                  <img class="img-responsive" width="230" height="auto"> src="<?php echo $base_url.'uploads/'.$img; ?>"/>
-             <?php  }else{?>
-                  <img class="img-responsive" src="<?php echo $base_url.'images/benifisary_default.png'; ?>"/>
-             <?php }?>
-                
+                <img class="img-responsive" src="<?php echo $base_url.'uploads/'.$img; ?>"/>
             </div><br/>
-            <?php
-              if($description){
-                if (strlen($description) >= 300) {
-                       $pro_content11 = strip_tags($description);
-                       $description = (substr($pro_content11, 0, 300));
-                       echo $description."...<a href=" .$base_url . 'group.php?gid=' . $groupID . '&ptab=beneficiary'">Read more</a>";
-                    }
-                else{
-                  echo $description;
-                }
-              }else{
-                echo "Please update the beneficiary".' '.'<a href="<?php echo $base_url.group.php?gid=?>">here</a>';
-              }
-             ?>
              <p><?php echo $description; ?></p>
 <!--            <button class="btn btn-xs btn-orp">orphanage</button>-->
 <!--            <table>
