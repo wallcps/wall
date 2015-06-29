@@ -2,6 +2,9 @@
     .bootstrap-tagsinput{
         width:100%;
     }
+    .tooltip-inner {
+        width: 160px !important;
+    }
 </style>
 
 
@@ -294,17 +297,14 @@
                 </div>
                 <div class="col-lg-9">
                     <h4 class="media-heading"><a href=""><?php echo $socil_need_data['title']; ?></a></h4>
+                    <div class="text-right edit-icon" style="margin-right: 20px;"><i class="glyphicon glyphicon-trash text-danger" data-toggle="tooltip" data-placement="top" title="Delete social Need"></i> <a href=""  data-toggle="modal" data-target="#edit_sn<?php echo $socil_need_data['id']; ?>"><i data-toggle="tooltip" title="Edit social Need" class="glyphicon glyphicon-edit"></i></a> <i data-toggle="tooltip" data-placement="top" title="Add New Program & Plan" class="glyphicon glyphicon-plus-sign text-success"></i></div>
                     <p><?php echo $socil_need_data['content']; ?></p>
                     <p>Keywords : <?php echo "#".str_replace(","," #",$socil_need_data['keywords']); ?></p><br/>
                     <div>
+                        <button id="<?php echo $sn_id; ?>" class="btn btn-social" onclick="FollowProject(<?php echo $groupID ?>)">Follow</button>
                         <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer&volunteer=opportunity&snid=<?php echo $socil_need_data['id']; ?>">
                             <button id="" class="btn btn-social">Get Involved</button>
-                        </a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
-
-                       
-                            <a href="" data-toggle="modal" data-target="#edit_sn<?php echo $socil_need_data['id']; ?>"><button class="btn btn-social">Edit</button></a>
-                        <button id="<?php echo $sn_id; ?>" class="btn btn-social" onclick="FollowProject(<?php echo $groupID ?>)">Like</button>
-                        
+                        </a>
                     </div>
 
                     &nbsp;
@@ -640,4 +640,10 @@ $('.update_doc2').click(function(){
             }
         });
     });
+    
+    //data tooltip....
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    }) 
+        
 </script>

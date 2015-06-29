@@ -5,7 +5,7 @@
 <?php foreach ($important_infos as $important_info) { ?>
 <div class="text important_infor">
 	<p style="font-size: 22px;font-weight: bold;"><?php echo $important_info['title'] ;?></p>
-	<span class="edit-icon" ><a href="" data-toggle="modal" data-target='#edit_<?php echo $important_info['id']; ?>'><i class="glyphicon glyphicon-edit"></i></a></span>
+	<span class="edit-icon" ><a href="" data-toggle="modal"  data-target='#edit_<?php echo $important_info['id']; ?>'><i data_id="<?php echo $important_info['id']; ?>" class="glyphicon glyphicon-edit edit_data"></i></a></span>
 	<hr style="margin-top:-6px;">
 	<p><?php echo $important_info['description'] ;?></p>
 </div>
@@ -17,8 +17,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="exampleModalLabel">Edit <?php echo $important_info['title'] ;?></h4>
             </div>
-            <div class="modal-body">
-            	<textarea style="height:150px; width:100%;" name="des" id="des"><?php echo $important_info['description'] ;?></textarea>
+            <div class="modal-body" id="editor_<?php echo $important_info['id']; ?>">
+                <textarea class="des_<?php echo $important_info['id']; ?>" style="height:150px; width:100%;" name="des" id="des_<?php echo $important_info['id']; ?>"><?php echo $important_info['description'] ;?></textarea>
                 
             </div>
             <div class="modal-footer">
@@ -37,9 +37,16 @@
        <br>
 
 <script type="text/javascript">
-	$('.update-text').click(function(){
+    $(".edit_data").click(function(){
+        var id = $(this).attr("data_id");
+        qy210(".des_"+id).Editor();
+        var ele1 = document.getElementById('editor_'+id).getElementsByClassName('Editor-editor');
+        ele1[0].innerHTML = $("#des_"+id).val();
+    });
+    
+    $('.update-text').click(function(){
         var id = $(this).attr('id');
-        var content = $('#des').val();
+        var content = $("#editor_"+id+" .Editor-editor").html();
 
         $.ajax({
             type:'POST',

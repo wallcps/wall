@@ -84,8 +84,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="exampleModalLabel">Edit Introduction</h4>
             </div>
-            <div class="modal-body">
-                <textarea style="height:150px; width:100%;" name="update_com_opport_intro" id="update_com_opport_intro"><?php echo $data['description'] ; ?></textarea>
+            <div class="modal-body" id="editor_1">
+                <textarea class="update_com_opport_intro" style="height:150px; width:100%;" name="update_com_opport_intro" id="update_com_opport_intro"><?php echo $data['description'] ; ?></textarea>
             </div>
             <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
@@ -220,9 +220,15 @@
        <br>
        <br>
 <script>
+    
+    //code text editor..........
+    qy210(".update_com_opport_intro").Editor();
+    var ele1 = document.getElementById('editor_1').getElementsByClassName('Editor-editor');
+    ele1[0].innerHTML = $("#update_com_opport_intro").val();
+    
     //update community cps audit description.........
     $('.update_com_opport').click(function(){
-        var content1 = $("#update_com_opport_intro").val();
+        var content1 = $("#editor_1 .Editor-editor").html();
         var id1 = $(this).attr('id');
         $.ajax({
             type:'POST',
