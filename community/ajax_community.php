@@ -95,3 +95,9 @@ if(isset($_POST['doc_audit'])=='doc_audit'){
     mysqli_query($db,"update com_audit_doc set content = '$content' where id = '$id'");
 }
 
+// delete social need........
+if(isset($_POST['delete_social_need'])=='delete_social_need'){
+    $id = $_POST['id'];
+    mysqli_query($db,"DELETE FROM com_social_need WHERE id = '$id'");
+}
+

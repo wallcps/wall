@@ -11,13 +11,15 @@
     
     $snid = $_GET['snid'];
     
+    // add program and plan........
     if(isset($_POST['submit_new_pp'])){
         $sn_id = $_POST['snid'];
         $new_pp_title = $_POST['new_pp_title'];
+        $new_pp_introduction = $_POST['new_pp_introduction'];
         $new_pp_keyword = $_POST['new_pp_keyword'];
         $new_pp_content = $_POST['new_pp_content'];
         
-        $target_dir1 = "images/commnunities/program_and_plan/";
+        $target_dir1 = "images/commnunities/program_plan/";
         //for id card..........
         $temp1 = explode(".",$_FILES["new_pp_pic"]["name"]);
         $filename1 = rand(1,99999) . '.' .end($temp1); 
@@ -30,7 +32,7 @@
             $filename1='';
         }        
         
-        mysqli_query($db,"INSERT INTO com_program_and_plan(title,content,keyword,image,com_social_need_id) VALUES('$new_pp_title','$new_pp_content','$new_pp_keyword','$filename1',$sn_id)");
+        mysqli_query($db,"INSERT INTO com_program_and_plan(title,introduction,content,keyword,image,com_social_need_id) VALUES('$new_pp_title','$new_pp_introduction','$new_pp_content','$new_pp_keyword','$filename1',$sn_id)");
         
     }
     
@@ -108,7 +110,11 @@
         <div class="col-lg-10 text-style">
             <p><?php echo $decom_social_need; ?></p>
             <?php 
-                $data_program_and_plan = mysqli_query($db, "SELECT * FROM com_program_and_plan WHERE com_social_need_id='$snid' ORDER BY id DESC limit 10");
+                if($_GET['snid']){
+                    $data_program_and_plan = mysqli_query($db, "SELECT * FROM com_program_and_plan WHERE com_social_need_id='$snid' ORDER BY id DESC limit 10");
+                }else{
+                   $data_program_and_plan = mysqli_query($db, "SELECT * FROM com_program_and_plan  ORDER BY id DESC limit 10");
+                }
                 foreach ($data_program_and_plan as $data_pp){
             ?>
             <div class="row aspiration-text">
@@ -183,6 +189,8 @@
 
 
 <!-- add program and plan  -->
+
+<!-- add program and plan  -->
 <div class="modal fade" id="add_new_pp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -192,12 +200,18 @@
                     <h4 class="modal-title" id="exampleModalLabel">Add New Program And Plan</h4>
                 </div>
 
-                <div class="modal-body" id="social-need-editor">      
-                    <input type="hidden" name="snid" value="<?php echo $snid; ?>"/>
+                <div class="modal-body" id="editor_pp">      
+                    <input type="hidden" name="snid" id="snid"/>
+                    <span>What is the title ?</span><br/><br/>
                     <input type="text" name="new_pp_title" id="new_pp_title" class="form-control" placeholder="Title" required=""/><br/>
-                    <input type="text" style="width:100%;" id="sn_keyword" name='new_sn_keyword' class="form-control" data-role="tagsinput"  value="" placeholder="Keyword" required=""/><br/>
+                    <span>What are keywords ?</span><br/><br/>
+                    <input type="text" style="width:100%;" id="new_pp_keyword" name='new_pp_keyword' class="form-control" data-role="tagsinput"  value="" placeholder="Keyword" required=""/><br/>
+                    <span>What is the summary text?</span><br/><br/>
+                    <textarea name="new_pp_introduction" id="new_pp_introduction"  class="new_pp_introduction" style="width:100% !important; height:100px;" placeholder="Content"></textarea>
+                    <span>What is the content text ?</span>
                     <textarea name="new_pp_content" id="new_pp_content"  class="new_pp_content" style="width:100% !important; height:100px;" placeholder="Content"></textarea>
-                    <input type="file" name="new_pp_pic" id="new_pp_pic" style="display:inline;">
+                    <br/><span>Please upload image</span><br/><br/>
+                    <input type="file" name="new_pp_pic" id="new_pp_pic" style="display:inline;" accept="image/*">
                     <div id="webcam_container" class='border'>
                         <div id="webcam" ></div>
                         <div id="webcam_preview"></div>
@@ -214,6 +228,7 @@
         </div>
     </div>
 </div>
+
        <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer_now"><button class="btn invole " style="  margin-right: 2%; margin-left: 30%;">Volunteer Now</button></a>
        <a  href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin"><button class="btn invole " >Inquire Here</button></a>
        <a href="http://www.facebook.com/share.php?u=<?php echo 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>&title=[TITLE]"><button class="btn invole" style="margin-left:2%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
@@ -244,6 +259,16 @@
                 alert(data);
             }
         });
+    });
+    
+    //text editor for add program and plan.........
+    qy210(".new_pp_content").Editor();
+    var pp = document.getElementById('editor_pp').getElementsByClassName('Editor-editor');
+    pp[0].innerHTML = $("#new_pp_content").val();
+
+    $("#submit_new_pp").click(function(){
+        var content = $("#editor_pp .Editor-editor").html();
+        $("#new_pp_content").val(content);
     });
     
 </script>
