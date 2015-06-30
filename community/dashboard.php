@@ -29,11 +29,24 @@
         </div>
         <div class="sidebar_content">
             <ul>
-                <li><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=health"><i class="glyphicon glyphicon-heart">&nbsp;</i>Health</a></li>
+                <li><a data-toggle="modal" data-target='#coming' href="#"><i class="glyphicon glyphicon-heart">&nbsp;</i>Help</a></li>
                 <li><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=profile"><i class="glyphicon glyphicon-user">&nbsp;</i>Upload Profile</a></li>
+                <li><a data-toggle="modal" data-target='#coming' href="#"><i class="glyphicon glyphicon-ok-circle">&nbsp;</i>Post Announcement</a></li>
+                <li><a data-toggle="modal" data-target='#coming' href="#"><i class="glyphicon glyphicon-book">&nbsp;</i>Community Document</a></li>
+                <!--<li><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=profile"><i class="glyphicon glyphicon-user">&nbsp;</i>Upload Profile</a></li>
                 <li><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=announcement"><i class="glyphicon glyphicon-ok-circle">&nbsp;</i>Post Announcement</a></li>
                 <li><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=document"><i class="glyphicon glyphicon-book">&nbsp;</i>Community Document</a></li>
+                -->
             </ul>
+        </div>
+    </div>
+    <div class="modal fade" id="coming" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                     <h3 class="modal-title text-center" id="exampleModalLabel">Coming Soon</h3>
+                </div>
+            </div>
         </div>
     </div>
     <div class="middle-content">
