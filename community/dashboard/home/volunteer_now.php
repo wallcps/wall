@@ -53,7 +53,7 @@
 ?>
 
 <div class="text">
-    <h3 class="text-center">Please give us your persional information !</h3>
+    <h3 class="text-center">Please give us your persional information</h3>
     <h4 style="font-weight:bold;">Basic Information</h4>
     <hr>
     <?php
