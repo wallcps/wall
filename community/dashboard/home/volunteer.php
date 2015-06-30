@@ -38,6 +38,7 @@
     </div>
 </div>
 <div style="clear:both"> </div>
+<?php if ($group_owner_id == $uid) { ?>
     <div class="volunteer_menu">
         <?php
         if (isset($_GET['volunteer'])) {
@@ -53,6 +54,24 @@
             <li class='<?php echo $volunteer == "important_info" ? "active" : ""; ?>'><a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer&volunteer=important_info">Important <br> Info</a></li>
         </ul>
     </div>
+<?php } else if ($_GET['gid']) { ?>
+    <div class="volunteer_menu">
+        <?php
+        if (isset($_GET['volunteer'])) {
+            $volunteer = $_GET['volunteer'];
+        } else {
+            $volunteer = "deverlopment_plan";
+        }
+        ?>
+        <ul class="menu_volunteer">
+                <!--<li class='<?php echo $volunteer == "home" ? "active" : ""; ?>'><a href="<?php echo $base_url; ?>community_follow.php?gid=<?php echo $gid; ?>&tab=volunteer&volunteer=home"><i class="glyphicon glyphicon-home"></i></a></li>-->
+            <li class='<?php echo $volunteer == "deverlopment_plan" ? "active" : ""; ?>'><a href="<?php echo $base_url; ?>community_follow.php?gid=<?php echo $gid; ?>&tab=volunteer&volunteer=deverlopment_plan">Our Development Plan</a></li>
+            <li class='<?php echo $volunteer == "opportunity" ? "active" : ""; ?>'><a  href="<?php echo $base_url; ?>community_follow.php?gid=<?php echo $gid; ?>&tab=volunteer&volunteer=opportunity">Volunteer Opportunities</a></li>
+            <li class='<?php echo $volunteer == "important_info" ? "active" : ""; ?>'><a  href="<?php echo $base_url; ?>community_follow.php?gid=<?php echo $gid; ?>&tab=volunteer&volunteer=important_info">Important<br><br> Info</a></li>
+        </ul>
+
+    </div>
+<?php } ?>
 <div style="clear:both"></div>
 <br>
 <div class="">

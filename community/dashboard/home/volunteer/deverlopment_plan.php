@@ -2,12 +2,6 @@
     .bootstrap-tagsinput{
         width:100%;
     }
-    .tooltip-inner {
-        width: 160px !important;
-    }
-    .snkeyword{
-        padding-left: 23px;
-    }
 </style>
 
 
@@ -21,7 +15,6 @@
     {
         $com_id = $_POST['com_id'];
         $new_sn_title = $_POST['new_sn_title'];
-        $new_sn_summary = $_POST['new_sn_summary'];
         $new_sn_content = $_POST['new_sn_content'];
         $new_sn_keyword = $_POST['new_sn_keyword'];
         
@@ -38,19 +31,18 @@
             $filename1='';
         }        
         
-        mysqli_query($db,"INSERT INTO com_social_need(title,introduction,content,keywords,image,com_id) VALUES('$new_sn_title','$new_sn_summary','$new_sn_content','$new_sn_keyword','$filename1',$com_id)");
+        mysqli_query($db,"INSERT INTO com_social_need(title,content,keywords,image,com_id) VALUES('$new_sn_title','$new_sn_content','$new_sn_keyword','$filename1',$com_id)");
         
     }
     
     /* Edit Social Need */ 
     if(isset($_POST['submit_edit_sn']))
     {
-        $sn_id              = $_POST['edit_sn_id'];
-        $sn_title           = $_POST['edit_sn_title'];
-        $sn_summary         = $_POST['edit_sn_summary'];
-        $sn_content         = $_POST['edit_sn_content'];
-        $sn_keyword         = $_POST['edit_sn_keyword'];
-        $old_sn_pic         = $_POST['old_sn_pic'];
+        $sn_id = $_POST['edit_sn_id'];
+        $sn_title = $_POST['edit_sn_title'];
+        $sn_content = $_POST['edit_sn_content'];
+        $sn_keyword = $_POST['edit_sn_keyword'];
+        $old_sn_pic = $_POST['old_sn_pic'];
         
         $target_dir1 = "images/commnunities/social_need/";
         //for id card..........
@@ -65,7 +57,7 @@
             $filename1=$old_sn_pic;
         }        
         
-        mysqli_query($db,"UPDATE com_social_need SET title='$sn_title',introduction='$sn_summary',content='$sn_content',keywords='$sn_keyword',image='$filename1' WHERE id='$sn_id'");
+        mysqli_query($db,"UPDATE com_social_need SET title='$sn_title',content='$sn_content',keywords='$sn_keyword',image='$filename1' WHERE id='$sn_id'");
         
     }
     
@@ -91,31 +83,6 @@
         $des_cps_audit_des = $value['description'];
         $des_cps_audit_des_id = $value['id'];
     } 
-    
-    // add program and plan........
-    if(isset($_POST['submit_new_pp'])){
-        $sn_id = $_POST['snid'];
-        $new_pp_title = $_POST['new_pp_title'];
-        $new_pp_introduction = $_POST['new_pp_introduction'];
-        $new_pp_keyword = $_POST['new_pp_keyword'];
-        $new_pp_content = $_POST['new_pp_content'];
-        
-        $target_dir1 = "images/commnunities/program_plan/";
-        //for id card..........
-        $temp1 = explode(".",$_FILES["new_pp_pic"]["name"]);
-        $filename1 = rand(1,99999) . '.' .end($temp1); 
-        $target_file1 = $target_dir1 . basename($filename1);
-        //move_uploaded_file($_FILES["new_sn_pic"]["tmp_name"],$target_file1);
-        
-        move_uploaded_file($_FILES["new_pp_pic"]["tmp_name"],$target_file1);
-        
-        if($_FILES["new_pp_pic"]["tmp_name"]==''){
-            $filename1='';
-        }        
-        
-        mysqli_query($db,"INSERT INTO com_program_and_plan(title,introduction,content,keyword,image,com_social_need_id) VALUES('$new_pp_title','$new_pp_introduction','$new_pp_content','$new_pp_keyword','$filename1',$sn_id)");
-        
-    }
 
 ?>
 <div class="text" style="margin-top:-10px;">
@@ -317,32 +284,27 @@
             <?php 
                 $data_social_neet = mysqli_query($db, "SELECT * FROM com_social_need WHERE com_id='$com_id' ORDER BY id DESC limit 10");
                 foreach ($data_social_neet as $socil_need_data) {
-                    
             ?>
             <div class="row aspiration-text">
                 <div class="col-lg-3">
+                    <a href="">
                         <img class="social-image" src="<?php echo 'images/commnunities/social_need/' . $socil_need_data['image']; ?>">
-                        <p class="snkeyword"><b><?php echo "#".str_replace(",","<br/> #",$socil_need_data['keywords']); ?></b></p><br/>
+                    </a>
                         <!-- <img src="images/commnunities/asp-chadrent.jpg" class="social-image"> -->
                 </div>
                 <div class="col-lg-9">
-                    <h4 class="media-heading"><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=social_need_detail&sn=<?php echo $socil_need_data['id']; ?>"><?php echo $socil_need_data['title']; ?></a></h4>
-                    <div class="text-right edit-icon" style="margin-right: 20px;"><i id="<?php echo $socil_need_data['id']; ?>" class="glyphicon glyphicon-trash text-danger delete_social_need" data-toggle="tooltip" data-placement="top" title="Delete social Need"></i> <a href=""  data-toggle="modal" data-target="#edit_sn<?php echo $socil_need_data['id']; ?>"><i data-toggle="tooltip" title="Edit social Need" class="glyphicon glyphicon-edit edit_social_need" id="<?php echo $socil_need_data['id']; ?>"></i></a> <a href=""  data-toggle="modal" data-target="#add_new_pp"><i id="<?php echo $socil_need_data['id']; ?>" data-toggle="tooltip" data-placement="top" title="Add New Program & Plan"  class="glyphicon glyphicon-plus-sign text-success add_pp"></i></a></div>
-                    <p><?php echo $socil_need_data['introduction']; ?> <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=social_need_detail&sn=<?php echo $socil_need_data['id']; ?>"><span class="text-primary">Read more</span></a></p>
-                    <p><b>Solution :</b> 
-                    <?php
-                    $snid_1 = $socil_need_data['id'];
-                        $data_program_and_plan = mysqli_query($db, "SELECT * FROM com_program_and_plan WHERE com_social_need_id='$snid_1' ORDER BY id DESC limit 10");
-                        foreach ($data_program_and_plan as $pp) {
-                            echo $pp['title']." , ";
-                        }
-                    ?>
-                    </p>
+                    <h4 class="media-heading"><a href=""><?php echo $socil_need_data['title']; ?></a></h4>
+                    <p><?php echo $socil_need_data['content']; ?></p>
+                    <p>Keywords : <?php echo "#".str_replace(","," #",$socil_need_data['keywords']); ?></p><br/>
                     <div>
-                        <button id="<?php echo $sn_id; ?>" class="btn btn-social" onclick="FollowProject(<?php echo $groupID ?>)">Follow</button>
                         <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer&volunteer=opportunity&snid=<?php echo $socil_need_data['id']; ?>">
                             <button id="" class="btn btn-social">Get Involved</button>
-                        </a>
+                        </a>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+
+                       
+                            <a href="" data-toggle="modal" data-target="#edit_sn<?php echo $socil_need_data['id']; ?>"><button class="btn btn-social">Edit</button></a>
+                        <button id="<?php echo $sn_id; ?>" class="btn btn-social" onclick="FollowProject(<?php echo $groupID ?>)">Like</button>
+                        
                     </div>
 
                     &nbsp;
@@ -360,19 +322,13 @@
                                 <h4 class="modal-title" id="exampleModalLabel">Edit Social Need </h4>
                             </div>
 
-                            <div class="modal-body" id="editor_<?php echo $socil_need_data['id']; ?>">    
+                            <div class="modal-body" id="edit-social-need-editor">      
                                 <input type="hidden" id="edit_sn_id" name="edit_sn_id" value="<?php echo $socil_need_data['id']; ?>">
                                 <input type="hidden" id="old_sn_pic" name="old_sn_pic" value="<?php echo $socil_need_data['image']; ?>">
-                                <span>What is the title ?</span><br/><br/>
                                 <input type="text" name="edit_sn_title" id="edit_sn_title" class="form-control" required="" value="<?php echo $socil_need_data['title']; ?>"><br/>
-                                <span>What are keywords ?</span><br/><br/>
                                 <input type="text" id="edit_sn_keyword" name='edit_sn_keyword' class="form-control" data-role="tagsinput" placeholder="Keyword" required="" value="<?php echo $socil_need_data['keywords']; ?>"/><br/>
-                                <span>What is the summary text?</span><br/><br/>
-                                <textarea name="edit_sn_summary" id="edit_sn_summary"  class="edit_sn_summary" style="width:100%; height:100px;" placeholder="Summary Text"><?php echo $socil_need_data['introduction']; ?></textarea>
-                                <span>What is the content text?</span><br/><br/>
-                                <textarea name="edit_sn_content" id="edit_sn_content_<?php echo $socil_need_data['id']; ?>"  class="edit_sn_editoreditor_<?php echo $socil_need_data['id']; ?>" style="width:100%; height:100px;" placeholder="Content"><?php echo $socil_need_data['content']; ?></textarea>
-                                <br/><span>Please upload image</span><br/><br/>
-                                <input type="file" name="edit_sn_pic" id="edit_sn_pic" style="display:inline;" accept="image/*">
+                                <textarea name="edit_sn_content" id="edit_sn_content"  class="edit_sn_editor" style="width:100%; height:100px;" placeholder="Content"><?php echo $socil_need_data['content']; ?></textarea>
+                                <input type="file" name="edit_sn_pic" id="edit_sn_pic" style="display:inline;">
                                 <br/>
                                 <div id="webcam_container" class='border'>
                                     <div id="webcam" ></div>
@@ -384,7 +340,7 @@
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button id="submit-edit-social-need_<?php echo $socil_need_data['id']; ?>" data_id="<?php echo $socil_need_data['id']; ?>" name="submit_edit_sn" class="btn btn-primary save">Save</button>
+                                <button id="submit-edit-social-need" name="submit_edit_sn" class="btn btn-primary">Save</button>
                             </div>
                         </form>
                     </div>
@@ -487,16 +443,11 @@
                 </div>
 
                 <div class="modal-body" id="social-need-editor">      
-                    <span>What is the title ?</span><br/><br/>
+
                     <input type="text" name="new_sn_title" id="sn_title" class="form-control" placeholder="Title" required=""/><br/>
-                    <span>What are keywords ?</span><br/><br/>
                     <input type="text" style="width:100%;" id="sn_keyword" name='new_sn_keyword' class="form-control" data-role="tagsinput"  value="" placeholder="Keyword" required=""/><br/>
-                    <span>What is the summary text?</span><br/><br/>
-                    <textarea name="new_sn_summary" id="new_sn_summary"  class="new_sn_summary" style="width:100%; height:100px;" placeholder="Content"></textarea>
-                    <span>What is the content text ?</span>
                     <textarea name="new_sn_content" id="add_sn_content"  class="sn_editor" style="width:100%; height:100px;" placeholder="Content"></textarea>
-                    <br/><span>Please upload image</span><br/><br/>
-                    <input type="file" name="new_sn_pic" id="new_sn_pic" style="display:inline;" accept="image/*">
+                    <input type="file" name="new_sn_pic" id="new_sn_pic" style="display:inline;">
                     <br/>
                     <div id="webcam_container" class='border'>
                         <div id="webcam" ></div>
@@ -509,7 +460,7 @@
                 <div class="modal-footer">
                     <input type="hidden" name="com_id" value="<?php echo $com_id; ?>">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button id="submit-social-need" name="submit_new_sn"  class="btn btn-primary">Save</button>
+                    <button id="submit-social-need" name="submit_new_sn" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>
@@ -517,274 +468,176 @@
 </div> 
 <!-- End Popup -->
 
-<!-- add program and plan  -->
-<div class="modal fade" id="add_new_pp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form method="post" enctype='multipart/form-data' action="" >
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="exampleModalLabel">Add New Program And Plan</h4>
-                </div>
-
-                <div class="modal-body" id="editor_pp">      
-                    <input type="hidden" name="snid" id="snid"/>
-                    <input type="text" name="new_pp_title" id="new_pp_title" class="form-control" placeholder="Title" required=""/><br/>
-                    <input type="text" style="width:100%;" id="new_pp_keyword" name='new_pp_keyword' class="form-control" data-role="tagsinput"  value="" placeholder="Keyword" required=""/><br/>
-                    <textarea name="new_pp_introduction" id="new_pp_introduction"  class="new_pp_introduction" style="width:100% !important; height:100px;" placeholder="Content"></textarea>
-                    <textarea name="new_pp_content" id="new_pp_content"  class="new_pp_content" style="width:100% !important; height:100px;" placeholder="Content"></textarea>
-                    <input type="file" name="new_pp_pic" id="new_pp_pic" style="display:inline;" accept="image/*">
-                    <div id="webcam_container" class='border'>
-                        <div id="webcam" ></div>
-                        <div id="webcam_preview"></div>
-                        <div id='webcam_status'></div>
-                        <div id='webcam_takesnap'></div>
-                    </div>
-                </div>
-                
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button id="submit_new_pp" name="submit_new_pp" class="btn btn-primary">Save</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 
 
  <script type="text/javascript">
      
-    $(document).ready(function(){
- 
-        qy210(".sn_editor").Editor();
-        qy210(".des_socical_need").Editor();
-        var social_need = document.getElementById('editor_5').getElementsByClassName('Editor-editor');
-        social_need[0].innerHTML = $("#des_socical_need").val();
-
-        //goads.......
-        qy210(".des_need_and_aspri").Editor();
-        var goals = document.getElementById('editor_4').getElementsByClassName('Editor-editor');
-        goals[0].innerHTML = $("#des_need_and_aspri").val();
-
-        //goads.......
-        qy210(".goals").Editor();
-        var goals = document.getElementById('editor_3').getElementsByClassName('Editor-editor');
-        goals[0].innerHTML = $("#des2").val();
-
-        //for embade document..........
-        qy210(".embad_doc").Editor();
-        var des = document.getElementById('editor_2').getElementsByClassName('Editor-editor');
-        des[0].innerHTML = $("#document").val();
-
-        qy210(".des").Editor();
-        var des = document.getElementById('editor_1').getElementsByClassName('Editor-editor');
-        des[0].innerHTML = $("#des1").val();
-
-
-        $('#submit-social-need').click(function(){
-            document.getElementById("add_sn_content").value += $("#social-need-editor .Editor-editor").html();
-        });
-
-        $('.update-des1').click(function(){
-            var id = $(this).attr('id');
-            var content = $("#editor_1 .Editor-editor").html();
-
-            $.ajax({
-                type:'POST',
-                url:'<?php echo $base_url; ?>community/ajax_community.php',
-                data:{
-                   content      :content,
-                   id           : id,
-                   dev_plan  :'dev_plan',
-                },
-                success:function(data){
-                    location.reload();
-                },error:function(data){
-                    alert(data);
-                }
-            });
-        });
+    
+     
+    qy210(".sn_editor").Editor();
+    qy210(".des_socical_need").Editor();
+    var social_need = document.getElementById('editor_5').getElementsByClassName('Editor-editor');
+    social_need[0].innerHTML = $("#des_socical_need").val();
+    
+    //goads.......
+    qy210(".des_need_and_aspri").Editor();
+    var goals = document.getElementById('editor_4').getElementsByClassName('Editor-editor');
+    goals[0].innerHTML = $("#des_need_and_aspri").val();
+    
+    //goads.......
+    qy210(".goals").Editor();
+    var goals = document.getElementById('editor_3').getElementsByClassName('Editor-editor');
+    goals[0].innerHTML = $("#des2").val();
+    
+    //for embade document..........
+    qy210(".embad_doc").Editor();
+    var des = document.getElementById('editor_2').getElementsByClassName('Editor-editor');
+    des[0].innerHTML = $("#document").val();
+    
+    qy210(".des").Editor();
+    var des = document.getElementById('editor_1').getElementsByClassName('Editor-editor');
+    des[0].innerHTML = $("#des1").val();
 
 
+    $('#submit-social-need').click(function(){
+        document.getElementById("add_sn_content").value += $("#social-need-editor .Editor-editor").html();
+    });
+     
+    $('.update-des1').click(function(){
+        var id = $(this).attr('id');
+        var content = $("#editor_1 .Editor-editor").html();
 
-        $('.update-des2').click(function(){
-            var id = $(this).attr('id');
-            var content = $("#editor_3 .Editor-editor").html();
-
-            $.ajax({
-                type:'POST',
-                url:'<?php echo $base_url; ?>community/ajax_community.php',
-                data:{
-                   content      :content,
-                   id           : id,
-                   dev_plan2  :'dev_plan2',
-                },
-                success:function(data){
-                    location.reload();
-                },error:function(data){
-                    alert(data);
-                }
-            });
-        });
-
-        $('.update_des_need_and_aspri').click(function(){
-            var content = $("#editor_4 .Editor-editor").html();
-            var id = $(this).attr('id');
-            $.ajax({
-                type:'POST',
-                url:'<?php echo $base_url; ?>community/ajax_community.php',
-                data:{
-                   data             :content,
-                   id               : id,
-                   need_and_Asp     :'need_and_Asp',
-                },
-                success:function(data){
-                    location.reload();
-                },error:function(data){
-                    alert(data);
-                }
-            });
-        });
-
-        $('.update_decom_social_need').click(function(){
-            var content = $("#editor_5 .Editor-editor").html();
-            var id = $(this).attr('id');
-            $.ajax({
-                type:'POST',
-                url:'<?php echo $base_url; ?>community/ajax_community.php',
-                data:{
-                   data             :content,
-                   id               : id,
-                   edit_social      :'edit_social',
-                },
-                success:function(data){
-                    location.reload();
-                },error:function(data){
-                    alert(data);
-                }
-            });
-        });
-
-        //update community cps audit description.........
-        $('.update_com_cps_audit_des').click(function(){
-            var content1 = $("#com_cps_audit_des").val();
-            var id1 = $(this).attr('id');
-            $.ajax({
-                type:'POST',
-                url:'<?php echo $base_url; ?>community/ajax_community.php',
-                data:{
-                   data             :content1,
-                   id               : id1,
-                   edit_cps_audit   :'edit_cps_audit',
-                },
-                success:function(data){
-                    location.reload();
-                },error:function(data){
-                    alert(data);
-                }
-            });
-        });
-    $('.update_doc1').click(function(){
-            var id = $(this).attr('id');
-            var content = $("#editor_2 .Editor-editor").html();
-
-            $.ajax({
-                type:'POST',
-                url:'<?php echo $base_url; ?>community/ajax_community.php',
-                data:{
-                   content      :content,
-                   id           : id,
-                   doc_welcome  :'doc_welcome',
-                },
-                success:function(data){
-                    location.reload();
-                },error:function(data){
-                    alert(data);
-                }
-            });
-        });
-    $('.update_doc2').click(function(){
-            var id = $(this).attr('id');
-            var content = $('#document1').val();
-
-            $.ajax({
-                type:'POST',
-                url:'<?php echo $base_url; ?>community/ajax_community.php',
-                data:{
-                   content      :content,
-                   id           : id,
-                   doc_audit  :'doc_audit',
-                },
-                success:function(data){
-                    location.reload();
-                },error:function(data){
-                    alert(data);
-                }
-            });
-        });
-
-        //data tooltip....
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        }) 
-
-
-        //code text editor......
-        $(".edit_social_need").click(function(){
-            var id = $(this).attr("id");
-            qy210(".edit_sn_editoreditor_"+id).Editor();
-            var ele1 = document.getElementById('editor_'+id).getElementsByClassName('Editor-editor');
-            ele1[0].innerHTML = $("#edit_sn_content_"+id).val();
-        });
-
-        $(".save").click(function(){
-            var id = $(this).attr("data_id");
-            var content = $("#editor_"+id+" .Editor-editor").html();
-            $("#edit_sn_content_"+id).val(content);
-        });
-
-        //delete social need..........
-        $(".delete_social_need").css("cursor","pointer");
-        $(".delete_social_need").click(function(){
-           var id = $(this).attr("id");
-           var con = confirm("Do you want to delete this social need ?");
-           if(con){
-               $.ajax({
-                    type:'POST',
-                    url:'<?php echo $base_url; ?>community/ajax_community.php',
-                    data:{
-                       id                   : id,
-                       delete_social_need   :'delete_social_need',
-                    },
-                    success:function(data){
-                        location.reload();
-                    },error:function(data){
-                        alert(data);
-                    }
-                });
-           }else{
-               return false;
-           }
-           
-        });
-        
-        //add social need id for program plan......
-           $(".add_pp").click(function(){
-                var id = $(this).attr("id");
-                $("#snid").val(id);
-           });
-           
-        //text editor for add program and plan.........
-        qy210(".new_pp_content").Editor();
-        var pp = document.getElementById('editor_pp').getElementsByClassName('Editor-editor');
-        pp[0].innerHTML = $("#new_pp_content").val();
-        
-        $("#submit_new_pp").click(function(){
-            var content = $("#editor_pp .Editor-editor").html();
-            $("#new_pp_content").val(content);
+        $.ajax({
+            type:'POST',
+            url:'<?php echo $base_url; ?>community/ajax_community.php',
+            data:{
+               content      :content,
+               id           : id,
+               dev_plan  :'dev_plan',
+            },
+            success:function(data){
+                location.reload();
+            },error:function(data){
+                alert(data);
+            }
         });
     });
     
-        
+     
+     
+    $('.update-des2').click(function(){
+        var id = $(this).attr('id');
+        var content = $("#editor_3 .Editor-editor").html();
+
+        $.ajax({
+            type:'POST',
+            url:'<?php echo $base_url; ?>community/ajax_community.php',
+            data:{
+               content      :content,
+               id           : id,
+               dev_plan2  :'dev_plan2',
+            },
+            success:function(data){
+                location.reload();
+            },error:function(data){
+                alert(data);
+            }
+        });
+    });
+    
+    $('.update_des_need_and_aspri').click(function(){
+        var content = $("#editor_4 .Editor-editor").html();
+        var id = $(this).attr('id');
+        $.ajax({
+            type:'POST',
+            url:'<?php echo $base_url; ?>community/ajax_community.php',
+            data:{
+               data             :content,
+               id               : id,
+               need_and_Asp     :'need_and_Asp',
+            },
+            success:function(data){
+                location.reload();
+            },error:function(data){
+                alert(data);
+            }
+        });
+    });
+    
+    $('.update_decom_social_need').click(function(){
+        var content = $("#editor_5 .Editor-editor").html();
+        var id = $(this).attr('id');
+        $.ajax({
+            type:'POST',
+            url:'<?php echo $base_url; ?>community/ajax_community.php',
+            data:{
+               data             :content,
+               id               : id,
+               edit_social      :'edit_social',
+            },
+            success:function(data){
+                location.reload();
+            },error:function(data){
+                alert(data);
+            }
+        });
+    });
+    
+    //update community cps audit description.........
+    $('.update_com_cps_audit_des').click(function(){
+        var content1 = $("#com_cps_audit_des").val();
+        var id1 = $(this).attr('id');
+        $.ajax({
+            type:'POST',
+            url:'<?php echo $base_url; ?>community/ajax_community.php',
+            data:{
+               data             :content1,
+               id               : id1,
+               edit_cps_audit   :'edit_cps_audit',
+            },
+            success:function(data){
+                location.reload();
+            },error:function(data){
+                alert(data);
+            }
+        });
+    });
+$('.update_doc1').click(function(){
+        var id = $(this).attr('id');
+        var content = $("#editor_2 .Editor-editor").html();
+
+        $.ajax({
+            type:'POST',
+            url:'<?php echo $base_url; ?>community/ajax_community.php',
+            data:{
+               content      :content,
+               id           : id,
+               doc_welcome  :'doc_welcome',
+            },
+            success:function(data){
+                location.reload();
+            },error:function(data){
+                alert(data);
+            }
+        });
+    });
+$('.update_doc2').click(function(){
+        var id = $(this).attr('id');
+        var content = $('#document1').val();
+
+        $.ajax({
+            type:'POST',
+            url:'<?php echo $base_url; ?>community/ajax_community.php',
+            data:{
+               content      :content,
+               id           : id,
+               doc_audit  :'doc_audit',
+            },
+            success:function(data){
+                location.reload();
+            },error:function(data){
+                alert(data);
+            }
+        });
+    });
 </script>
