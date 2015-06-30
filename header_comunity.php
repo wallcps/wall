@@ -119,15 +119,34 @@ if($_GET['com']){
             
             <li <?php echo ($page == 'dashboard') ? "class='active'" : ""; ?>>
                 <?php echo $arrow_updates ?>
-                <a href='<?php echo $base_url . 'community.php?gid='.$gid.'&com=dashboard'; ?>'><span class="glyphicon glyphicon-home"></span>Dashboard</a></li>
+                <a href='<?php echo $base_url . 'community.php?gid='.$gid.'&com=dashboard'; ?>'><span class="glyphicon glyphicon-home"></span>Dashboard</a>
+            </li>
             <li <?php echo ($page == 'booking') ? "class='active'" : ""; ?>>
                 <?php echo $arrow_profile ?>
-                <a href='<?php echo $base_url . 'community.php?gid='.$gid.'&com=booking'; ?>'><span class="glyphicon glyphicon-user"></span> Booking</a></li>
+                <a  data-toggle="modal" data-target='#coming'  href='#'><span class="glyphicon glyphicon-user"></span> Booking</a>
+            </li>
             <li <?php echo ($page == 'project') ? "class='active'" : ""; ?>>
                 <?php echo $arrow_discover ?>
-                <a href='<?php echo $base_url . 'community.php?gid='.$gid.'&com=project'; ?>'><span class="glyphicon glyphicon-globe"></span> Project</a></li>
+                <a  data-toggle="modal" data-target='#coming'  href='#'><span class="glyphicon glyphicon-globe"></span> Project</a>
+            </li> 
+            <!--<li <?php echo ($page == 'booking') ? "class='active'" : ""; ?>>
+                <?php echo $arrow_profile ?>
+                <a href='<?php echo $base_url . 'community.php?gid='.$gid.'&com=booking'; ?>'><span class="glyphicon glyphicon-user"></span> Booking</a>
+            </li>
+            <li <?php echo ($page == 'project') ? "class='active'" : ""; ?>>
+                <?php echo $arrow_discover ?>
+                <a href='<?php echo $base_url . 'community.php?gid='.$gid.'&com=project'; ?>'><span class="glyphicon glyphicon-globe"></span> Project</a>
+            </li>-->
         </ul>
-
+    <div class="modal fade" id="coming" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body" id="editor_1">
+                     <h3 class="modal-title text-center" id="exampleModalLabel">Coming Soon</h3>
+                </div>
+            </div>
+        </div>
+    </div>
         <div id="right-menu-main">
             <ul class="nav navbar-nav navbar-right">
                 <li>
