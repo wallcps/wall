@@ -90,6 +90,7 @@ function editSocialNeed(id, title, keyword, content,short_content){
                          echo '<span class="hide-text">'.$trimstring.'</span>';
                         ?>
                         <div id="remoreText"><?php echo $social_need; ?></div>
+                        <i class="glyphicon glyphicon-trash"></i>
                         <?php
                         } else {
                         echo $social_need;
@@ -114,33 +115,34 @@ function editSocialNeed(id, title, keyword, content,short_content){
                 <div class="row aspiration-text">
                         <div class="col-lg-3">
                              <a href="<?php echo $base_url;?>group.php?gid=<?php echo $groupID;?>&ptab=contents&p=each_social&sn_id=<?php echo $sn_id;?>">
-                            <img class="social-image" src="<?php echo 'images/'.$sn_image; ?>">
-                        </a>
+                                <img class="social-image" src="<?php echo 'images/'.$sn_image; ?>">
+                            </a>
+                        <p style=" margin-left: 15%;font-weight:bold;"><?php echo "#".str_replace(",","<br>#",$sn_keyword); ?></p><br/>
                             <!-- <img src="images/commnunities/asp-chadrent.jpg" class="social-image"> -->
                         </div>
                         <div class="col-lg-9">
                            
                             <h4 class="media-heading"><a href="<?php echo $base_url;?>group.php?gid=<?php echo $groupID;?>&ptab=contents&p=each_social&sn_id=<?php echo $sn_id;?>"><?php echo $sn_title; ?></a></h4>
-                            
+                            <span class="edit-icon" ><a href=""><i style="color:red;" class="glyphicon glyphicon-trash"></i></a>&nbsp;&nbsp;<a href=""><i  class="glyphicon glyphicon-edit"></i></a>&nbsp;&nbsp;<a href=""><i style="color:green;" class="glyphicon glyphicon-plus-sign"></i></a></span>
                        <p>
-                    <?php 
-                        if (strlen($sh_content) >= 200) {
-                            
-                        $sn_content1 = strip_tags($sh_content);
-                        $trimstrings = (substr($sn_content1, 0, 200));
-                        echo $trimstrings;?>
-                        <a href="<?php echo $base_url;?>group.php?gid=<?php echo $groupID;?>&ptab=contents&p=each_social&sn_id=<?php echo $sn_id;?>">Read More</a>
-                        
-                       <?php } else {
-                        echo $sh_content;?>
-                        <a href="<?php echo $base_url;?>group.php?gid=<?php echo $groupID;?>&ptab=contents&p=each_social&sn_id=<?php echo $sn_id;?>">Read More</a>
-                      <?php  }
-                    ?>
-                </p>
-                        
-                        <p>Keywords : <?php echo "#".str_replace(","," #",$sn_keyword); ?></p><br/>
-
-                        
+                            <?php 
+                                if (strlen($sh_content) >= 200) {
+                                    
+                                $sn_content1 = strip_tags($sh_content);
+                                $trimstrings = (substr($sn_content1, 0, 200));
+                                echo $trimstrings;?>
+                                <a href="<?php echo $base_url;?>group.php?gid=<?php echo $groupID;?>&ptab=contents&p=each_social&sn_id=<?php echo $sn_id;?>">Read More</a>
+                                
+                               <?php } else {
+                                echo $sh_content;?>
+                                <a href="<?php echo $base_url;?>group.php?gid=<?php echo $groupID;?>&ptab=contents&p=each_social&sn_id=<?php echo $sn_id;?>">Read More</a>
+                              <?php  }
+                            ?>
+                       </p>
+                       <p>
+                           <span style="font-weight:bold;">Solution:</span> Plan ABC, Plan DEF<br>
+                           <span style="font-weight:bold;">Outcome :</span> Outcome A, Outcome B
+                       </p>
                         <div>
                             <!-- saorin code start code-->
 
