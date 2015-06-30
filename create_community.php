@@ -20,8 +20,7 @@
     </style>
     <?php 
          session_start();
-       // $user_id = $_SESSION['uid'];
-         $user_id = 103;
+       $user_id = $_SESSION['uid'];
          if (isset($_POST['save'])) {
                  $com_name = $_POST['name'];
                  $address = $_POST['address'];
