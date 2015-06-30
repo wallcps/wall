@@ -38,7 +38,20 @@
             $filename1='';
         }        
         
-        mysqli_query($db,"INSERT INTO com_social_need(title,introduction,content,keywords,image,com_id) VALUES('$new_sn_title','$new_sn_summary','$new_sn_content','$new_sn_keyword','$filename1',$com_id)");
+        //mysqli_query($db,"INSERT INTO com_social_need(title,introduction,content,keywords,image,com_id) VALUES('$new_sn_title','$new_sn_summary','$new_sn_content','$new_sn_keyword','$filename1',$com_id)");
+        
+        $cate_id = 5;
+	$time=time();
+	$ip=$_SERVER['REMOTE_ADDR'];
+        $group_id = $_GET['gid'];
+	
+	mysqli_query($db,"INSERT INTO messages (msg_title,message, uid_fk, ip,created,group_id_fk,cate_id) VALUES ('$new_sn_title','$new_sn_content','$uid','$ip','$time','$group_id','$cate_id')") or die(mysqli_error($db));
+        
+        $b= mysqli_query($db,"SELECT msg_id FROM messages WHERE uid_fk='$uid' ORDER BY msg_id DESC LIMIT 1") or die(mysqli_error($db));
+	$data=mysqli_fetch_array($b,MYSQLI_ASSOC);
+	$msg_id=$data['msg_id'];
+        
+        mysqli_query($db,"INSERT INTO com_social_need (msg_id,introduction,content,com_id, keywords, image) VALUES ('$msg_id','$new_sn_summary','$new_sn_content','$com_id','$new_sn_keyword','$filename1')") or die(mysqli_error($db));
         
     }
     
@@ -46,6 +59,7 @@
     if(isset($_POST['submit_edit_sn']))
     {
         $sn_id              = $_POST['edit_sn_id'];
+        $msg_id             = $_POST['edit_msg_id'];
         $sn_title           = $_POST['edit_sn_title'];
         $sn_summary         = $_POST['edit_sn_summary'];
         $sn_content         = $_POST['edit_sn_content'];
@@ -65,7 +79,7 @@
             $filename1=$old_sn_pic;
         }        
         
-        mysqli_query($db,"UPDATE com_social_need SET title='$sn_title',introduction='$sn_summary',content='$sn_content',keywords='$sn_keyword',image='$filename1' WHERE id='$sn_id'");
+        mysqli_query($db,"UPDATE com_social_need INNER JOIN messages ON messages.msg_id = com_social_need.msg_id SET messages.msg_title='$sn_title',com_social_need.introduction='$sn_summary',com_social_need.content='$sn_content',com_social_need.keywords='$sn_keyword',com_social_need.image='$filename1' WHERE messages.msg_id='$msg_id'");
         
     }
     
@@ -315,8 +329,8 @@
         <div class="col-lg-10 text-style">
             <p><?php echo $decom_social_need; ?></p>
             <?php 
-                $data_social_neet = mysqli_query($db, "SELECT * FROM com_social_need WHERE com_id='$com_id' ORDER BY id DESC limit 10");
-                foreach ($data_social_neet as $socil_need_data) {
+                $data_social_need = mysqli_query($db, "SELECT com_social_need.*, messages.msg_title as title FROM com_social_need inner join messages ON com_social_need.msg_id = messages.msg_id  WHERE com_id='$com_id' ORDER BY id DESC limit 10");
+                foreach ($data_social_need as $socil_need_data) {
                     
             ?>
             <div class="row aspiration-text">
@@ -326,9 +340,9 @@
                         <!-- <img src="images/commnunities/asp-chadrent.jpg" class="social-image"> -->
                 </div>
                 <div class="col-lg-9">
-                    <h4 class="media-heading"><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=social_need_detail&sn=<?php echo $socil_need_data['id']; ?>"><?php echo $socil_need_data['title']; ?></a></h4>
+                    <h4 class="media-heading"><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=social_need_detail&sn_id=<?php echo $socil_need_data['id']; ?>"><?php echo $socil_need_data['title']; ?></a></h4>
                     <div class="text-right edit-icon" style="margin-right: 20px;"><i id="<?php echo $socil_need_data['id']; ?>" class="glyphicon glyphicon-trash text-danger delete_social_need" data-toggle="tooltip" data-placement="top" title="Delete social Need"></i> <a href=""  data-toggle="modal" data-target="#edit_sn<?php echo $socil_need_data['id']; ?>"><i data-toggle="tooltip" title="Edit social Need" class="glyphicon glyphicon-edit edit_social_need" id="<?php echo $socil_need_data['id']; ?>"></i></a> <a href=""  data-toggle="modal" data-target="#add_new_pp"><i id="<?php echo $socil_need_data['id']; ?>" data-toggle="tooltip" data-placement="top" title="Add New Program & Plan"  class="glyphicon glyphicon-plus-sign text-success add_pp"></i></a></div>
-                    <p><?php echo $socil_need_data['introduction']; ?> <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=social_need_detail&sn=<?php echo $socil_need_data['id']; ?>"><span class="text-primary">Read more</span></a></p>
+                    <p><?php echo $socil_need_data['introduction']; ?> <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=social_need_detail&sn_id=<?php echo $socil_need_data['id']; ?>"><span class="text-primary">Read more</span></a></p>
                     <p><b>Solution :</b> 
                     <?php
                     $snid_1 = $socil_need_data['id'];
@@ -362,6 +376,7 @@
 
                             <div class="modal-body" id="editor_<?php echo $socil_need_data['id']; ?>">    
                                 <input type="hidden" id="edit_sn_id" name="edit_sn_id" value="<?php echo $socil_need_data['id']; ?>">
+                                <input type="hidden" id="edit_msg_id" name="edit_msg_id" value="<?php echo $socil_need_data['msg_id']; ?>">
                                 <input type="hidden" id="old_sn_pic" name="old_sn_pic" value="<?php echo $socil_need_data['image']; ?>">
                                 <span>What is the title ?</span><br/><br/>
                                 <input type="text" name="edit_sn_title" id="edit_sn_title" class="form-control" required="" value="<?php echo $socil_need_data['title']; ?>"><br/>
