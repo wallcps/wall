@@ -28,11 +28,11 @@ if($_POST['user'] && $_POST['passcode'])
         if($login)
         {
         $_SESSION['uid']=$login;
+        $user_type = $User->User_type($_SESSION['uid']);
+        $_SESSION['user_role'] = $user_type;
         $status = $User->User_Status($_SESSION['uid']);
             if(strcmp($status,'approved')==0){
-                $_SESSION['login']=true;
-                $user_type = $User->User_type($_SESSION['uid']);
-                $_SESSION['user_role'] = $user_type; 
+                $_SESSION['login']=true; 
                 if($user_type==1){ 
                     header("Location:index.php");          
                 }else if($user_type==3){

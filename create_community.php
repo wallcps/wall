@@ -2,6 +2,16 @@
     ob_start("ob_gzhandler");
     error_reporting(0);
     include_once 'includes/db.php';
+    session_start();
+    if(!$_SESSION['uid']){
+        header("Location:login.php");
+    }
+    $group = mysqli_query($db, "SELECT group_id FROM  groups INNER JOIN community ON groups.group_id = community.group_id WHERE uid_fk =". $_SESSION['uid']);
+    if(mysqli_num_rows($group)>0){
+        header("Location:login.php");
+    }
+    
+    
 
 ?>
 <!DOCTYPE html>
@@ -19,9 +29,6 @@
         }   
     </style>
     <?php 
-         session_start();
-       // $user_id = $_SESSION['uid'];
-         $user_id = 103;
          if (isset($_POST['save'])) {
                  $com_name = $_POST['name'];
                  $address = $_POST['address'];
