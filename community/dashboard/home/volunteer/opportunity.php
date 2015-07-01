@@ -1,7 +1,13 @@
 
 <style>
     .bootstrap-tagsinput{
-        width:100% !important;
+        width:100%;
+    }
+    .tooltip-inner {
+        width: 160px !important;
+    }
+    .snkeyword{
+        padding-left: 23px;
     }
 </style>
 
@@ -32,20 +38,33 @@
             $filename1='';
         }        
         
-        mysqli_query($db,"INSERT INTO com_program_and_plan(title,introduction,content,keyword,image,com_social_need_id) VALUES('$new_pp_title','$new_pp_introduction','$new_pp_content','$new_pp_keyword','$filename1',$sn_id)");
+        $cate_id = 6;
+	$time=time();
+	$ip=$_SERVER['REMOTE_ADDR'];
+	$group_id = $_GET['gid'];
+        
+	mysqli_query($db,"INSERT INTO messages (msg_title,message, uid_fk, ip,created,group_id_fk,cate_id) VALUES ('$new_pp_title','$new_pp_content','$uid','$ip','$time','$group_id','$cate_id')") or die(mysqli_error($db));
+        
+        $b= mysqli_query($db,"SELECT msg_id FROM messages WHERE uid_fk='$uid' ORDER BY msg_id DESC LIMIT 1") or die(mysqli_error($db));
+	$data=mysqli_fetch_array($b,MYSQLI_ASSOC);
+	$msg_id=$data['msg_id'];
+        
+        mysqli_query($db,"INSERT INTO com_program_and_plan (msg_id,introduction,content,com_social_need_id, keywords, image) VALUES ('$msg_id','$new_pp_introduction','$new_pp_content','$sn_id','$new_pp_keyword','$filename1')") or die(mysqli_error($db));
         
     }
     
-    /* Edit program and plan */ 
+    /* Edit Social Need */ 
     if(isset($_POST['submit_edit_pp']))
     {
-        $pp_id = $_POST['edit_pp_id'];
-        $pp_title = $_POST['edit_pp_title'];
-        $pp_content = $_POST['edit_pp_content'];
-        $pp_keyword = $_POST['edit_pp_keyword'];
-        $old_pp_pic = $_POST['old_pp_pic'];
+        $pp_id              = $_POST['edit_pp_id'];
+        $msg_id             = $_POST['edit_msg_id'];
+        $pp_title           = $_POST['edit_pp_title'];
+        $pp_summary         = $_POST['edit_pp_summary'];
+        $pp_content         = $_POST['edit_pp_content'];
+        $pp_keyword         = $_POST['edit_pp_keyword'];
+        $old_pp_pic         = $_POST['old_pp_pic'];
         
-        $target_dir1 = "images/commnunities/program_plan/";
+        $target_dir1 = "images/commnunities/social_need/";
         //for id card..........
         $temp1 = explode(".",$_FILES["edit_pp_pic"]["name"]);
         $filename1 = rand(1,99999) . '.' .end($temp1); 
@@ -58,7 +77,7 @@
             $filename1=$old_pp_pic;
         }        
         
-        mysqli_query($db,"UPDATE com_program_and_plan SET title='$pp_title',content='$pp_content',keyword='$pp_keyword',image='$filename1' WHERE id='$pp_id'");
+        mysqli_query($db,"UPDATE com_program_and_plan INNER JOIN messages ON messages.msg_id = com_program_and_plan.msg_id SET messages.msg_title='$pp_title',com_program_and_plan.introduction='$pp_summary',com_program_and_plan.content='$pp_content',com_program_and_plan.keywords='$pp_keyword',com_program_and_plan.image='$filename1' WHERE messages.msg_id='$msg_id'");
         
     }
 ?>
@@ -111,7 +130,7 @@
             <p><?php echo $decom_social_need; ?></p>
             <?php 
                 if($_GET['snid']){
-                    $data_program_and_plan = mysqli_query($db, "SELECT * FROM com_program_and_plan WHERE com_social_need_id='$snid' ORDER BY id DESC limit 10");
+                    $data_program_and_plan = mysqli_query($db, "SELECT com_program_and_plan.*, messages.msg_title as title FROM com_program_and_plan inner join messages ON com_program_and_plan.msg_id = messages.msg_id  WHERE com_social_need_id='$snid' ORDER BY id DESC limit 10");
                 }else{
                    $data_program_and_plan = mysqli_query($db, "SELECT * FROM com_program_and_plan  ORDER BY id DESC limit 10");
                 }
@@ -119,15 +138,15 @@
             ?>
             <div class="row aspiration-text">
                 <div class="col-lg-3">
-                    <a href="">
-                        <img class="social-image" src="<?php echo 'images/commnunities/program_plan/' . $data_pp['image']; ?>">
-                    </a>
+                    <img class="social-image" src="<?php echo 'images/commnunities/program_plan/' . $data_pp['image']; ?>">
+                    <p class="snkeyword"><b><?php echo "#".str_replace(",","<br/> #",$data_pp['keywords']); ?></b></p><br/>
+
                         <!-- <img src="images/commnunities/asp-chadrent.jpg" class="social-image"> -->
                 </div>
                 <div class="col-lg-9">
-                    <h4 class="media-heading"><a href=""><?php echo $data_pp['title']; ?></a></h4>
-                    <p><?php echo $data_pp['content']; ?></p>
-                    <p>Keywords : <?php echo "#".str_replace(","," #",$data_pp['keyword']); ?></p><br/>
+                    <h4 class="media-heading"><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=deverlopment_plan&pp_id=<?php echo $data_pp['id']; ?>"><?php echo $data_pp['title']; ?></a></h4>
+                    <div class="text-right edit-icon" style="margin-right: 20px;"><i id="<?php echo $data_pp['id']; ?>" class="glyphicon glyphicon-trash text-danger delete_social_need" data-toggle="tooltip" data-placement="top" title="Delete program and Plan"></i> <a href=""  data-toggle="modal" data-target="#edit_pp<?php echo $data_pp['id']; ?>"><i data-toggle="tooltip" title="Edit Program and Plan" class="glyphicon glyphicon-edit edit_pp" id="<?php echo $data_pp['id']; ?>"></i></a> </div>
+                    <p><?php echo $data_pp['introduction']; ?> <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=deverlopment_plan&pp_id=<?php echo $data_pp['id']; ?>"><span class="text-primary">Read more</span></a></p>
                     <div>
                         <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=create_project&pp=<?php echo $data_pp['id']; ?>">
                             <button id="" class="btn btn-social">Get Involved</button>
@@ -151,16 +170,23 @@
                         <form method="post" enctype='multipart/form-data' action="">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="exampleModalLabel">Edit Program And Plan </h4>
+                                <h4 class="modal-title" id="exampleModalLabel">Edit Social Need </h4>
                             </div>
 
-                            <div class="modal-body">      
+                            <div class="modal-body" id="editor_<?php echo $data_pp['id']; ?>">    
                                 <input type="hidden" id="edit_pp_id" name="edit_pp_id" value="<?php echo $data_pp['id']; ?>">
+                                <input type="hidden" id="edit_msg_id" name="edit_msg_id" value="<?php echo $data_pp['msg_id']; ?>">
                                 <input type="hidden" id="old_pp_pic" name="old_pp_pic" value="<?php echo $data_pp['image']; ?>">
+                                <span>What is the title ?</span><br/><br/>
                                 <input type="text" name="edit_pp_title" id="edit_pp_title" class="form-control" required="" value="<?php echo $data_pp['title']; ?>"><br/>
-                                <input type="text" id="edit_pp_keyword" name='edit_pp_keyword' class="form-control" data-role="tagsinput" placeholder="Keyword" required="" value="<?php echo $data_pp['keyword']; ?>"/><br/>
-                                <textarea name="edit_pp_content" id="edit_pp_content"  class="edit_sn_editor" style="width:100%; height:100px;" placeholder="Content"><?php echo $data_pp['content']; ?></textarea>
-                                <input type="file" name="edit_pp_pic" id="edit_pp_pic" style="display:inline;">
+                                <span>What are keywords ?</span><br/><br/>
+                                <input type="text" id="edit_pp_keyword" name='edit_pp_keyword' class="form-control" data-role="tagsinput" placeholder="Keyword" required="" value="<?php echo $data_pp['keywords']; ?>"/><br/>
+                                <span>What is the summary text?</span><br/><br/>
+                                <textarea name="edit_pp_summary" id="edit_pp_summary"  class="edit_pp_summary" style="width:100%; height:100px;" placeholder="Summary Text"><?php echo $data_pp['introduction']; ?></textarea>
+                                <span>What is the content text?</span><br/><br/>
+                                <textarea name="edit_pp_content" id="edit_pp_content_<?php echo $data_pp['id']; ?>"  class="edit_pp_editor_<?php echo $data_pp['id']; ?>" style="width:100%; height:100px;" placeholder="Content"><?php echo $data_pp['content']; ?></textarea>
+                                <br/><span>Please upload image</span><br/><br/>
+                                <input type="file" name="edit_pp_pic" id="edit_pp_pic" style="display:inline;" accept="image/*">
                                 <br/>
                                 <div id="webcam_container" class='border'>
                                     <div id="webcam" ></div>
@@ -172,7 +198,7 @@
 
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button id="submit_edit_pp" name="submit_edit_pp" class="btn btn-primary">Save</button>
+                                <button id="submit-edit-social-need_<?php echo $data_pp['id']; ?>" data_id="<?php echo $data_pp['id']; ?>" name="submit_edit_pp" class="btn btn-primary save">Save</button>
                             </div>
                         </form>
                     </div>
@@ -269,6 +295,26 @@
     $("#submit_new_pp").click(function(){
         var content = $("#editor_pp .Editor-editor").html();
         $("#new_pp_content").val(content);
+    });
+    
+    //data tooltip....
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    }) 
+    
+    
+    //code text editor......
+    $(".edit_pp").click(function(){
+        var id = $(this).attr("id");
+        qy210(".edit_pp_editor_"+id).Editor();
+        var ele1 = document.getElementById('editor_'+id).getElementsByClassName('Editor-editor');
+        ele1[0].innerHTML = $("#edit_pp_content_"+id).val();
+    });
+
+    $(".save").click(function(){
+        var id = $(this).attr("data_id");
+        var content = $("#editor_"+id+" .Editor-editor").html();
+        $("#edit_pp_content_"+id).val(content);
     });
     
 </script>

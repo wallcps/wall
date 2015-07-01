@@ -127,7 +127,17 @@
             $filename1='';
         }        
         
-        mysqli_query($db,"INSERT INTO com_program_and_plan(title,introduction,content,keyword,image,com_social_need_id) VALUES('$new_pp_title','$new_pp_introduction','$new_pp_content','$new_pp_keyword','$filename1',$sn_id)");
+        $cate_id = 6;
+	$time=time();
+	$ip=$_SERVER['REMOTE_ADDR'];
+	$group_id = $_GET['gid'];
+        
+	mysqli_query($db,"INSERT INTO messages (msg_title,message, uid_fk, ip,created,group_id_fk,cate_id) VALUES ('$new_pp_title','$new_pp_content','$uid','$ip','$time','$group_id','$cate_id')") or die(mysqli_error($db));
+        
+        $b= mysqli_query($db,"SELECT msg_id FROM messages WHERE uid_fk='$uid' ORDER BY msg_id DESC LIMIT 1") or die(mysqli_error($db));
+	$data=mysqli_fetch_array($b,MYSQLI_ASSOC);
+	$msg_id=$data['msg_id'];
+        mysqli_query($db,"INSERT INTO com_program_and_plan (msg_id,introduction,content,com_social_need_id, keywords, image) VALUES ('$msg_id','$new_pp_introduction','$new_pp_content','$sn_id','$new_pp_keyword','$filename1')") or die(mysqli_error($db));
         
     }
 
@@ -346,7 +356,7 @@
                     <p><b>Solution :</b> 
                     <?php
                     $snid_1 = $socil_need_data['id'];
-                        $data_program_and_plan = mysqli_query($db, "SELECT * FROM com_program_and_plan WHERE com_social_need_id='$snid_1' ORDER BY id DESC limit 10");
+                        $data_program_and_plan = mysqli_query($db, "SELECT com_program_and_plan.*, messages.msg_title as title FROM com_program_and_plan inner join messages ON com_program_and_plan.msg_id = messages.msg_id   WHERE com_social_need_id='$snid_1' ORDER BY id DESC limit 10");
                         foreach ($data_program_and_plan as $pp) {
                             echo $pp['title']." , ";
                         }
