@@ -62,6 +62,7 @@
                                         mysqli_query($db,"insert into com_opportunity_intro (description,com_id) values ('Duis ante turpis, venenatis ut justo commodo, gravida maximus quam. Nulla at felis massa. Ut dictum vulputate diam, id consequat mi congue at. Proin molestie sit amet turpis non tin cidunt. Nulla tincidunt vestibulum est ac dictum. Maecenas porta si amet tortor at blandit. Suspendisse et venenatis mi.','$comId')");
                                         mysqli_query($db,"insert into com_volunteer_important_info (title,description,com_id) values ('Eat','Duis ante turpis, venenatis ut justo commodo, gravida maximus quam. Nulla at felis massa. Ut dictum vulputate diam, id consequat mi congue at. Proin molestie sit amet turpis non tin cidunt. Nulla tincidunt vestibulum est ac dictum. Maecenas porta si amet tortor at blandit. Suspendisse et venenatis mi.','$comId'),('Sleep','Duis ante turpis, venenatis ut justo commodo, gravida maximus quam. Nulla at felis massa. Ut dictum vulputate diam, id consequat mi congue at. Proin molestie sit amet turpis non tin cidunt. Nulla tincidunt vestibulum est ac dictum. Maecenas porta si amet tortor at blandit. Suspendisse et venenatis mi.','$comId'),('Safety','Duis ante turpis, venenatis ut justo commodo, gravida maximus quam. Nulla at felis massa. Ut dictum vulputate diam, id consequat mi congue at. Proin molestie sit amet turpis non tin cidunt. Nulla tincidunt vestibulum est ac dictum. Maecenas porta si amet tortor at blandit. Suspendisse et venenatis mi.','$comId'),('Travel Information','Duis ante turpis, venenatis ut justo commodo, gravida maximus quam. Nulla at felis massa. Ut dictum vulputate diam, id consequat mi congue at. Proin molestie sit amet turpis non tin cidunt. Nulla tincidunt vestibulum est ac dictum. Maecenas porta si amet tortor at blandit. Suspendisse et venenatis mi.','$comId'),('Cost & Availability','Duis ante turpis, venenatis ut justo commodo, gravida maximus quam. Nulla at felis massa. Ut dictum vulputate diam, id consequat mi congue at. Proin molestie sit amet turpis non tin cidunt. Nulla tincidunt vestibulum est ac dictum. Maecenas porta si amet tortor at blandit. Suspendisse et venenatis mi.','$comId')");
                                         mysqli_query($db,"insert into com_contact_pic(image,com_id) values('defualt_contact.PNG','$comId')");
+                                    header("Location:community.php");
                                 }
                              }
                              else{
@@ -77,6 +78,26 @@
      ?>
 </head>
 <body>
+    <div class="registration-header">
+        <div class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="http://cpsystem.codingate.net/singapore"><img src="images/logo.png"></a>
+                <div class="static_menus">
+                 
+                  <ul class="nav nav-tabs static-tab">
+                    <li><a href="http://www.volunteerbetter.com/about" target="_blank">About</a></li>
+                    <li><a href="http://www.volunteerbetter.com/our_mission/" target="_blank">Our Mission</a></li>
+                    <li><a href="http://www.volunteerbetter.com/our-work/" target="_blank">Our Work</a></li>
+                    <li><a href="http://www.volunteerbetter.com/join-us/" target="_blank">Join Us</a></li>
+                    <li><a href="http://www.volunteerbetter.com/contact/" target="_blank">Contact Us</a></li>
+                 </ul>
+                </div>
+            </div>
+                 <!-- <button class="btn-primarybtn-block"><a href="<?php //echo $base_url;?>">Login</a></button> -->
+            </div>
+        </div>
+    </div>
 <div class="container">
     <div class="text">
         <center>
@@ -85,7 +106,7 @@
         </center>
         <hr>
     <form method="post" style="width:850px;" enctype="multipart/form-data" class="form-contact" >
-        <h4>Community Information</h4>
+        <h4 style="font-weight:bold;">Community Information</h4>
         <br>
         <div class="row">
             <div class="col-md-6">
@@ -143,7 +164,8 @@
                 <input type="file" name="pic_com">
             </div>
         </div>
-        <input type="submit" name="save" value="Show my Community" style="margin-left:40%;" class=" btn btn-xs btn-submitbtn-info btn-cps">
+        <input type="submit" name="save" value="Show me my Community" style="margin-left:40%;" class=" btn btn-xs btn-submitbtn-info btn-cps">
+        <input type="reset" name="reset" value="Reset" style="height: 40px; width: 80px;" class=" btn btn-danger">
     </form>
     </div>
 </div>

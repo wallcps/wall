@@ -81,12 +81,12 @@ if(isset($_POST['resend'])){
                 
             </table><br/>
             <div class="error_message"><p class="text-danger"><?php echo $reg_error; ?></p></div>
-            <input type="submit" class="wallbutton" name="submit-for-verify" value="Submit" />
-            <input type="reset" value="Reset" class="wallbutton"><br><br>
+            <input type="submit" class="btn btn-info" name="submit-for-verify" value="Submit" />
+            <input type="reset" value="Reset" class="btn btn-info"><br><br>
             
             
             <a>Could not find your code? </a>
-            <input type="submit" class="wallbutton" value="Resend" name="resend"/>
+            <input type="submit" class="btn btn-info" value="Resend" name="resend"/>
              
         </form>
     </div><br/><br/>
