@@ -36,13 +36,7 @@ if($_POST['user'] && $_POST['passcode'])
                 if($user_type==1){ 
                     header("Location:index.php");          
                 }else if($user_type==3){
-                        $group = mysqli_query($db, "SELECT group_id FROM  groups WHERE uid_fk =". $_SESSION['uid']);
-                        if(mysqli_num_rows($group)>0){
-                            header("Location:community.php");
-                        }
-                        else{
-                            header("Location:create_community.php");
-                        }                    
+                    header("Location:community.php");               
                 }
                 //header("Location:index.php");
             }else if(strcmp($status, 'pending')==0){
