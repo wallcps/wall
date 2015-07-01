@@ -273,7 +273,7 @@
                                                 <a  target="_blank" href="<?php// echo $base_url; ?>group.php?gid=<?php //echo $res['group_id']; ?>&ptab=contents&p=program&sn_id=<?php //echo $res['sn_id']; ?>">
                                             <button type="button" class="btn btn-default btn-cps">Get Involved saorin</button>
                                         </a>  -->
-<span class="text-right"><a href="" data-toggle="modal" data-target="#edit_social_need"><i class="glyphicon glyphicon-edit"></i></a></span>
+<span class="text-right"><a href="" data-toggle="modal" data-target="#edit_social_need"></a></span>
 <div class="modal fade" id="edit_social_need" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">

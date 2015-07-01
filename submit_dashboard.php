@@ -145,7 +145,7 @@ if(isset($_POST['submit_guide_image'])){
     }
 }
 
-if(isset($_POST['submit_vol_better_1']) || isset($_POST['submit_vol_better_2']) || isset($_POST['submit_vol_better_3'])){
+if(isset($_POST['submit_vol_better_1']) || isset($_POST['submit_vol_better_2']) || isset($_POST['submit_vol_better_3']) || isset($_POST['submit_vol_better_4'])){
     $id=""; $title=""; $file_data="";
     if(isset($_POST['submit_vol_better_1'])){
         $id = 1;
@@ -159,6 +159,10 @@ if(isset($_POST['submit_vol_better_1']) || isset($_POST['submit_vol_better_2']) 
         $id = 3;
         $title = $_POST['vol_better_title_3'];
         $file_data = "vol_better_logo_3";
+    }else if(isset($_POST['submit_vol_better_4'])){
+        $id = 4;
+        $title = $_POST['vol_better_title_4'];
+        $file_data = "vol_better_logo_4";
     }
     
     $save_image = true;

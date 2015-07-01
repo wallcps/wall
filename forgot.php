@@ -17,11 +17,15 @@ $User = new User($db);
 
 $Get_Configurations=$User->Get_Configurations();
 $forgot=$Get_Configurations['forgot'];
+var_dump($forgot);
 //Login
 $login_error='';
+echo "Hello world";
+var_dump($_POST['user']);
 if($_POST['user'] )
 {
 $username=$_POST['user'];
+echo $username;
 
 if (strlen($username)>0)
 {
@@ -37,13 +41,13 @@ $fuid=$Wall->User_ID($username);
 $data=$Wall->User_Details($fuid);
 $newpassword_url=$base_url.'newpassword.php?id='.$forgot;
 
+
 include 'configurations.php';
 
 
-$to=$data['email'];
-$uname=$data['username'];
-
-$emailName=$Wall->UserFullName($uname);
+$to=$data['email']; $uname=$data['username'];
+$emailName=$Wall->UserFullName($uname); 
+echo $to.$uname;
 
 
 $subject ='Somebody request a new password for your '.$applicationName.' account';
@@ -51,6 +55,7 @@ $body="Hi ".$emailName.",<br/> <br/>Somebody recenlty asked to reset your ".$app
 
 sendMail($to,$subject,$body,$smtpHost,$smtpPort,$smtpUsername,$smtpPassword,$smtpFrom,$applicationName);
 $login_error="<span class='msg'>Please check your email for new password.</span>";
+
 
 
 }
@@ -62,8 +67,23 @@ $login_error="<span class='error'>Username or Email is not found. </span>";
 
 }
 }
+$newpassword_url=$base_url.'newpassword.php?id=14';
 
+if (isset($_POST['submit'])){ 
+    $to = "saorinphan@gmail.com";
+    $subject = "Hello";//$_REQUEST['subject'];
+    //$txt = "Type: text";//.$_REQUEST['mail_type']."\n\nMessage:\n".$_REQUEST['comment'];
+    $txt="Somebody recenlty asked to reset your password. <br/><br/><a href='".$newpassword_url."'>Click here to change your password.</a><br/><br/>Support<br/>".$base_url;
+    $headers = "phansaorin@gmail.com"; //.$_REQUEST['email']. "\r\n" ."CC: rottanaly@gmail.com";
 
+    mail($to,$subject,$txt,$headers);
+
+    //Email response
+    
+    $message = "Your message have been sent to CPS Administrator. Thank you for contacting us!";
+     
+    echo "<script type='text/javascript'>alert('$message');</script>";
+}
 
 
 
@@ -178,8 +198,9 @@ $login_error="<span class='error'>Username or Email is not found. </span>";
      </div>
     <div class="row" style="float:right;">
     	 <div class="col-md-12">
+        <a href="login.php"><input type="button" class="btn btn-info" value="Cancel" name="cancel"></a>
     	 	<input type="submit" class="btn btn-info" value="Submit" name="submit">
-    	 	<input type="button" class="btn btn-info" value="Cancel" name="cancel">
+    	 	
     	 </div>
     </div>
 		</form>

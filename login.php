@@ -43,19 +43,17 @@ if($_POST['user'] && $_POST['passcode'])
                 header("Location:cps_verification.php");
             }else{
                 
-                $login_error="<span class='error'>Username or Password is invalid</span>";
-                echo $login_error;
+                $login_error="<p class='bg-danger error' style='padding: 10px;'>Username or Password is invalid</p>";
              }
         }else{
 
-           $login_error="<span class='error'>Username or Password is invalid</span>";
-           echo $login_error;
+           $login_error="<p class='bg-danger error' style='padding: 10px;'>Username or Password is invalid</p>";
             }
     }else{
 
-        $login_error="<span class='error'>Username or Password is invalid</span>";
+       $login_error="<p class='bg-danger error' style='padding: 10px;'>Username or Password is invalid</p>";
     }
-      $login_error="<span class='error'>Username or Password is invalid</span>";
+     $login_error="<p class='bg-danger error' style='padding: 10px;'>Username or Password is invalid</p>";
          
 }
 
@@ -108,7 +106,7 @@ $(".close").click(function(){
                 opacity:1;    	
         }
         .omb_login .omb_socialButtons .omb_btn-facebook {background: #3b5998;}
-        .omb_login .omb_socialButtons .omb_btn-twitter {background: #00aced;}
+        .omb_login .omb_socialButtons .omb_btn-twitter {background: #43609C;}
         .omb_login .omb_socialButtons .omb_btn-google {background: #c32f10;}
 
 
@@ -187,7 +185,8 @@ $(".close").click(function(){
                  <hr style="width: 41%;margin-left: 240px; margin-top: -11px;">
                  <h4 style="color: #898B90;">Please Login to use your CPS Account</h4>
                 <div class="row omb_row-sm-offset-3">
-                    <div class="col-xs-12 col-sm-6">	
+                    <div class="col-xs-12 col-sm-6">
+                   <?php echo $login_error; ?>	
                         <form class="omb_loginForm" action="" autocomplete="off" method="POST" name="login">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -200,7 +199,6 @@ $(".close").click(function(){
                                 <input  type="password" class="form-control" name="passcode" placeholder="Password" required="">
                             </div>
                             <br/>
-                            <span><?php echo $reg_error; ?></span>
                             <button class="btn btn-lg btn-primary btn-block" id="btn_login" type="submit">Login</button>
                             <br/>
                             <div class="row">
@@ -225,7 +223,7 @@ $(".close").click(function(){
                     <div class="col-xs-4 col-sm-3">
                         <a href="#" data-toggle="modal" data-target="#comingsoon" class="btn btn-lg btn-block omb_btn-google">
                             <i class="fa fa-google-plus visible-xs"></i>
-                            <span class="hidden-xs">Google+</span>
+                            <span class="hidden-xs">Google Account</span>
                         </a>
                     </div>  
                 </div>
@@ -258,5 +256,3 @@ $(".close").click(function(){
     </div>
   </div>
 </div> -->
-
-

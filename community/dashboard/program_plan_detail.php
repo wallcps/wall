@@ -150,8 +150,24 @@ if ($group_msg_uid == $msg_uid) {
     ?>
     <div class="stbody" id="stbody<?php echo $omsg_id; ?>" rel="<?php echo $time; ?>">
 
-    <?php
-    /* Edit Social Need */ 
+        <?php
+        $sn_id = $_GET['sn_id'];
+        $sn_data = mysqli_query($db, "SELECT com_social_need.*, messages.msg_title as title FROM com_social_need inner join messages ON com_social_need.msg_id = messages.msg_id WHERE id = '$sn_id'");
+        foreach ($sn_data as $social_need_data) {
+
+            $date = date_create($social_need_data['modified_date']);
+            $sn_id = $social_need_data['id'];
+            $sn_msg_id = $social_need_data['msg_id'];
+            $sn_title = $social_need_data['title'];
+            $sn_summary = $social_need_data['introduction'];
+            $sn_content = $social_need_data['content'];
+            $sn_keyword = $social_need_data['keywords'];
+            $sn_image = $social_need_data['image'];
+        }
+
+
+        // update social need...........
+        /* Edit Social Need */ 
     if(isset($_POST['submit_edit_sn']))
     {
         $sn_id              = $_POST['edit_sn_id'];
@@ -177,20 +193,6 @@ if ($group_msg_uid == $msg_uid) {
         
         mysqli_query($db,"UPDATE com_social_need INNER JOIN messages ON messages.msg_id = com_social_need.msg_id SET messages.msg_title='$sn_title',com_social_need.introduction='$sn_summary',com_social_need.content='$sn_content',com_social_need.keywords='$sn_keyword',com_social_need.image='$filename1' WHERE messages.msg_id='$msg_id'");
         
-    }
-    
-    $sn_id = $_GET['sn_id'];
-    $sn_data = mysqli_query($db, "SELECT com_social_need.*, messages.msg_title as title FROM com_social_need inner join messages ON com_social_need.msg_id = messages.msg_id WHERE id = '$sn_id'");
-    foreach ($sn_data as $social_need_data) {
-
-        $date = date_create($social_need_data['modified_date']);
-        $sn_id = $social_need_data['id'];
-        $sn_msg_id = $social_need_data['msg_id'];
-        $sn_title = $social_need_data['title'];
-        $sn_summary = $social_need_data['introduction'];
-        $sn_content = $social_need_data['content'];
-        $sn_keyword = $social_need_data['keywords'];
-        $sn_image = $social_need_data['image'];
     }
 ?>
         <div class="sttext full">

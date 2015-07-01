@@ -302,7 +302,7 @@
                   Please embed code of your location: <br/><br><textarea name="ben_map" class="text-editor" style="width:540px; height:200px; margin-bottom: 10px;"><?php echo $map; ?></textarea><br/>
             </div>
             <div class="note">
-               
+               <a href="<?php echo $base_url . 'group.php?gid=' . $groupID . '&ptab=instruction'; ?>" target="_blank" style="text-decoration:none;">Click here to see how to embed the map</a>
             </div>
             <div class="modal-footer">
                  <input type="hidden" name="com_id_map" value="<?php echo $com_id; ?>">
@@ -327,14 +327,14 @@
                 <h4 class="modal-title" id="exampleModalLabel">Edit Beneficiary</h4>
             </div>
             <div class="modal-body">
-                   <p>What is your titile?</p>
+                   <p>What is your title?</p>
                    <input type="text" name="ben_title" style="width:100%; margin-bottom:10px;" value="<?php echo $title; ?>" class="form-control" required="" />
                   
                   <p>What is your location?</p> 
                   <input type="text" name="ben_location" style="width:100%; margin-bottom:10px;" value="<?php echo $com_location; ?>" class="form-control" required="" />
                   <p>What is your languages?</p>
                   <input type="text" name="ben_lang" class="ben_lang form-control" id="ben_lang" style="width:100%; margin-bottom:10px;" data-role="tagsinput" value="<?php echo $com_languages; ?>" class="text-input" required="" /><br/>
-                  <p>What is your descrition?</p> 
+                  <p>What is your description?</p> 
                    <textarea name="ben_desc" class="form-control" style="width:100%; height:200px !important; margin-bottom: 10px;"><?php echo $description; ?></textarea><br/>
                   <p>Please choose your image</p>
                   <input type="file" name="ben_pic" id="ben_pic" class="form-control" style="display:inline;">

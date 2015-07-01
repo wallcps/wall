@@ -134,7 +134,7 @@
                     </td>
             </tr>
             <tr>
-                <td>Combo box</td>
+                <td>Country</td>
                 <td><span class="text-profile"><?php echo $country; ?></span></td>
                     <td>
                         <a href="" data-toggle="modal" data-target="#edit_country"><i class="glyphicon glyphicon-edit custom-file-input" original-title="Edit Country" data-toggle="modal"></i></a>
@@ -147,7 +147,8 @@
                                         <h4 class="modal-title" id="exampleModalLabel">Edit Country</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <input type="email" class="form-control" name="country" id="countrys" value="<?php echo $country; ?>"/>
+                                        <?php include_once 'country_lists.php';?>
+                                        <!-- <input type="email" class="form-control" name="country" id="countrys" value="<?php echo $country; ?>"/> -->
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
                                             <button id="submit_email" name="save" class="btn btn-sm btn-primary update-profile">Update</button>
@@ -184,7 +185,7 @@
                     </td>
             </tr>
             </table>
-            <h4>Skill and Interest</h4>
+            <h4>Skills and Interests</h4>
             <hr class="all-hr-project">
             <table class="table">
              <tr>
@@ -205,7 +206,7 @@
                         
                     </td>
                     <td>
-                        <a href="" data-toggle="modal" data-target="#edit_skill"><i class="glyphicon glyphicon-edit custom-file-input" original-title="Edit Skill" data-toggle="modal"></i></a>
+                        <a href="" data-toggle="modal" data-target="#edit_skill"><i class="glyphicon glyphicon-edit custom-file-input" original-title="Edit Skills" data-toggle="modal"></i></a>
                         <!-- <i class="glyphicon glyphicon-pencil custom-file-input" data-toggle="modal" data-target="#edit_skill" original-title="edit skills"></i> -->
                         <div class="modal fade" id="edit_skill" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -295,6 +296,7 @@
         <div class="following row">
         <div class="following row">
         <h4>Project Following</h4>
+          <a href="" data-toggle="modal" data-target="#edit_projects_following"><i class="glyphicon glyphicon-edit custom-file-input follow_unfollow" original-title="Edit Project Following" data-toggle="modal"></i></a>
         <hr class="all-hr-project">
         <?php $project_follow = $Wall->User_Project_Follow($uid);
         // var_dump($project_follow);
@@ -320,7 +322,7 @@
                    
               
         ?>
-        <a href="" data-toggle="modal" data-target="#edit_projects_following"><i class="glyphicon glyphicon-edit custom-file-input" original-title="Edit Project Following" data-toggle="modal"></i></a>
+        
         </div>
         <br/>
         

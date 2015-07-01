@@ -111,6 +111,10 @@ $(document).ready(function(){
                     $count ++;
                     // put in bold the written text
                     $group_name = $rs['group_name'];
+                    if (strlen($group_name) >= 26) {
+                       $pro_content11 = strip_tags($group_name);
+                       $group_name = (substr($pro_content11, 0, 26));
+                    }
                     $group_id = $rs['group_id'];
                     $group_owner = $rs['group_owner_id'];
                     if($rs['group_pic']){
@@ -157,6 +161,10 @@ $(document).ready(function(){
                     // put in bold the written text
                     $group_name = $rs['group_name'];
                     // echo $group_name.'hello world';
+                    if (strlen($group_name) >= 26) {
+                       $pro_content11 = strip_tags($group_name);
+                       $group_name = (substr($pro_content11, 0, 26));
+                    }
                     $group_id = $rs['group_id'];
                     $group_owner = $rs['group_owner_id'];
                     if($rs['group_pic']){

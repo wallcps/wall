@@ -215,7 +215,7 @@ if(isset($_POST['submit']) & $_SERVER['REQUEST_METHOD'] == "POST")
                  </ul>
                 </div>
             </div>
-                 <div class="btn-primarybtn-block btn-login"><a href="<?php echo $base_url;?>">Login</a></div>
+                 <button class="btn-primarybtn-block"><a href="<?php echo $base_url;?>">LOG IN</a></button>
             </div>
         </div>
     </div>
@@ -329,7 +329,7 @@ if(isset($_POST['submit']) & $_SERVER['REQUEST_METHOD'] == "POST")
                     <td></td>
                 </tr>
                   <tr>
-                    <td class="text-right"><div class="addressLabel">Address:</div></td>
+                    <td class="text-right"><div class="addressLabel"> Mailing Address:</div></td>
                     <td>
                         <textarea style="width:100%; height: 100px !important;" name="usr_add" class="input text-input form-control" value="<?php echo $_POST['usr_add'];?>" AUTOCOMPLETE='off'></textarea>
                         </td>

@@ -1,51 +1,47 @@
 <?php include_once 'js.php';?>
-<script  src="<?php echo $base_url; ?>js/lib-scrool/1.6.1.jquery.min.js"></script>
-<script type='text/javascript'> var $jm161 = jQuery.noConflict();</script>
 <script>
-$jm161(document).ready(function(){
-    $jm161(".list_project").hide();
-    $jm161(".readmore_pro").click(function(){
-        $jm161(".list_project").slideToggle("slow");
-        $jm161(".readmore_pro").hide();
+$(document).ready(function(){
+    $(".list_project").hide();
+    $(".readmore_pro").click(function(){
+        $(".list_project").slideToggle("slow");
+        $(".readmore_pro").hide();
     });
-    $jm161(".list_org").hide();
-    $jm161(".readmore_org").click(function(){
-        $jm161(".list_org").slideToggle("slow");
-        $jm161(".readmore_org").hide();
+    $(".list_org").hide();
+    $(".readmore_org").click(function(){
+        $(".list_org").slideToggle("slow");
+        $(".readmore_org").hide();
     });
-    $jm161(".list_com").hide();
-    $jm161(".readmore_com").click(function(){
-        $jm161(".list_com").slideToggle("slow");
-        $jm161(".readmore_com").hide();
+    $(".list_com").hide();
+    $(".readmore_com").click(function(){
+        $(".list_com").slideToggle("slow");
+        $(".readmore_com").hide();
     });
-    $jm161(".list_pfollow").hide();
-    $jm161(".readmore_pfollow").click(function(){
-        $jm161(".list_pfollow").slideToggle("slow");
-        $jm161(".readmore_pfollow").hide();
+    $(".list_pfollow").hide();
+    $(".readmore_pfollow").click(function(){
+        $(".list_project").slideToggle("slow");
+        $(".readmore_pfollow").hide();
     });
 });
 </script>
 
         <div class="leftWrite">
         <div id="bigFace" data-step="4" data-intro="Upload a profile picture.">
-        <?php if(!$profile_uid){ ?>
+        <?php if(!$profile_uid){ ;?>
 
-        <form id="bigprofileimageform" method="post" enctype="multipart/form-data" action='<?php echo $base_url;?>image_upload_ajax.php'>
-        <div  class="uploadFile timelineUploadImgBig">
-        <input type="file"  name="photoimg" id="bigprofilephotoimg" class=" custom-file-input" original-title="Upload Profile Picture">
-        </div>
+        <form id="bigprofileimageform" method="post" enctype="multipart/form-data" action='<?php $base_url;?>image_upload_ajax.php'>
+        
         <input type='hidden' name="groupID" value='<?php echo $group_id; ?>'/>
         <input type='hidden' name="imageType" value='1'/>
         </form>
         <?php } ?>
 
-        <img src='<?php echo $profileface;  ?>' id="profileBigFace" /> 
+        <img src='<?php echo 'uploads/'.$profile_pic;  ?>' id="profileBigFace" />  
         <div id="aboutMeText">
-           <?php //echo'<b class="text-name">'.$username.'</b>'; ?>
+           <?php // echo'<b class="text-name">'.$username.'</b>'; ?>
 
   <?php 
 
-            $userdetails=$Wall->User_Details_UserFullName($username);
+           $userdetails=$Wall->User_Details_UserFullName($username);
             $fname = $userdetails['first_name'];
             $lname = $userdetails['last_name'];
              $last_name = ucfirst(strtolower($lname));
@@ -55,23 +51,21 @@ $jm161(document).ready(function(){
 
  ?>
             <?php //echo $session_bio; ?><br><br>
-            <?php if($_GET['username']){ ?>
+            <?php //if($_GET['profile_id']){ ?>
           
 
-        <a href="<?php echo $base_url.'messages/'.$_GET['username'];?>"  class='wallbutton messageButton'>Send Message</a><br>
-            <?php }          ?>
+        <!-- <a href="<?php// echo $base_url.'messages/'.$_GET['profile_id'];?>"  class='wallbutton messageButton'>Send Message</a><br> -->
+            <?php 
+             // } 
+               ?>
         </div>
 
         </div>
         </div>
         <br/>
-        <!-- <div class="after-profile-text">
-            <p class="get-style">My Feed</p>
-            <hr/>
-            <p class="get-style">Starred</p>
-        </div> -->
+
         <br/>
-        <div class="after-profile"><?php 
+         <div class="after-profile"><?php 
         $count1; $count2; $count3; $count4;
         if($_GET['username'])
         {
@@ -109,8 +103,7 @@ $jm161(document).ready(function(){
         <!--<div  id="show-project" class="small_text_upper" onclick="showHideProject();"><b style="text-decoration:underline;">Projects </b><div class="counts gets"><?php //echo $count1;?></div></div><br/> -->
         <div  id="show-project" class="small_text_upper" onclick="showHideProject();"><b style="text-decoration:underline;">Projects </b><div class="counts gets"><?php echo $count1;?></div></div><br/>
         <div class="dashboard-left-project">
-           
-        <?php 
+           <?php 
 
         if($project_detail){
             $count = 0;
@@ -118,10 +111,6 @@ $jm161(document).ready(function(){
                     $count ++;
                     // put in bold the written text
                     $group_name = $rs['group_name'];
-                    if (strlen($group_name) >= 26) {
-                       $pro_content11 = strip_tags($group_name);
-                      $group_name = (substr($pro_content11, 0, 26));
-                    }
                     $group_id = $rs['group_id'];
                     $group_owner = $rs['group_owner_id'];
                     if($rs['group_pic']){
@@ -155,7 +144,7 @@ $jm161(document).ready(function(){
         }
         ?>
         </div><br/>
-     <!--<div  id="show-project" class="small_text_upper" onclick="showHideProject();"><b style="text-decoration:underline;">Projects </b><div class="counts gets"><?php //echo $count1;?></div></div><br/> -->
+        <!--<div  id="show-project" class="small_text_upper" onclick="showHideProject();"><b style="text-decoration:underline;">Projects </b><div class="counts gets"><?php //echo $count1;?></div></div><br/> -->
         <div  id="show-project-following" class="small_text_upper" onclick="showProFlo();"><b style="text-decoration:underline;">projects Following</b><div class="counts pro-follow"><?php echo $count4;?></div></div><br/>
         <div class="dashboard-left-project-following">
             
@@ -166,11 +155,7 @@ $jm161(document).ready(function(){
             foreach ($project_follow as $rs) {
                     $count ++;
                     // put in bold the written text
-                   $group_name = $rs['group_name'];
-                    if (strlen($group_name) >= 26) {
-                       $pro_content11 = strip_tags($group_name);
-                      $group_name = (substr($pro_content11, 0, 26));
-                    }
+                    $group_name = $rs['group_name'];
                     // echo $group_name.'hello world';
                     $group_id = $rs['group_id'];
                     $group_owner = $rs['group_owner_id'];
@@ -207,78 +192,4 @@ $jm161(document).ready(function(){
         }
         ?>
         </div><br/>
-
-    <div  id="show-communities" class="small_text_upper" onclick="showHideCom();"><b style="text-decoration:underline;position: absolute; margin-top: 3px;">Communities</b><div class="counts gets"><?php echo $count2;?></div></div>   
-<div class="dashboard-left-com">
-   
-<?php 
-
-if($community_detail){
-    $count = 0;
-    foreach ($community_detail as $rs) {
-        $count ++;
-
-            // put in bold the written text
-            $group_name = $rs['group_name'];
-            if (strlen($group_name) >= 15) {
-               $pro_content11 = strip_tags($group_name);
-              $group_name = (substr($pro_content11, 0, 15));
-            }
-
-            $group_id = $rs['group_id'];
-            $group_owner = $rs['group_owner_id'];
-                    
-             if($rs['group_pic']){
-                $group_pic = $base_url.'uploads/'.$rs['group_pic'];
-            }else{
-                $group_pic = $base_url.'wall_icons/default.png';
-            }
-            if($group_owner==$uid)
-            {
-                // $edit='<a href="" class="edit" original-title="Edit Group"></a>';
-            }
-            if($count >= 6){
-                            if($count == 6){?>
-                            <div class="readmore_com">View More...</div>
-                                <?php
-                                //echo $count;
-                                 //echo '<div class="list_com groupListDiv">'.$edit.'<a href="'.$base_url.'group.php?gid='.$group_id.'" ><img src="'.$group_pic.'" class="groupIcon"><div class="groupSmallTitle">'.$group_name.'</div></a></div>';
-                              echo '<div class="list_com groupListDiv">'.$edit.'<a href="" data-toggle="modal" data-target="#comming_soon"><img src="'.$group_pic.'" class="groupIcon"><div class="groupSmallTitle">'.$group_name.'</div></a></div>';
-                            
-                              }else{
-                           //echo '<div class="list_com groupListDiv">'.$edit.'<a href="'.$base_url.'group.php?gid='.$group_id.'" ><img src="'.$group_pic.'" class="groupIcon"><div class="groupSmallTitle">'.$group_name.'</div></a></div>';
-                           echo '<div class="list_com groupListDiv">'.$edit.'<a href="" data-toggle="modal" data-target="#comming_soon"><img src="'.$group_pic.'" class="groupIcon"><div class="groupSmallTitle">'.$group_name.'</div></a></div>';
-                            
-                            }
-                    }else { 
-                       // echo '<div class="groupListDiv">'.$edit.'<a href="'.$base_url.'group.php?gid='.$group_id.'" ><img src="'.$group_pic.'" class="groupIcon"><div class="groupSmallTitle">'.$group_name.'</div></a></div>';  
-                       echo '<div class="groupListDiv">'.$edit.'<a href="'.$base_url.'community_follow.php?gid='.$group_id.'" ><img src="'.$group_pic.'" class="groupIcon"><div class="groupSmallTitle">'.$group_name.'</div></a></div>';
-                             
-                    }
-              }
-}else{ 
-    echo '<div class="display_box" align="left" style="width:200px;">';
-    echo 'No communities found!';
-    echo '</div>';
-}
-?>
-</div>
-
-</div>
-
-
-     
-<div class="modal fade" id="comming_soon" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-       <form method="post" enctype='multipart/form-data' action="">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="exampleModalLabel">This page will coming soon</h4>
-        </div>
-        <div class="modal-body" id="prog-plan-editor">      
-            <h3>Coming Soon</h3>
-        </div>
-      </div>
     </div>
-</div> 

@@ -66,10 +66,10 @@ if($_GET['p']){
 if (isset($_POST['submit_contact_cps_admin'])){
 
      		
-    $to = "it-support@volunteerbetter.com";
+    $to = "saorinphan@gmail.com";
     $subject = $_REQUEST['subject'];
     $txt = "Type: ".$_REQUEST['mail_type']."\n\nMessage:\n".$_REQUEST['comment'];
-    $headers = "From: " .$_REQUEST['email']. "\r\n" ."CC: phansaorin@gmail.com";
+    $headers = "From: " .$_REQUEST['email']. "\r\n" ."CC: maochhyeng@gmail.com";
 
     mail($to,$subject,$txt,$headers);
 
@@ -88,7 +88,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
                     <img src="<?php echo $base_url; ?>images/logo.png"/>
                 </div>
                 <div class="search-box">
-                <input type="text" class="topbarSearch" id="searchinput" placeholder="Can search only Project and Community"  data-step="2" data-intro="Search for Friends and Groups."/>
+                <input type="text" class="topbarSearch" id="searchinput" placeholder="Search Care Positioning System"  data-step="2" data-intro="Search for Friends and Groups."/>
                 <div id="display" ></div>
                 </div>
             </div>
@@ -215,11 +215,11 @@ if (isset($_POST['submit_contact_cps_admin'])){
                         </select>
                         </div>
                         <div class="col-md-6">
-                            <p class="text-help">Admin's name</p>
+                            <p class="text-help">Username</p>
                             <input name="name" type="text" class="form-control" placeholder="Name" readonly value="<?php echo ucfirst($session_username); ?>" style="padding:6px 12px;" readonly/>
                         </div>
                         <div class="col-md-6">
-                            <p class="text-help">Admin's email</p>
+                            <p class="text-help">User email</p>
                             <input name="email" type="email" class="form-control" placeholder="Email" readonly value="<?php echo $session_email; ?>"/>
                         </div>
                     </div>

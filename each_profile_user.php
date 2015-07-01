@@ -40,6 +40,7 @@ $jm161(document).ready(function(){
     
     .profile .table .btn{
         border-radius: 4px;
+        margin-top:5px;
     }
     .profile .table .img-circle{
         border-radius: 50%;

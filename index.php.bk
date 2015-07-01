@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once 'includes.php';
 include_once 'oauth_redirection.php';
 include_once 'create_project_validation.php';
@@ -65,10 +67,10 @@ if($p1_gid>0){
 		$p1_title = "Untitled";
 	}
     if($p1_message['cate_id']==1){
-		$p1_content = "New Announcement: ".$p1_title;
+		$p1_content = "Announcement: ".$p1_title;
         $p1_url = $base_url."group.php?gid=".$p1_gid."&ptab=all_announcement";
     }else if($p1_message['cate_id']==2){
-        $p1_content = "New Needs Identified: ".$p1_title;
+        $p1_content = "Needs Identified: ".$p1_title;
         $p1_url = $base_url."group.php?gid=".$p1_gid."&ptab=contents";
     }
     $p1_count = $Wall->Count_Project_Nitification($p1_gid);
@@ -85,10 +87,10 @@ if($p2_gid>0){
 		$p2_title = "Untitled";
 	}
     if($p2_message['cate_id']==1){
-        $p2_content = "New Announcement: ".$p2_title;
+        $p2_content = "Announcement: ".$p2_title;
         $p2_url = $base_url."group.php?gid=".$p2_gid."&ptab=all_announcement";
     }else if($p2_message['cate_id']==2){
-        $p2_content = "New Needs Identified".$p2_title;
+        $p2_content = "Needs Identified".$p2_title;
         $p2_url = $base_url."group.php?gid=".$p2_gid."&ptab=contents";
     }
     $p2_count = $Wall->Count_Project_Nitification($p2_gid);
@@ -104,10 +106,10 @@ if($p3_gid>0){
 		$p3_title = "Untitled";
 	}
     if($p3_message['cate_id']==1){
-        $p3_content = "New Announcement: ".$p3_title;
+        $p3_content = "Announcement: ".$p3_title;
         $p3_url = $base_url."group.php?gid=".$p3_gid."&ptab=all_announcement";
     }else if($p1_message['cate_id']==2){
-        $p3_content = "New Needs Identified: ".$p3_title;
+        $p3_content = "Needs Identified: ".$p3_title;
         $p3_url = $base_url."group.php?gid=".$p3_gid."&ptab=contents";
     }
     $p3_count = $Wall->Count_Project_Nitification($p3_gid);
@@ -123,93 +125,15 @@ if($p4_gid>0){
 		$p4_title = "Untitled";
 	}
     if($p4_message['cate_id']==1){
-        $p4_content = "New Announcement: ".$p4_title;
+        $p4_content = "Announcement: ".$p4_title;
         $p4_url = $base_url."group.php?gid=".$p4_gid."&ptab=all_announcement";
     }else if($p1_message['cate_id']==2){
-        $p4_content = "New Needs Identified: ".$p4_title;
+        $p4_content = "Needs Identified: ".$p4_title;
         $p4_url = $base_url."group.php?gid=".$p4_gid."&ptab=contents";
     }
     $p4_count = $Wall->Count_Project_Nitification($p4_gid);
 }
 
-// Change Password
-$login_error='';
-if(isset($_POST['submit-password']))
-{
-	
-	$current_password=$_POST['current_password'];
-	$new_password=$_POST['new_password'];
-	$confirm_password=$_POST['confirm_password'];
-
-	
-	$check_current_password = $Wall->Check_Current_Password($session_uid, $current_password);
-
-
-	if($check_current_password)
-	{
-		if(strcmp($new_password, $confirm_password)==0){
-			$update = $Wall->Update_Password($session_uid, $new_password);
-			$pwd_error="<span class='msg'>You have updated your password successfully.</span>";
-		}else{
- 
-			$pwd_error="<span class='error'>Your confirm password is not matched, please check again.</span>";
-		}
-	}
-	else
-	{
-		$pwd_error="<span class='error'>Your current password is incorrect, please check again.</span>";
-	}
-
-}
-
-if (isset($_POST['submit_invitations'])){
-  
-    $to = $_REQUEST['invitations'];
-    $subject = "Invitations mail";
-    $txt = "You are invited to visit our CPS website: http://demo.volunteerbetter.com/index.php";
-    $headers = "From: ".$_REQUEST['own_email']."\r\n"."CC: lzr.lizhirong@gmail.com";
-
-    mail($to,$subject,$txt,$headers);
-
-    //Email response
-    $message = "Your invitation messages have been sent. Thank you!";
-	echo "<script type='text/javascript'>alert('$message');</script>";
-}
-
-if (isset($_POST['submit_suggest_community'])){
-
-    $to = "it-support@volunteerbetter.com";
-    $subject = "Expand New Community";
-    $headers = "From:".$_REQUEST['suggest_own_email']."\r\n"."CC: maochhyeng@gmail.com";
-    //$headers  = "From:saorinphan@gmail.com \r\n"."CC: "."rottanaly@gmail.com";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-    $message = '<html><body>';
-    $message .= '<img src="http://demo.volunteerbetter.com/images/email-logo.png" alt="volunteerbetter logo" />';
-    $message .= '<h2>Request New Community</h2>';
-    $message .= '<table rules="all" style="border-color: #666;width:600px;" cellpadding="10">';
-    $message .= "<tr style='background: #eee;'><td><strong>Where is your community</strong> </td><td>" .$_REQUEST['community_name']. "</td></tr>";
-    $message .= "<tr><td><strong>Tell us about yourself</strong> </td><td>" .$_REQUEST['par_self_intro']. "</td></tr>";
-    $message .= "<tr><td><strong>Why do you want to bring us to your community?:</strong> </td><td>" .$_REQUEST['par_reason'] . "</td></tr>";
-    $message .= "<tr><td><strong>User Email</strong> </td><td>" .$_REQUEST['suggest_own_email'] . "</td></tr>";
-    $message.="</table></body></html>";
-
-
- //    $to = "phansaorin@gmail.com";
- //    $subject = "Expand New Community";
- //    $txt = " Where is your community? \n".$_REQUEST['community_name']."\n\n";
-	// $txt .= " Tell us about yourself: \n".$_REQUEST['par_self_intro']."\n\n";
-	// $txt .= " Why do you want to bring us to your community? \n".$_REQUEST['par_reason']."\n\n";
-	// $txt .= " User Email \n".$_REQUEST['suggest_own_email']."\n";
-
-    //$headers = "From:".$_REQUEST['suggest_own_email']."\r\n"."CC: maochhyeng@gmail.com";
-
-    mail($to,$subject,$message,$headers);
-
-    //Email response
-    $messages = "Your invitation messages have been sent. Thank you!";
-	echo "<script type='text/javascript'>alert('$messages');</script>";
-}
 
 
 
@@ -269,3 +193,10 @@ if (isset($_POST['submit_suggest_community'])){
         </div>
     </body>
 </html>
+
+<?php
+if($session_tour==0)
+{
+echo '<script>introJs().start();</script>';
+}
+?>

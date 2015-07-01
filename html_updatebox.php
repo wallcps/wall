@@ -31,6 +31,7 @@ h1, h2, h3, footer, .gallery {
     box-shadow: 0 0 4px -1px #000;
 }
 </style>
+
 <!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> -->
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -227,6 +228,7 @@ h1, h2, h3, footer, .gallery {
 <!-- the end of two slide -->
 
 <!-- start of table project -->
+<!-- start of table project -->
 <div class="row">
   <!--div class="your_project" style="background-color:#ffffff;"-->
    <div class="row" style="background-color:#C7D9F1;"> <h4 style="text-align: center;">Your Projects</h4></div>
@@ -236,10 +238,12 @@ h1, h2, h3, footer, .gallery {
       if($p1_gid>0){
           echo '<tr class="active">';
           echo '<td>'?>
-         <?php if (strlen($p1_group_name) >= 15) {
+         <?php
+          
+          if (strlen($p1_group_name) >= 40) {
                    $gro_content1 = strip_tags($p1_group_name);
-                  $trimstrings = (substr($gro_content1, 0, 15));
-                   echo '<span data-tooltip="tooltip" title="'.$p1_group_name.'">'.$trimstrings."...</span>";
+                  $trimstrings = (substr($gro_content1, 0, 40));
+                   echo '<span data-tooltip="tooltip" title="'.$p1_group_name.'">'.$trimstrings.".<br/></span>";
                     } else {
                        echo '<span data-tooltip="tooltip" title="'.$p1_group_name.'">'.$p1_group_name.'</span>';
                     }
@@ -248,10 +252,12 @@ h1, h2, h3, footer, .gallery {
          <?php '</td>';
           echo '<td><a href="'.$p1_url.'">'?>
 
-           <?php if (strlen($p1_content) >= 15) {
+           <?php
+          
+            if (strlen($p1_content) >= 40) {
                    $pro_content1 = strip_tags($p1_content);
-                  $trimstrings = (substr($pro_content1, 0, 15));
-                   echo '<span data-tooltip="tooltip"  title="'.$p1_content.'">'.$trimstrings."...</span>";
+                  $trimstrings = (substr($pro_content1, 0, 40));
+                   echo '<span data-tooltip="tooltip"  title="'.$p1_content.'">'.$trimstrings."</span>";
                     } else {
                        echo '<span data-tooltip="tooltip" title="'.$p1_content.'">'.$p1_content.'</span>';
                     }
@@ -263,10 +269,10 @@ h1, h2, h3, footer, .gallery {
       if($p1_gid>0){
           echo '<tr class="info">';
           echo '<td>'?>
-            <?php if (strlen($p2_group_name) >= 15) {
+            <?php if (strlen($p2_group_name) >= 40) {
                    $gro_content2 = strip_tags($p2_group_name);
-                  $trimstrings = (substr($gro_content2, 0, 15));
-                   echo '<span data-tooltip="tooltip" title="'.$p2_group_name.'">'.$trimstrings."...</span>";
+                  $trimstrings = (substr($gro_content2, 0, 40));
+                   echo '<span data-tooltip="tooltip" title="'.$p2_group_name.'">'.$trimstrings."</span>";
                     } else {
                        echo '<span data-tooltip="tooltip" title="'.$p2_group_name.'">'.$p2_group_name.'</span>';
                     }
@@ -276,10 +282,10 @@ h1, h2, h3, footer, .gallery {
           <?php '</td>';
 
           echo '<td><a href="'.$p2_url.'">'?>
-          <?php if (strlen($p2_content) >= 15) {
+          <?php if (strlen($p2_content) >= 40) {
                              $p_content2 = strip_tags($p2_content);
-                            $trimstrings = (substr($p_content2, 0, 15));
-                             echo '<span data-tooltip="tooltip" title="'.$p2_content.'">'.$trimstrings."...</span>";
+                            $trimstrings = (substr($p_content2, 0, 40));
+                             echo '<span data-tooltip="tooltip" title="'.$p2_content.'">'.$trimstrings."</span>";
                               } else {
                                  echo '<span data-tooltip="tooltip" title="'.$p2_content.'">'.$p2_content.'</span>';
                               }
@@ -291,10 +297,10 @@ h1, h2, h3, footer, .gallery {
       if($p1_gid>0){
           echo '<tr class="active">';
           echo '<td>'?>
-            <?php if (strlen($p3_group_name) >= 15) {
+            <?php if (strlen($p3_group_name) >= 40) {
                    $gro_content3 = strip_tags($p3_group_name);
-                  $trimstrings = (substr($gro_content3, 0, 15));
-                   echo '<span data-tooltip="tooltip" title="'.$p3_group_name.'">'.$trimstrings."...</span>";
+                  $trimstrings = (substr($gro_content3, 0, 40));
+                   echo '<span data-tooltip="tooltip" title="'.$p3_group_name.'">'.$trimstrings."</span>";
                     } else {
                        echo '<span data-tooltip="tooltip" title="'.$p3_group_name.'">'.$p3_group_name.'</span>';
                     }
@@ -303,10 +309,10 @@ h1, h2, h3, footer, .gallery {
         <?php '</td>';
           echo '<td><a href="'.$p3_url.'">'?>
 
-          <?php if (strlen($p3_content) >= 15) {
+          <?php if (strlen($p3_content) >= 40) {
                    $gro_content3 = strip_tags($p3_content);
-                  $trimstrings = (substr($gro_content3, 0, 15));
-                   echo '<span data-tooltip="tooltip" title="'.$p3_content.'">'.$trimstrings."...</span>";
+                  $trimstrings = (substr($gro_content3, 0, 40));
+                   echo '<span data-tooltip="tooltip" title="'.$p3_content.'">'.$trimstrings."</span>";
                     } else {
                        echo '<span data-tooltip="tooltip" title="'.$p3_content.'">'.$p3_content.'</span>';
                     }
@@ -319,10 +325,10 @@ h1, h2, h3, footer, .gallery {
       if($p1_gid>0){
           echo '<tr class="info">';
           echo '<td>'?>
-           <?php if (strlen($p4_group_name) >= 15) {
+           <?php if (strlen($p4_group_name) >= 40) {
                    $gro_content4 = strip_tags($p4_group_name);
-                  $trimstrings = (substr($gro_content4, 0, 15));
-                   echo '<span data-tooltip="tooltip" title="'.$p4_group_name.'">'.$trimstrings."...</span>";
+                  $trimstrings = (substr($gro_content4, 0, 40));
+                   echo '<span data-tooltip="tooltip" title="'.$p4_group_name.'">'.$trimstrings."</span>";
                     } else {
                        echo '<span data-tooltip="tooltip" title="'.$p4_group_name.'">'.$p4_group_name.'</span>';
                     }
@@ -331,10 +337,10 @@ h1, h2, h3, footer, .gallery {
 
           <?php '</td>';
           echo '<td><a href="'.$p4_url.'">'?>
-           <?php if (strlen($p4_content) >= 15) {
+           <?php if (strlen($p4_content) >= 40) {
                    $pro_content4 = strip_tags($p4_content);
-                  $trimstrings = (substr($pro_content4, 0, 15));
-                   echo '<span data-tooltip="tooltip" title="'.$p4_content.'">'.$trimstrings."...</span>";
+                  $trimstrings = (substr($pro_content4, 0, 40));
+                   echo '<span data-tooltip="tooltip" title="'.$p4_content.'">'.$trimstrings."</span>";
                    
                     } else {
                        echo '<span data-tooltip="tooltip" title="'.$p4_content.'">'.$p4_content.'</span>';
@@ -356,7 +362,6 @@ h1, h2, h3, footer, .gallery {
 </div>
 <!-- The ends of table project -->
 </div>
-<!-- start of user console -->
 <div class="console">
   <h2 id="user-console">User Console</h2>
   <center><p><i>Use this console to get started</i></p></center>
@@ -524,9 +529,12 @@ h1, h2, h3, footer, .gallery {
                 <h4 class="modal-title" id="exampleModalLabel">Edit Learn and Teach Content <?php echo $content_id;?></h4>
               </div>
               <div class="modal-body">
-                  Title: <input type="text" name='<?php echo 'tl_content_title_'.$content_id; ?>' style="width:90%; margin-bottom:10px;" value="<?php echo $content_title; ?>" class="text-input" required="" />
-                  URL: <input type="url" name='<?php echo 'tl_content_url_'.$content_id; ?>' style="width:90%; margin-bottom:10px;" value="<?php echo $content_url; ?>" class="text-input" required="" />
-                  Image:  <input type="file" name="<?php echo 'tl_image_'.$content_id; ?>" id="<?php echo 'tl_image_'.$content_id; ?>" style="display:inline;">
+                      <p> What is your title?</p>
+                  <input type="text" name='<?php echo 'tl_content_title_'.$content_id; ?>' style="width:100%;" value="<?php echo $content_title; ?>" class="form-control" required="" />
+                  <p>What is your url?</p>
+                 <input type="url" name='<?php echo 'tl_content_url_'.$content_id; ?>' style="width:100%;" value="<?php echo $content_url; ?>" class="form-control" required="" />
+                  <p>Please upload your image</p>
+                  <input type="file" name="<?php echo 'tl_image_'.$content_id; ?>" id="<?php echo 'tl_image_'.$content_id; ?>" style="display:inline;">
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -655,9 +663,12 @@ h1, h2, h3, footer, .gallery {
                 <h4 class="modal-title" id="exampleModalLabel">Edit Step <?php echo $step_id;?></h4>
               </div>
               <div class="modal-body">
-                  Title: <input type="text" name='<?php echo 'step_title_'.$step_id; ?>' style="width:90%; margin-bottom:10px;" value="<?php echo $step_title; ?>" class="text-input" required="" />
-                  Content: <textarea name='<?php echo 'step_content_'.$step_id; ?>' style="width:100%; height:150px;"><?php echo $step_content; ?></textarea>
-                  Image:  <input type="file" name="<?php echo 'step_image_'.$step_id; ?>" id="<?php echo 'step_image_'.$step_id; ?>" style="display:inline;">
+                <p>What is your title?</p>
+                 <input type="text" name='<?php echo 'step_title_'.$step_id; ?>' style="width:100%; margin-bottom:10px;" value="<?php echo $step_title; ?>" class="form-control" required="" />
+                  <p>What is your content?</p>
+                  <textarea name='<?php echo 'step_content_'.$step_id; ?>' style="width:100%; height:150px !important;" class="form-control"><?php echo $step_content; ?></textarea>
+                  <p>Please upload your image</p>
+                   <input type="file" name="<?php echo 'step_image_'.$step_id; ?>" id="<?php echo 'step_image_'.$step_id; ?>" style="display:inline;">
               </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -694,7 +705,7 @@ h1, h2, h3, footer, .gallery {
                       <?php if ($session_cps_admin) { ?>
                     <a href="#" class="icon-update" data-toggle="modal" data-target="#edit_text_one"><i class="glyphicon glyphicon-edit edit-icon-volunteer" original-title="edit name" data-toggle="modal"></i></a>
                     <?php } ?>
-                    <span class="badge">1</span>&nbsp;&nbsp;<span id="text-underline"><?php echo $content_descrition; ?></span>
+                    <span class="badge">1</span>&nbsp;&nbsp;<span><?php echo $content_descrition; ?></span>
                     
                     <div class="image_popup">
                   <!-- <a class="group1" href="<?php //echo 'images/'.$image_guide4['image_path']; ?>" title="Show Image">
@@ -1010,8 +1021,10 @@ h1, h2, h3, footer, .gallery {
                      <h4 class="modal-title" id="exampleModalLabel">How to make volunteerism better </h4>
                    </div>
                    <div class="modal-body">
-                       Title: <input type="text" name='<?php echo 'vol_better_title_'.$vol_better_id; ?>' style="width:90%; margin-bottom:10px;" value="<?php echo $vol_better_title; ?>" class="text-input" required="" />
-                       Logo:  <input type="file" name="<?php echo 'vol_better_logo_'.$vol_better_id; ?>" id="<?php echo 'vol_better_logo_'.$vol_better_id; ?>" style="display:inline;">
+                      <p>What is your titile?</p>
+                       <input type="text" name='<?php echo 'vol_better_title_'.$vol_better_id; ?>' style="width:100%;" value="<?php echo $vol_better_title; ?>" class="form-control" required="" />
+                       <p style="margin-top:10px;">Please upload your image logo</p>
+                        <input type="file" name="<?php echo 'vol_better_logo_'.$vol_better_id; ?>" id="<?php echo 'vol_better_logo_'.$vol_better_id; ?>" style="display:inline;">
                    </div>
                    <div class="modal-footer">
                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -1064,7 +1077,7 @@ h1, h2, h3, footer, .gallery {
                         <h4 class="modal-title" id="exampleModalLabel">Please Enter Emails you would like to send Invitations to:</h4>
                       </div>
                       <div class="modal-body">
-                      	  <input type="hidden" name="own_email" class="text-input" value="<?php echo $session_email; ?>" />
+                          <input type="hidden" name="own_email" class="text-input" value="<?php echo $session_email; ?>" />
                           <input type="text" id="invitations" name='invitations' class="form-control form-skills usr_skills" data-role="tagsinput"  required=""/>
                       </div>
                       <div class="modal-footer">
