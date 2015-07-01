@@ -161,9 +161,10 @@ if(isset($_POST['submit']) & $_SERVER['REQUEST_METHOD'] == "POST")
     //    $postal_code = $_POST['usr_postal_code'];
         $address = $_POST['usr_add'];
         $account_type = $_POST['account_type'];
+        $gender = $_POST['gender'];
         $length = 10;
         $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
-        $reg=$User->CPS_User_Registration($firstname, $lastname, $email, $phone, $country, 
+        $reg=$User->CPS_User_Registration($firstname, $lastname,$gender, $email, $phone, $country, 
                $username, $password, $birthday, $address, $account_type, $randomString);
         
         $_SESSION['uid']=$reg;
@@ -249,8 +250,7 @@ if(isset($_POST['submit']) & $_SERVER['REQUEST_METHOD'] == "POST")
                              <tr>
                                 <td class="text-right"><div class="loginLabel">Gender: <label class="text-pink">*</label></div></td>
                                 <td>
-                                    <select class="input text-input form-control" name="account_type">
-                                        <option selected="selected" value="0">-- Please select --</option>
+                                    <select class="input text-input form-control" name="gender">
                                         <option value="1">Female</option>
                                         <option value="2">Male</option>
                                         
