@@ -14,7 +14,7 @@
 $(document).ready(function()
 {
 /* Website Base URL */
-$.base_url='http://demo.volunteerbetter.com/';
+$.base_url='http://localhost/wall/';
 $.loaderIcon='<img src="'+$.base_url+'wall_icons/ajaxloader.gif" />';
 var webcamtotal=6; /* Min 2 Max 6 Recommended */
 $("a.timeago").livequery(function () { $(this).timeago(); });
