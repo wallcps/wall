@@ -33,7 +33,7 @@
         <div class="map">
                 <?php echo $map; ?>
                 <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer_now" ><button class="btn invole v_name_btn" >Get Involved</button></a>
-                <a href="http://www.facebook.com/share.php?u=<?php echo 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>&title=[TITLE]"><button class="btn invole" style="width:45%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
+                <a target="_blank" href="http://www.facebook.com/share.php?u=<?php echo 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>&title=[TITLE]"><button class="btn invole" style="width:45%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
         </div>
 </div>
  <div style="clear:both"></div>
@@ -160,7 +160,7 @@
 </div>
  <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer_now"><button class="btn invole " style="  margin-right: 2%; margin-left: 30%;">Volunteer Now</button></a>
        <a  href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin"><button class="btn invole " >Inquire Here</button></a>
-       <a href="http://www.facebook.com/share.php?u=<?php echo 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>&title=[TITLE]"><button class="btn invole" style="margin-left:2%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
+       <a target="_blank" href="http://www.facebook.com/share.php?u=<?php echo 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>&title=[TITLE]"><button class="btn invole" style="margin-left:2%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
        <br>
        <br>
 <script type="text/javascript" src="<?php echo $base_url; ?>js/com_slidshow/wowslider.js"></script>

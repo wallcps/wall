@@ -25,7 +25,7 @@
 
     <div class="sidebar-left">
         <div class="title_header">
-            <h5><b>Sidebar title</b></h5>
+            <h5><b>Administrative Functions</b></h5>
         </div>
         <div class="sidebar_content">
             <ul>

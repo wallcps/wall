@@ -144,7 +144,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
         <div class="map">
                 <?php echo $map; ?>
                 <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer_now" ><button class="btn invole v_name_btn" >Get Involved</button></a>
-                <a href="http://www.facebook.com/share.php?u=<?php echo 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>&title=[TITLE]"><button class="btn invole v_name_btn" ><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
+                <a target="_blank" href="http://www.facebook.com/share.php?u=<?php echo 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>&title=[TITLE]"><button class="btn invole v_name_btn" ><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
         </div>
     </div>
      <div style="clear:both"></div>
@@ -212,7 +212,7 @@ if (isset($_POST['submit_contact_cps_admin'])){
                     <input class="form-control contact" name="name"  placeholder="Name" required="" value="<?php echo $session_first_name.' '.$session_last_name; ?>"/>
                 </div>
                 <div class="col-md-6">
-                    <span>Please inter your email address</span>
+                    <span>Please enter your email address</span>
                     <input class=" form-control contact" name="email"  value="<?php echo $session_email; ?>" type="email" placeholder="Email" required=""/>
                 </div>
             </div>
