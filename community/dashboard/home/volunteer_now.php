@@ -123,7 +123,7 @@
                 <div class="form-group">
                     <span class="form-control-span col-xs-3">Mailing Address:</span>
                     <div class="col-xs-8">
-                        <textarea style="height:80px;width:100%;" name="mailing"><?php echo $value['address'] ?></textarea>
+                        <textarea style="height:80px;width:100%;  padding-left: 15px;" name="mailing"><?php echo $value['address'] ?></textarea>
                     </div>
                 </div>
             </div>
@@ -147,7 +147,7 @@
                     <span>If you would like to volunteer/visit us, when can you come?</span>
                 </div>
                 <div class="col-xs-11">
-                    <textarea style="height:80px;width:100%;" name="q2"></textarea>
+                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q2"></textarea>
                 </div>
             </div>
             <div class="form-group"style="padding-left:2%;">
@@ -155,7 +155,7 @@
                     <span>What would you like to do?</span>
                 </div>
                 <div class="col-xs-11">
-                    <textarea style="height:80px;width:100%;" name="q3"></textarea>
+                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q3"></textarea>
                 </div>
             </div>
             <div class="form-group"style="padding-left:2%;">
@@ -163,7 +163,7 @@
                     <span>Why are you interesting in coming?</span>
                 </div>
                 <div class="col-xs-11">
-                    <textarea style="height:80px;width:100%;" name="q4"></textarea>
+                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q4"></textarea>
                 </div>
             </div>
             <h4 style="font-weight:bold;">Other Information</h4>
@@ -173,7 +173,7 @@
                     <span>Is there anything else that you would like to ask or tell us?</span>
                 </div>
                 <div class="col-xs-11">
-                    <textarea style="height:80px;width:100%;" name="q5"></textarea>
+                    <textarea style="height:80px;width:100%;  padding-left: 15px;" name="q5"></textarea>
                 </div>
             </div>
 
