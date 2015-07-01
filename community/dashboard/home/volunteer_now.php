@@ -94,25 +94,14 @@
                 <div class="form-group">
                     <span class="form-control-span col-xs-3">Country:</span>
                     <div class="col-xs-8">
-                        <?php include 'country_list.php'; ?>
+                        <input class="text- form-control" value="<?php echo $value['country']; ?>" name="country" type="text"/>
                     </div>
                 </div>
                 <div class="form-group">
                     <span class="form-control-span col-xs-3">Nationality:
                     </span>
                     <div class="col-xs-8">
-                        <select class="usr_country form-control text-input form-control" name="nationality">
-                            <?php
-                            foreach ($country_list as $country_data) {
-                                if ($_POST['usr_country'] == $country_data) {
-                                    $sel = 'selected = "selected"';
-                                } else {
-                                    $sel = " ";
-                                }
-                                echo '<option value="' . $country_data . '" ' . $sel . ' >' . $country_data . '</option>';
-                            }
-                            ?>
-                        </select>
+                        <input type="text" name="nationality" class="text- form-control" value="<?php echo $value['nationality'] ?>">
 
                     </div>
                 </div>
@@ -128,13 +117,13 @@
                         <input type="text" name="usr_phone" id="inputCode" class="text-input form-control" style=" float: left;" value="<?php echo $_POST['usr_phone']; ?>" AUTOCOMPLETE='OFF'/>
                     </div>
                     <div class="col-xs-6">
-                        <input class="text- form-control" name="phone" type="text"/>
+                        <input class="text- form-control" name="phone" type="text" value="<?php echo $value['phone'] ?>" />
                     </div>
                 </div>
                 <div class="form-group">
                     <span class="form-control-span col-xs-3">Mailing Address:</span>
                     <div class="col-xs-8">
-                        <textarea style="height:80px;width:100%;" name="mailing"></textarea>
+                        <textarea style="height:80px;width:100%;" name="mailing"><?php echo $value['address'] ?></textarea>
                     </div>
                 </div>
             </div>
@@ -181,7 +170,7 @@
             <hr>
             <div class="form-group"style="padding-left:2%;">
                 <div class="col-xs-11">
-                    <span>Is there anything else that you would to ask or tell us?</span>
+                    <span>Is there anything else that you would like to ask or tell us?</span>
                 </div>
                 <div class="col-xs-11">
                     <textarea style="height:80px;width:100%;" name="q5"></textarea>
@@ -195,7 +184,7 @@
             </div>
             <div style="padding-left:30%;">
                 <input type="submit" class="btn btn-primary btn_v" value="Submit" name="submit_volunteer_now">
-                <input type="reset" class="btn btn-danger btn_v" style="background-color:pink !important; color:#fff !important;" value="Reset" name="reset">
+                <input type="reset" class="btn btn-danger btn_v" style="background-color:#FF359A !important; color:#fff !important;" value="Reset" name="reset">
                 <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=home"><input type="button" class="btn btn_v btn_back" style="background-color:#fff !important; border:1px solid #ccc;" value="Back" name="back"></a>
             </div>
 

@@ -192,7 +192,7 @@ if($_GET['com']){
                             <input name="name" class="form-control contact" placeholder="Name" required="" value="<?php echo $session_first_name.' '.$session_last_name; ?>"/>
                         </div>
                         <div class="col-md-6">
-                            <span>Please inter your email address</span>
+                            <span>Please enter your email address</span>
                             <input class="text- form-control contact" name="email"  value="<?php echo $session_email; ?>" type="email" placeholder="Email" required=""/>
                         </div>
                     </div>

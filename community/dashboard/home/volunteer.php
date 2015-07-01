@@ -33,7 +33,7 @@
     <div class="map">
         <?php echo $map; ?>
         <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer_now"><button class="btn invole v_name_btn" >Get Involved</button></a>
-        <a href="http://www.facebook.com/share.php?u=<?php echo 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>&title=[TITLE]"><button class="btn invole" style="width:45%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
+        <a target="_blank" href="http://www.facebook.com/share.php?u=<?php echo 'http://'.$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI]; ?>&title=[TITLE]"><button class="btn invole" style="width:45%;"><i class="fa fa-facebook"></i>&nbsp;&nbsp; Tell a friend</button></a>
 
     </div>
 </div>
