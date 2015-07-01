@@ -36,7 +36,13 @@ if($_POST['user'] && $_POST['passcode'])
                 if($user_type==1){ 
                     header("Location:index.php");          
                 }else if($user_type==3){
-                    header("Location:community.php");
+                        $group = mysqli_query($db, "SELECT group_id FROM  groups WHERE uid_fk =". $_SESSION['uid']);
+                        if(mysqli_num_rows($group)>0){
+                            header("Location:community.php");
+                        }
+                        else{
+                            header("Location:create_community.php");
+                        }                    
                 }
                 //header("Location:index.php");
             }else if(strcmp($status, 'pending')==0){
@@ -215,21 +221,21 @@ $(".close").click(function(){
                            
                             </div>
 
-                <div class="row omb_row-sm-offset-3 omb_socialButtons">
-                    <div class="col-xs-4 col-sm-3">
-                        <a href="facebook_login.php" data-toggle="modal" data-target="#comingsoon" class="btn btn-lg btn-block omb_btn-twitter">
-                            <i class="fa fa-twitter visible-xs"></i>
-                            <span class="facebook_login.php">Facebook</span>
-                        </a>
-                    </div>  
-                    <div class="col-xs-4 col-sm-3">
-                        <a href="#" data-toggle="modal" data-target="#comingsoon" class="btn btn-lg btn-block omb_btn-google">
-                            <i class="fa fa-google-plus visible-xs"></i>
-                            <span class="hidden-xs">Google+</span>
-                        </a>
-                    </div>  
-                </div>
-            </form>
+                            <div class="row omb_row-sm-offset-3 omb_socialButtons">
+                                <div class="col-xs-4 col-sm-3">
+                                    <a href="facebook_login.php" data-toggle="modal" data-target="#comingsoon" class="btn btn-lg btn-block omb_btn-twitter">
+                                        <i class="fa fa-twitter visible-xs"></i>
+                                        <span class="facebook_login.php">Facebook</span>
+                                    </a>
+                                </div>  
+                                <div class="col-xs-4 col-sm-3">
+                                    <a href="#" data-toggle="modal" data-target="#comingsoon" class="btn btn-lg btn-block omb_btn-google">
+                                        <i class="fa fa-google-plus visible-xs"></i>
+                                        <span class="hidden-xs">Google+</span>
+                                    </a>
+                                </div>  
+                            </div>
+                        </form>
                     </div>
                 </div>	
                 <div>
