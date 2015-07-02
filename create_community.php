@@ -53,7 +53,7 @@
                         foreach ($groups_id as $group_id) {
                              $group = $group_id['group_id'];
                         }
-                        if(mysqli_query($db,"insert into community (group_id,location,language,role,map) values ('$group','$address','$language','$role','$map')")){
+                        if(mysqli_query($db,"insert into community (group_id,com_desc,location,language,role,map) values ('$group','$desc','$address','$language','$role','$map')")){
                            $coms_id = mysqli_query($db,"select com_id from community where group_id = '$group' ");
                            foreach ($coms_id as $com_id) {
                                $comId = $com_id['com_id'];
