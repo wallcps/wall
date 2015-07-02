@@ -59,6 +59,7 @@ if(isset($_POST['submit']) & $_SERVER['REQUEST_METHOD'] == "POST")
     // Email
     $email = $_POST['usr_email'];
     $phone = $_POST['usr_phone'];
+    $country_code = $_POST['country_code'];
     if(strlen($email)>0){
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
              $reg_error3 = "Invalid email!";
@@ -158,13 +159,13 @@ if(isset($_POST['submit']) & $_SERVER['REQUEST_METHOD'] == "POST")
     if($validation){
         $country = $_POST['usr_country'];
         $birthday = $_POST['usr_bd'];
-    //    $postal_code = $_POST['usr_postal_code'];
+    //$postal_code = $_POST['usr_postal_code'];
         $address = $_POST['usr_add'];
         $account_type = $_POST['account_type'];
         $gender = $_POST['gender'];
         $length = 10;
         $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
-        $reg=$User->CPS_User_Registration($firstname, $lastname,$gender, $email, $phone, $country, 
+        $reg=$User->CPS_User_Registration($firstname, $lastname,$gender, $email, $phone, $country,$country_code,
                $username, $password, $birthday, $address, $account_type, $randomString);
         
         $_SESSION['uid']=$reg;
@@ -307,7 +308,7 @@ if(isset($_POST['submit']) & $_SERVER['REQUEST_METHOD'] == "POST")
                 <tr>
                     <td class="text-right">Phone: <label class="text-pink">*</label></td>
                     <td >
-                        <input type="text" name="usr_phone" id="inputCode" class="text-input form-control" style="  width: 20%;float: left;" value="<?php echo $_POST['usr_phone'];?>" AUTOCOMPLETE='OFF'/>
+                        <input type="text" name="country_code" id="inputCode" class="text-input form-control" style="  width: 20%;float: left;" value="<?php echo $_POST['usr_phone'];?>" AUTOCOMPLETE='OFF'/>
                    
                         <input type="text" name="usr_phone" class="text-input form-control" style="width: 79%;float:right;" value="<?php echo $_POST['usr_phone'];?>" AUTOCOMPLETE='OFF'/>
 

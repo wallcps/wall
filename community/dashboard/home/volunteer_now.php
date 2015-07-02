@@ -1,4 +1,11 @@
 <?php 
+    /* Volunteer Now Form Validation */
+    $validation = true;
+    $reg_error='';
+    $reg_error1=''; 
+    $reg_error2=''; 
+    $reg_error3='';
+    $reg_error4='';
     if (isset($_POST['submit_volunteer_now'])){
 
         $fname          = $_POST['fname'];
@@ -15,38 +22,63 @@
         $q3             = $_POST['q3'];
         $q4             = $_POST['q4'];
         $q5             = $_POST['q5'];
+        if(strlen($q1)<=0){
+            $reg_error = 'This field is required!';
+            $validation = false;
+        }
+        if(strlen($q2)<=0){
+            $reg_error1 = 'This field is required!';
+            $validation = false;
+        }
+        if(strlen($q3)<=0){
+            $reg_error2 = 'This field is required!';
+            $validation = false;
+        }
+        if(strlen($q4)<=0){
+            $reg_error3 = 'This field is required!';
+            $validation = false;
+        }
+        if(strlen($q5)<=0){
+            $reg_error4 = 'This field is required!';
+            $validation = false;
+        }
+        if($validation){
+            $subject = 'Want To Volunteer';
+            $to = "king.fc168@gmail.com";
+            $headers = "From: ".$_REQUEST['email']."\n".
+            "CC: ".$ssemail.$email_userown['email']."\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+            $message = '<html><body>';
+            $message .= '<p>Dear Administrator</p>';
+            $message .= '<img src="'.$base_url.'/images/email-logo.png" alt="volunteerbetter logo" />';
+            $message .= '<h2>Basic Information</h2>';
+            $message .= '<table rules="all" style="border-color: #666;width:600px;" cellpadding="10">';
+            $message .= "<tr style='background: #eee;'><td><strong>Full Name:</strong> </td><td>" . strip_tags($fname)." ". strip_tags($lname) . "</td></tr>";
+            $message .= "<tr style='background: #eee;'><td><strong>Gender:</strong> </td><td>" . strip_tags($gender) . "</td></tr>";
+            $message .= "<tr style='background: #eee;'><td><strong>Date Of Birth:</strong> </td><td>" . strip_tags($dob) . "</td></tr>";
+            $message .= "<tr style='background: #eee;'><td><strong>Country:</strong> </td><td>" . strip_tags($country) . "</td></tr>";
+            $message .= "<tr style='background: #eee;'><td><strong>Nationality:</strong> </td><td>" . strip_tags($nationality) . "</td></tr>";
+            $message .= "<tr style='background: #eee;'><td><strong>Email :</strong> </td><td>" . strip_tags($email) . "</td></tr>";
+            $message .= "<tr style='background: #eee;'><td><strong>Phone :</strong> </td><td>" . strip_tags($phone) . "</td></tr>";
+            $message .= "<tr style='background: #eee;'><td><strong>Mailing Address :</strong> </td><td>" . strip_tags($mailing) . "</td></tr>";
+            $message .= "<tr style='background: #eee;'><td><strong>How would you like to support us? :</strong> </td><td>" . strip_tags($q1) . "</td></tr>";
+            $message .= "<tr style='background: #eee;'><td><strong>If you would like to volunteer/visit us, when can you com? :</strong> </td><td>" . strip_tags($q2) . "</td></tr>";
+            $message .= "<tr style='background: #eee;'><td><strong>What would you like to do? :</strong> </td><td>" . strip_tags($q3) . "</td></tr>";
+            $message .= "<tr style='background: #eee;'><td><strong>Why are you interesting in coming? :</strong> </td><td>" . strip_tags($q4) . "</td></tr>";
+            $message .= "<tr style='background: #eee;'><td><strong>Is there anything else that you would to ask or tell us? :</strong> </td><td>" . strip_tags($q5) . "</td></tr>";
+            $message .= "<tr style='background: #eee;'><td><strong>Sent From Community Name:</strong> </td><td>" . strip_tags($com_name) . "</td></tr>";
 
-        $subject = 'Want To Volunteer';
-        $to = "king.fc168@gmail.com";
-        $headers = "From: ".$_REQUEST['email']."\n".
-        "CC: ".$ssemail.$email_userown['email']."\n";
-        $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-        $message = '<html><body>';
-        $message .= '<p>Dear Administrator</p>';
-        $message .= '<img src="'.$base_url.'/images/email-logo.png" alt="volunteerbetter logo" />';
-        $message .= '<h2>Basic Information</h2>';
-        $message .= '<table rules="all" style="border-color: #666;width:600px;" cellpadding="10">';
-        $message .= "<tr style='background: #eee;'><td><strong>Full Name:</strong> </td><td>" . strip_tags($fname)." ". strip_tags($lname) . "</td></tr>";
-        $message .= "<tr style='background: #eee;'><td><strong>Gender:</strong> </td><td>" . strip_tags($gender) . "</td></tr>";
-        $message .= "<tr style='background: #eee;'><td><strong>Date Of Birth:</strong> </td><td>" . strip_tags($dob) . "</td></tr>";
-        $message .= "<tr style='background: #eee;'><td><strong>Country:</strong> </td><td>" . strip_tags($country) . "</td></tr>";
-        $message .= "<tr style='background: #eee;'><td><strong>Nationality:</strong> </td><td>" . strip_tags($nationality) . "</td></tr>";
-        $message .= "<tr style='background: #eee;'><td><strong>Email :</strong> </td><td>" . strip_tags($email) . "</td></tr>";
-        $message .= "<tr style='background: #eee;'><td><strong>Phone :</strong> </td><td>" . strip_tags($phone) . "</td></tr>";
-        $message .= "<tr style='background: #eee;'><td><strong>Mailing Address :</strong> </td><td>" . strip_tags($mailing) . "</td></tr>";
-        $message .= "<tr style='background: #eee;'><td><strong>How would you like to support us? :</strong> </td><td>" . strip_tags($q1) . "</td></tr>";
-        $message .= "<tr style='background: #eee;'><td><strong>If you would like to volunteer/visit us, when can you com? :</strong> </td><td>" . strip_tags($q2) . "</td></tr>";
-        $message .= "<tr style='background: #eee;'><td><strong>What would you like to do? :</strong> </td><td>" . strip_tags($q3) . "</td></tr>";
-        $message .= "<tr style='background: #eee;'><td><strong>Why are you interesting in coming? :</strong> </td><td>" . strip_tags($q4) . "</td></tr>";
-        $message .= "<tr style='background: #eee;'><td><strong>Is there anything else that you would to ask or tell us? :</strong> </td><td>" . strip_tags($q5) . "</td></tr>";
-        $message .= "<tr style='background: #eee;'><td><strong>Sent From Community Name:</strong> </td><td>" . strip_tags($com_name) . "</td></tr>";
+            $message .= "</table>";
+            $message .= "</body></html>";
+            mail($to,$subject,$message,$headers);
+            
+            echo '<script>window.location = "'.$base_url.'community.php?gid='.$gid.'&com=dashboard&tab=welcome";</script>';
+        }
+        else{
 
-        $message .= "</table>";
-        $message .= "</body></html>";
-        mail($to,$subject,$message,$headers);
+        }
         
-        echo '<script>window.location = "'.$base_url.'community.php?gid='.$gid.'&com=dashboard&tab=welcome";</script>';
        
     }
 
@@ -114,7 +146,7 @@
                 <div class="form-group">
                     <span class="form-control-span col-xs-3">Phone Number:</span>
                     <div class="col-xs-2">
-                        <input type="text" name="usr_phone" id="inputCode" class="text-input form-control" style=" float: left;" value="<?php echo $_POST['usr_phone']; ?>" AUTOCOMPLETE='OFF'/>
+                        <input type="text" name="usr_phone" id="inputCode" class="text-input form-control" style=" float: left;" value="<?php echo $value['country_code']; ?>" AUTOCOMPLETE='OFF'/>
                     </div>
                     <div class="col-xs-6">
                         <input class="text- form-control" name="phone" type="text" value="<?php echo $value['phone'] ?>" />
@@ -132,10 +164,11 @@
             <div style="padding-left:2%;">
                 <div class="form-group">
                     <div class="col-xs-11">
-                        <span>How would you like to support us?</span>
+                        <span>How would you like to support us?<span style="color:red;">*</span></span>
                     </div>
                     <div class="col-xs-11">
                         <input type="text" class="form-control" name="q1" placeholder="E.g Visit us, Donate us, Volunteer with us">
+                        <div class="error_message"><p class="text-danger"><?php echo $reg_error; ?></p></div>
                     </div>
                 </div>
             </div>
@@ -144,36 +177,40 @@
             <hr>
             <div class="form-group"style="padding-left:2%;">
                 <div class="col-xs-11">
-                    <span>If you would like to volunteer/visit us, when can you come?</span>
+                    <span>If you would like to volunteer/visit us, when can you come?<span style="color:red;">*</span></span>
                 </div>
                 <div class="col-xs-11">
                     <textarea style="height:80px;width:100%;padding-left: 15px;" name="q2"></textarea>
+                    <div class="error_message"><p class="text-danger"><?php echo $reg_error1; ?></p></div>
                 </div>
             </div>
             <div class="form-group"style="padding-left:2%;">
                 <div class="col-xs-11">
-                    <span>What would you like to do?</span>
+                    <span>What would you like to do<span style="color:red;">*</span>?</span>
                 </div>
                 <div class="col-xs-11">
                     <textarea style="height:80px;width:100%;padding-left: 15px;" name="q3"></textarea>
+                    <div class="error_message"><p class="text-danger"><?php echo $reg_error2; ?></p></div>
                 </div>
             </div>
             <div class="form-group"style="padding-left:2%;">
                 <div class="col-xs-11">
-                    <span>Why are you interesting in coming?</span>
+                    <span>Why are you interesting in coming?<span style="color:red;">*</span></span>
                 </div>
                 <div class="col-xs-11">
                     <textarea style="height:80px;width:100%;padding-left: 15px;" name="q4"></textarea>
+                    <div class="error_message"><p class="text-danger"><?php echo $reg_error3; ?></p></div>
                 </div>
             </div>
             <h4 style="font-weight:bold;">Other Information</h4>
             <hr>
             <div class="form-group"style="padding-left:2%;">
                 <div class="col-xs-11">
-                    <span>Is there anything else that you would like to ask or tell us?</span>
+                    <span>Is there anything else that you would like to ask or tell us?<span style="color:red;">*</span></span>
                 </div>
                 <div class="col-xs-11">
                     <textarea style="height:80px;width:100%;  padding-left: 15px;" name="q5"></textarea>
+                    <div class="error_message"><p class="text-danger"><?php echo $reg_error4; ?></p></div>
                 </div>
             </div>
 

@@ -97,7 +97,7 @@ class User
         
     }
      /* CPS User Registration */
-     public function CPS_User_Registration($firstname, $lastname,$gender, $email, $phone, $country, $username, $password, $birthday, $address, $account_type, $code)
+     public function CPS_User_Registration($firstname, $lastname,$gender, $email, $phone, $country,$country_code, $username, $password, $birthday, $address, $account_type, $code)
      {
         $firstname=mysqli_real_escape_string($this->db,$firstname);
         $lastname=mysqli_real_escape_string($this->db,$lastname);
@@ -105,6 +105,7 @@ class User
         $email=mysqli_real_escape_string($this->db,$email);
         $phone=mysqli_real_escape_string($this->db,$phone);
         $country=mysqli_real_escape_string($this->db,$country);
+        $country_code=mysqli_real_escape_string($this->db,$country_code);
         $address=mysqli_real_escape_string($this->db,$address);
         $birthday=mysqli_real_escape_string($this->db,$birthday);
         $account_type=mysqli_real_escape_string($this->db,$account_type);
@@ -113,8 +114,8 @@ class User
     
 	$time=time();
         $query=mysqli_query($this->db,"INSERT INTO users(username,password,user_role,email,first_name,last_name,gender, birthday, last_login, "
-                . "phone, country, address, verification_code) VALUES ('$username','$md5_password','$account_type','$email', '$firstname',"
-                . "'$lastname','$gender', '$birthday','$time', '$phone', '$country', '$address', '$code')");
+                . "phone, country,country_code, address, verification_code) VALUES ('$username','$md5_password','$account_type','$email', '$firstname',"
+                . "'$lastname','$gender', '$birthday','$time', '$phone', '$country','$country_code', '$address', '$code')");
         $sql=mysqli_query($this->db,"SELECT uid FROM users WHERE username='$username'");
         $row=mysqli_fetch_array($sql,MYSQLI_ASSOC);
         $uid=$row['uid'];
