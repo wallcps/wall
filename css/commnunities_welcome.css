@@ -41,6 +41,10 @@
 	margin-left: 69%;
 	top:20px;
 }
+.map iframe{
+    height: 150px !important;
+  	width: 255px !important;
+}
 .invole{
 	border: 1px solid #fff;
 	background-color: #00AFFE !important;
