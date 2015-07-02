@@ -64,7 +64,7 @@
         $pp_keyword         = $_POST['edit_pp_keyword'];
         $old_pp_pic         = $_POST['old_pp_pic'];
         
-        $target_dir1 = "images/commnunities/social_need/";
+        $target_dir1 = "images/commnunities/program_plan/";
         //for id card..........
         $temp1 = explode(".",$_FILES["edit_pp_pic"]["name"]);
         $filename1 = rand(1,99999) . '.' .end($temp1); 

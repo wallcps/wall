@@ -756,6 +756,7 @@
 
 
         //code text editor......
+        var i =0;
         $(".edit_social_need").click(function(){
             var id = $(this).attr("id");
             qy210(".edit_sn_editoreditor_"+id).Editor();
