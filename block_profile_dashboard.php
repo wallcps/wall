@@ -252,7 +252,7 @@ if($community_detail){
                             }
                     }else { 
                        // echo '<div class="groupListDiv">'.$edit.'<a href="'.$base_url.'group.php?gid='.$group_id.'" ><img src="'.$group_pic.'" class="groupIcon"><div class="groupSmallTitle">'.$group_name.'</div></a></div>';  
-                       echo '<div class="groupListDiv">'.$edit.'<a href="'.$base_url.'community_follow.php?gid='.$group_id.'" ><img src="'.$group_pic.'" class="groupIcon"><div class="groupSmallTitle">'.$group_name.'</div></a></div>';
+                       echo '<div class="groupListDiv">'.$edit.'<a href="'.$base_url.'community.php?gid='.$group_id.'" ><img src="'.$group_pic.'" class="groupIcon"><div class="groupSmallTitle">'.$group_name.'</div></a></div>';
                              
                     }
               }

@@ -59,10 +59,12 @@ if($_GET['com']){
                 <div class="logo">
                     <img src="<?php echo $base_url; ?>images/logo.png"/>
                 </div>
+                <?php if($login){ ?>
                 <div class="search-box">
-                <input type="text" class="topbarSearch" id="searchinput" placeholder="Communities, Organizations Projects and Valenteers"  data-step="2" data-intro="Search for Friends and Groups."/>
-                <div id="display" ></div>
+                    <input type="text" class="topbarSearch" id="searchinput" placeholder="Communities, Organizations Projects and Valenteers"  data-step="2" data-intro="Search for Friends and Groups."/>
+                    <div id="display" ></div>
                 </div>
+                <?php } ?>
             </div>
         </div>
         <div class="header_right top-menu">
@@ -102,8 +104,11 @@ if($_GET['com']){
                         <li><a href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin">Report a problem</a></li>
                         <li><a href="#">Policy  </a></li>
                         <li><a href="#">Setting </a></li>
+                        <?php if($login){ ?>
                         <li><a href="<?php echo $base_url.'logout.php'; ?>">Log Out </a></li>
-
+                        <?php }else{ ?>
+                        <li><a href="<?php echo $base_url.'login.php'; ?>">Login </a></li>
+                        <?php } ?>
                     </ul>
                 </li>
             </ul>
