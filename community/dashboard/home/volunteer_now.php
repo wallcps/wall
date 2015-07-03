@@ -173,7 +173,7 @@
                         <span>How would you like to support us?<span style="color:red;">*</span></span>
                     </div>
                     <div class="col-xs-11">
-                        <input type="text" class="form-control" name="q1" placeholder="E.g Visit us, Donate us, Volunteer with us">
+                        <input type="text" class="form-control" value="<?php echo $_POST['q1'] ?>" name="q1" placeholder="E.g Visit us, Donate us, Volunteer with us">
                         <div class="error_message"><p class="text-danger"><?php echo $reg_error; ?></p></div>
                     </div>
                 </div>
@@ -186,7 +186,7 @@
                     <span>If you would like to volunteer/visit us, when can you come?<span style="color:red;">*</span></span>
                 </div>
                 <div class="col-xs-11">
-                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q2"></textarea>
+                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q2" ><?php echo $_POST['q2']; ?></textarea>
                     <div class="error_message"><p class="text-danger"><?php echo $reg_error1; ?></p></div>
                 </div>
             </div>
@@ -195,7 +195,7 @@
                     <span>What would you like to do<span style="color:red;">*</span>?</span>
                 </div>
                 <div class="col-xs-11">
-                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q3"></textarea>
+                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q3"><?php echo $_POST['q3']; ?></textarea>
                     <div class="error_message"><p class="text-danger"><?php echo $reg_error2; ?></p></div>
                 </div>
             </div>
@@ -204,7 +204,7 @@
                     <span>Why are you interesting in coming?<span style="color:red;">*</span></span>
                 </div>
                 <div class="col-xs-11">
-                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q4"></textarea>
+                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q4"><?php echo $_POST['q4']; ?></textarea>
                     <div class="error_message"><p class="text-danger"><?php echo $reg_error3; ?></p></div>
                 </div>
             </div>
@@ -215,14 +215,14 @@
                     <span>Is there anything else that you would like to ask or tell us?<span style="color:red;">*</span></span>
                 </div>
                 <div class="col-xs-11">
-                    <textarea style="height:80px;width:100%;  padding-left: 15px;" name="q5"></textarea>
+                    <textarea style="height:80px;width:100%;  padding-left: 15px;" name="q5"><?php echo $_POST['q5']; ?></textarea>
                     <div class="error_message"><p class="text-danger"><?php echo $reg_error4; ?></p></div>
                 </div>
             </div>
 
             <div class="form-group" style="padding-left:10%;">
                 <input type="checkbox" name="check" value='1'>
-                <span>I want to receive more volunteer opportunities from CPS</span>
+                <span>I want to receive more volunteer opportunities from CPS<span style="color:red;">*</span></span>
                 <div class="error_message"><p class="text-danger"><?php echo $reg_error5; ?></p></div>
             </div>
             <div style="padding-left:30%;">
@@ -317,7 +317,7 @@
                         <span>How would you like to support us?<span style="color:red;">*</span></span>
                     </div>
                     <div class="col-xs-11">
-                        <input type="text" class="form-control" name="q1" placeholder="E.g Visit us, Donate us, Volunteer with us">
+                        <input type="text" class="form-control" name="q1" value="<?php echo $_POST['q1'] ?>" placeholder="E.g Visit us, Donate us, Volunteer with us">
                         <div class="error_message"><p class="text-danger"><?php echo $reg_error; ?></p></div>
                     </div>
                 </div>
@@ -330,7 +330,7 @@
                     <span>If you would like to volunteer/visit us, when can you come?<span style="color:red;">*</span></span>
                 </div>
                 <div class="col-xs-11">
-                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q2"></textarea>
+                    <textarea style="height:80px;width:100%;padding-left: 15px;"  name="q2"><?php echo $_POST['q2']; ?></textarea>
                     <div class="error_message"><p class="text-danger"><?php echo $reg_error1; ?></p></div>
                 </div>
             </div>
@@ -339,7 +339,7 @@
                     <span>What would you like to do<span style="color:red;">*</span>?</span>
                 </div>
                 <div class="col-xs-11">
-                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q3"></textarea>
+                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q3" ><?php echo $_POST['q3']; ?></textarea>
                     <div class="error_message"><p class="text-danger"><?php echo $reg_error2; ?></p></div>
                 </div>
             </div>
@@ -348,7 +348,7 @@
                     <span>Why are you interesting in coming?<span style="color:red;">*</span></span>
                 </div>
                 <div class="col-xs-11">
-                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q4"></textarea>
+                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q4" ><?php echo $_POST['q4']; ?></textarea>
                     <div class="error_message"><p class="text-danger"><?php echo $reg_error3; ?></p></div>
                 </div>
             </div>
@@ -359,14 +359,14 @@
                     <span>Is there anything else that you would like to ask or tell us?<span style="color:red;">*</span></span>
                 </div>
                 <div class="col-xs-11">
-                    <textarea style="height:80px;width:100%;  padding-left: 15px;" name="q5"></textarea>
+                    <textarea style="height:80px;width:100%;  padding-left: 15px;" name="q5" ><?php echo $_POST['q5']; ?></textarea>
                     <div class="error_message"><p class="text-danger"><?php echo $reg_error4; ?></p></div>
                 </div>
             </div>
 
             <div class="form-group" style="padding-left:10%;">
                 <input type="checkbox" name="check" value='1'>
-                <span>I want to receive more volunteer opportunities from CPS</span>
+                <span>I want to receive more volunteer opportunities from CPS<span style="color:red;">*</span></span>
                 <div class="error_message"><p class="text-danger"><?php echo $reg_error5; ?></p></div>
             </div>
             <div style="padding-left:30%;">
