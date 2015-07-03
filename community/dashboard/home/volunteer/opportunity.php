@@ -118,6 +118,7 @@
     </div>
 </div>
 <?php } ?>
+<?php if($login){ ?>
 <div style="clear:both"></div>
 <div class="row text">
     <div role="tabpanel" class="tab-pane">
@@ -216,7 +217,7 @@
     </div>
 </div>
 
-
+<?php } ?>
 
 <!-- add program and plan  -->
 

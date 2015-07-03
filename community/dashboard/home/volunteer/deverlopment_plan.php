@@ -182,6 +182,7 @@
 </div>
 <?php } ?>
 <div style="clear:both"></div>
+<?php if($login){ ?>
 <div class="text">
 <?php 
     $docs = mysqli_query($db, "SELECT * FROM com_welcome_doc WHERE com_id = '$com_id'");
@@ -221,6 +222,7 @@
         <?php } ?> 
     </div>
 </div>
+<?php } ?>
 <div style="clear:both"></div>
 <div class="text">
     <div class="media">
@@ -258,7 +260,7 @@
     </div>
 </div>
 <?php } ?>
-
+<?php if($login){ ?>
 <div class="row text">
     <div role="tabpanel" class="tab-pane" id="pro_socailneed">
         <span style="font-size: 24px; ">Needs And Aspirations</span> <?php if ($group_owner_id == $uid) { ?> <span class="text-right"><a href="" data-toggle="modal" data-target="#edit_pro_social_need"><i class="glyphicon glyphicon-edit" style="float:right;"></i></a></span><?php } ?><hr style="margin-top: 0px;"/>
@@ -317,6 +319,7 @@
 
     </div>
 </div>
+
 
 <div class="row text">
     <div role="tabpanel" class="tab-pane" id="socailneed">
@@ -503,6 +506,8 @@
         <?php } ?> 
     </div>
 </div>
+
+<?php } ?>
 <div style="clear:both"></div>
 <a  href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&tab=volunteer_now"><button class="btn invole " style="  margin-right: 2%; margin-left: 30%;">Volunteer Now</button></a>
 <a  href="#" data-toggle="modal" data-target=".send_mail_to_cps_admin"><button class="btn invole " >Inquire Here</button></a>

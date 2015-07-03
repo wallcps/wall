@@ -80,6 +80,7 @@
         <p class="text-right text-primary"><i class="glyphicon glyphicon-minus-sign"></i> Minimize</p>
     </div>
 </div>
+ <?php if($login){ ?>
 <div class="text text-center">
 <?php 
     $docs = mysqli_query($db, "SELECT * FROM com_about_doc WHERE com_id = '$com_id'");
@@ -119,6 +120,7 @@
         <?php } ?>
     </div>
 </div>
+ <?php } ?>
 <div class="text">
     <div class="media">
         <div class="media-left media-middle">
