@@ -1,6 +1,6 @@
 <?php
 include_once 'includes.php';
-include_once 'oauth_redirection.php';
+//include_once 'oauth_redirection.php';
 include_once 'create_project_validation.php';
 include_once 'submit_dashboard.php';
 

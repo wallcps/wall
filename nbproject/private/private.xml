@@ -3,11 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/wall/community/dashboard/home/volunteer/deverlopment_plan.php</file>
-            <file>file:/C:/xampp/htdocs/wall/community/dashboard/social_need_detail.php</file>
-            <file>file:/C:/xampp/htdocs/wall/community/dashboard/program_and_plan_detail.php</file>
-            <file>file:/C:/xampp/htdocs/wall/cps_verification.php</file>
-            <file>file:/C:/xampp/htdocs/wall/community/dashboard/home/volunteer/opportunity.php</file>
+            <file>file:/C:/xampp/htdocs/wall/header.php</file>
+            <file>file:/C:/xampp/htdocs/wall/header_comunity.php</file>
+            <file>file:/C:/xampp/htdocs/wall/index.php</file>
+            <file>file:/C:/xampp/htdocs/wall/create_community.php</file>
+            <file>file:/C:/xampp/htdocs/wall/community.php</file>
+            <file>file:/C:/xampp/htdocs/wall/oauth_redirection.php</file>
+            <file>file:/C:/xampp/htdocs/wall/user_session_data.php</file>
+            <file>file:/C:/xampp/htdocs/wall/includes.php</file>
+            <file>file:/C:/xampp/htdocs/wall/session.php</file>
         </group>
     </open-files>
 </project-private>

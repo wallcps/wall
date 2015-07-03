@@ -7,5 +7,4 @@ if(empty($usernameOauth))
 $username=$base_url.'login.php';
 header("location:$username");
 }
-
 ?>

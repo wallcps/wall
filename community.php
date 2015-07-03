@@ -2,9 +2,12 @@
 
     include 'includes.php';
     $group = mysqli_query($db, "SELECT groups.group_id FROM  groups INNER JOIN community ON groups.group_id = community.group_id WHERE uid_fk =". $_SESSION['uid']);
-    if(mysqli_num_rows($group)==0){
-        header("Location:create_community.php");
-    }   
+    if($login){
+        if(mysqli_num_rows($group)==0){
+            header("Location:create_community.php");
+        }
+    }
+       
     $gid = $_GET['gid'];
     if($gid){
         $get_com_id = mysqli_query($db, "SELECT groups.group_id as group_id,groups.uid_fk as group_owner_id, community.com_id,groups.group_name as com_name from community INNER JOIN groups ON community.group_id = groups.group_id WHERE groups.group_id='$gid'");
@@ -13,7 +16,7 @@
         $get_com_id = mysqli_query($db, "SELECT groups.group_id as group_id,groups.uid_fk as group_owner_id, community.com_id,groups.group_name as com_name from community INNER JOIN groups ON community.group_id = groups.group_id WHERE groups.uid_fk='$uid'");
     
     }
-    foreach ($get_com_id as $value) {
+    foreach ($get_com_id as $value){
         $com_id = $value['com_id'];
         $com_name = $value['com_name'];
         $gid = $value['group_id'];

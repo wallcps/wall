@@ -80,7 +80,6 @@ if (isset($_POST['submit_contact_cps_admin'])){
 }
 ?>
 <div id="div-main-menu">
-    <?php if($login) { ?>
     <div id="div-menu-top">
         <div class="header_left">
             <div>
@@ -182,10 +181,6 @@ if (isset($_POST['submit_contact_cps_admin'])){
     </div>
     </div>
 </div>
-<?php } else { ?>
-<li><a href="<?php echo $base_url; ?>">Login</a></li>
-<li><a href="<?php echo $base_url; ?>">Sign Up</a></li>
-<?php	} ?>
 
 <!-- Popup send email to CPS admin  -->
 

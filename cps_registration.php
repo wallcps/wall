@@ -175,7 +175,7 @@ if(isset($_POST['submit']) & $_SERVER['REQUEST_METHOD'] == "POST")
             
         
             //$to = $email;
-            $to = "Admin@carepositioningsystem.org";
+            $to = $email;
             $subject = 'Mail Verification';
             $headers = "From: CPS Admin";
             $txt = "Dear ".$username.",\n\n"."Here is the code for verification:"."\n".$randomString."\n\n"."Thanks,\nCPS Teams";

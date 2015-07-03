@@ -11,10 +11,10 @@ else if($_GET['username'] || $_GET['msgID'])
 $uid=$Wall->User_ID($username);
 $login='0';
 }
-else
-{
-$url=$base_url.'login.php';
-header("location:$url");
-}
+//else
+//{
+//$url=$base_url.'login.php';
+//header("location:$url");
+//}
 
 ?>

@@ -24,7 +24,6 @@ if($_POST['user'] && $_POST['passcode'])
     if (strlen($username)>0 && strlen($password)>0)
     {
     $login=$User->User_Login($username,$password);
-
         if($login)
         {
         $_SESSION['uid']=$login;
