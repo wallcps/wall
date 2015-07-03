@@ -86,7 +86,9 @@
  ?>
     <div class="doc">
     <h4>Theory of change dashboard</h4>
+ <?php if ($group_owner_id == $uid) { ?>
     <span class="edit-icon" ><a href="" data-toggle="modal" data-target='#docs'><i class="glyphicon glyphicon-edit"></i></a></span>
+<?php } ?>
         <?php 
             foreach ($docs as $doc) {
                 $document = $doc['content'];

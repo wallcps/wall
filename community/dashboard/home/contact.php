@@ -102,7 +102,9 @@ if (isset($_POST['submit_contact_cps_admin'])){
     
     <!-- start of -->
     <div>
+        <?php if ($group_owner_id == $uid) { ?>
                 <a href="" style="top: 60px;position: absolute;" data-toggle="modal" data-target="#edit_pic"><i style="font-size: 35px;" class="glyphicon glyphicon-camera" original-title="Edit Contact Picture" data-toggle="modal"></i></a>
+        <?php } ?> 
                     <!-- <i class="glyphicon glyphicon-pencil custom-file-input" data-toggle="modal" data-target="#edit_name" original-title="edit name"></i> -->
                     <div class="modal fade" id="edit_pic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">

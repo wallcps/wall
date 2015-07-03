@@ -24,6 +24,7 @@
 <div class="container">
 
     <div class="sidebar-left">
+ <?php if ($group_owner_id == $uid) { ?>
         <div class="title_header">
             <h5><b>Administrative Functions</b></h5>
         </div>
@@ -39,7 +40,9 @@
                 -->
             </ul>
         </div>
+<?php } ?>
     </div>
+
     <div class="modal fade" id="coming" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

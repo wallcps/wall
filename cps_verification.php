@@ -13,18 +13,6 @@ include_once 'includes/Wall_Updates.php';
 session_start();
 $session_uid = $_SESSION['uid'];
 $user_type = $_SESSION['user_role'];
-if($_SESSION['login'])
-{
-    if($user_type==3){
-        header("Location:community.php");  
-    }elseif ($user_type==1) {
-        header("location:index.php");
-    }
-}
-if(empty($session_uid)){
-    header("location:login.php");
-}
-
 $User = new User($db);
 $Wall = new Wall_Updates($db);
 /* Verification */
@@ -38,7 +26,6 @@ if(isset($_POST['submit-for-verify']))
        $verification_status = $Wall->verify_status($session_uid);
         $uid = $session_uid;
         $_SESSION['login']=true;
-        
         if ($user_type == 3) {
             header("Location:community.php");
         } elseif ($user_type == 1) {
@@ -47,6 +34,17 @@ if(isset($_POST['submit-for-verify']))
     }else{
          $reg_error = "Your code is not correct!";
     }
+}
+if($_SESSION['login'])
+{
+    if($user_type==3){
+        header("Location:community.php");  
+    }elseif ($user_type==1) {
+        header("location:index.php");
+    }
+}
+if(empty($session_uid)){
+    header("location:login.php");
 }
 if(isset($_POST['resend'])){
      $length = 10;

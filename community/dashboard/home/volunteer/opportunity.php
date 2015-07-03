@@ -84,7 +84,9 @@
 
 <div class="text" style="margin-top:-10px;">
     <p style="font-size: 23px;font-weight: bold;">Introduction</p>
+ <?php if ($group_owner_id == $uid) { ?>
     <span class="edit-icon" style="  top: -9px;" ><a href="" data-toggle="modal" data-target='#com_opportunity_into'><i class="glyphicon glyphicon-edit"></i></a></span>
+<?php } ?>
     <hr style="margin:-6px;"/>
     <br>
     <p style="font-size: 20px;font-weight: bold;">Introduction</p>
@@ -145,7 +147,9 @@
                 </div>
                 <div class="col-lg-9">
                     <h4 class="media-heading"><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=deverlopment_plan&pp_id=<?php echo $data_pp['id']; ?>"><?php echo $data_pp['title']; ?></a></h4>
+                <?php if ($group_owner_id == $uid) { ?>
                     <div class="text-right edit-icon" style="margin-right: 20px;"><i id="<?php echo $data_pp['id']; ?>" class="glyphicon glyphicon-trash text-danger delete_social_need" data-toggle="tooltip" data-placement="top" title="Delete program and Plan"></i> <a href=""  data-toggle="modal" data-target="#edit_pp<?php echo $data_pp['id']; ?>"><i data-toggle="tooltip" title="Edit Program and Plan" class="glyphicon glyphicon-edit edit_pp" id="<?php echo $data_pp['id']; ?>"></i></a> </div>
+                <?php } ?>
                     <p><?php echo $data_pp['introduction']; ?> <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=deverlopment_plan&pp_id=<?php echo $data_pp['id']; ?>"><span class="text-primary">Read more</span></a></p>
                     <div>
                         <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=create_project&pp=<?php echo $data_pp['id']; ?>">

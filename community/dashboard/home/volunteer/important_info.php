@@ -5,8 +5,10 @@
 <?php foreach ($important_infos as $important_info) { ?>
 <div class="text important_infor">
 	<p style="font-size: 22px;font-weight: bold;"><?php echo $important_info['title'] ;?></p>
-	<span class="edit-icon" ><a href="" data-toggle="modal"  data-target='#edit_<?php echo $important_info['id']; ?>'><i data_id="<?php echo $important_info['id']; ?>" class="glyphicon glyphicon-edit edit_data"></i></a></span>
-	<hr style="margin-top:-6px;">
+	<?php if ($group_owner_id == $uid) { ?>
+    <span class="edit-icon" ><a href="" data-toggle="modal"  data-target='#edit_<?php echo $important_info['id']; ?>'><i data_id="<?php echo $important_info['id']; ?>" class="glyphicon glyphicon-edit edit_data"></i></a></span>
+	<?php } ?>
+    <hr style="margin-top:-6px;">
 	<p><?php echo $important_info['description'] ;?></p>
 </div>
 <div style="clear:both"></div>

@@ -154,8 +154,11 @@
         <div class="media-body">
         <?php foreach ($dev_plan1 as $dev_plan) { ?>
             <h4 class="media-heading" style="font-weight:bold;"><?php echo $dev_plan['title']; ?></h4>
+         <?php if ($group_owner_id == $uid) { ?>
             <span class="edit-icon" ><a href="" data-toggle="modal" data-target='#title'><i class="glyphicon glyphicon-edit"></i></a></span>
+        <?php } ?>    
             <p style="text-align:justify;"><?php echo $dev_plan['description'] ; ?></p>
+        
         </div>
         <!--<p class="text-right text-primary"><i class="glyphicon glyphicon-minus-sign"></i> Minimize</p>-->
     </div>
@@ -185,7 +188,9 @@
  ?>
     <div class="doc">
     <h4>Theory of change dashboard</h4>
+<?php if ($group_owner_id == $uid) { ?>
     <span class="edit-icon" ><a href="" data-toggle="modal" data-target='#docs'><i class="glyphicon glyphicon-edit"></i></a></span>
+<?php } ?>
         <?php 
             foreach ($docs as $doc) {
                 $document = $doc['content'];
@@ -227,7 +232,9 @@
         <div class="media-body">
         <?php foreach ($dev_plan2 as $dev_plan22) { ?>
             <h4 class="media-heading" style="font-weight:bold;"><?php echo $dev_plan22['title']; ?></h4>
+         <?php if ($group_owner_id == $uid) { ?>
             <span class="edit-icon" ><a href="" data-toggle="modal" data-target='#goals'><i class="glyphicon glyphicon-edit"></i></a></span>
+        <?php } ?>
             <p style="text-align:justify;"><?php echo $dev_plan22['description']; ?></p>
         </div>
         <p class="text-right text-primary"><i class="glyphicon glyphicon-plus-sign"></i> Read More</p>
@@ -254,7 +261,7 @@
 
 <div class="row text">
     <div role="tabpanel" class="tab-pane" id="pro_socailneed">
-        <span style="font-size: 24px; ">Needs And Aspirations</span> <span class="text-right"><a href="" data-toggle="modal" data-target="#edit_pro_social_need"><i class="glyphicon glyphicon-edit" style="float:right;"></i></a></span><hr style="margin-top: 0px;"/>
+        <span style="font-size: 24px; ">Needs And Aspirations</span> <?php if ($group_owner_id == $uid) { ?> <span class="text-right"><a href="" data-toggle="modal" data-target="#edit_pro_social_need"><i class="glyphicon glyphicon-edit" style="float:right;"></i></a></span><?php } ?><hr style="margin-top: 0px;"/>
         <div class="modal fade" id="edit_pro_social_need" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -313,8 +320,8 @@
 
 <div class="row text">
     <div role="tabpanel" class="tab-pane" id="socailneed">
-        <span style="font-size: 24px; ">Social Needs</span> <span class="text-right"><a href="" data-toggle="modal" data-target="#edit_social_need"><i class="glyphicon glyphicon-edit" style=""></i></a></span><hr style="margin-top: 0px;"/>
-        <p class="text-right"><button style="margin-top: -110px;" id="sn_btn" class="btn btn-primary btn-xs btn-add-new" data-toggle="modal" data-target="#add_new_sn">Add Social Need</button></p>
+        <span style="font-size: 24px; ">Social Needs</span>  <?php if ($group_owner_id == $uid) { ?><span class="text-right"><a href="" data-toggle="modal" data-target="#edit_social_need"><i class="glyphicon glyphicon-edit" style=""></i></a></span><hr style="margin-top: 0px;"/><?php } ?>
+         <?php if ($group_owner_id == $uid) { ?><p class="text-right"><button style="margin-top: -110px;" id="sn_btn" class="btn btn-primary btn-xs btn-add-new" data-toggle="modal" data-target="#add_new_sn">Add Social Need</button></p><?php } ?>
         <div class="modal fade" id="edit_social_need" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -351,7 +358,7 @@
                 </div>
                 <div class="col-lg-9">
                     <h4 class="media-heading"><a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=social_need_detail&sn_id=<?php echo $socil_need_data['id']; ?>"><?php echo $socil_need_data['title']; ?></a></h4>
-                    <div class="text-right edit-icon" style="margin-right: 20px;"><i id="<?php echo $socil_need_data['id']; ?>" class="glyphicon glyphicon-trash text-danger delete_social_need" data-toggle="tooltip" data-placement="top" title="Delete social Need"></i> <a href=""  data-toggle="modal" data-target="#edit_sn<?php echo $socil_need_data['id']; ?>"><i data-toggle="tooltip" title="Edit social Need" class="glyphicon glyphicon-edit edit_social_need" id="<?php echo $socil_need_data['id']; ?>"></i></a> <a href=""  data-toggle="modal" data-target="#add_new_pp"><i id="<?php echo $socil_need_data['id']; ?>" data-toggle="tooltip" data-placement="top" title="Add New Program & Plan"  class="glyphicon glyphicon-plus-sign text-success add_pp"></i></a></div>
+                    <?php if ($group_owner_id == $uid) { ?><div class="text-right edit-icon" style="margin-right: 20px;"><i id="<?php echo $socil_need_data['id']; ?>" class="glyphicon glyphicon-trash text-danger delete_social_need" data-toggle="tooltip" data-placement="top" title="Delete social Need"></i> <a href=""  data-toggle="modal" data-target="#edit_sn<?php echo $socil_need_data['id']; ?>"><i data-toggle="tooltip" title="Edit social Need" class="glyphicon glyphicon-edit edit_social_need" id="<?php echo $socil_need_data['id']; ?>"></i></a> <a href=""  data-toggle="modal" data-target="#add_new_pp"><i id="<?php echo $socil_need_data['id']; ?>" data-toggle="tooltip" data-placement="top" title="Add New Program & Plan"  class="glyphicon glyphicon-plus-sign text-success add_pp"></i></a></div><?php } ?>
                     <p><?php echo $socil_need_data['introduction']; ?> <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=social_need_detail&sn_id=<?php echo $socil_need_data['id']; ?>"><span class="text-primary">Read more</span></a></p>
                     <p><b>Solution :</b> 
                     <?php
@@ -427,7 +434,7 @@
 <!-- cps audit -->
 <div class="row text">
     <div role="tabpanel" class="tab-pane" id="pro_socailneed">
-        <span style="font-size: 24px; ">CPS Audit</span> <span class="text-right"><a href="" data-toggle="modal" data-target="#edit_com_cps_audit"><i class="glyphicon glyphicon-edit" style="float:right;"></i></a></span><hr style="margin-top: 0px;"/>
+        <span style="font-size: 24px; ">CPS Audit</span> <?php if ($group_owner_id == $uid) { ?> <span class="text-right"><a href="" data-toggle="modal" data-target="#edit_com_cps_audit"><i class="glyphicon glyphicon-edit" style="float:right;"></i></a></span><hr style="margin-top: 0px;"/><?php } ?>
         <div class="modal fade" id="edit_com_cps_audit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -463,7 +470,9 @@
  ?>
     <div class="doc">
     <h4>Theory of change dashboard</h4>
+ <?php if ($group_owner_id == $uid) { ?>
     <span class="edit-icon" ><a href="" data-toggle="modal" data-target='#docs1'><i class="glyphicon glyphicon-edit"></i></a></span>
+<?php } ?>
         <?php 
             foreach ($docs1 as $doc1) {
                 $document1 = $doc1['content'];
