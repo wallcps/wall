@@ -74,7 +74,6 @@
             $message .= "<tr style='background: #eee;'><td><strong>Why are you interesting in coming? :</strong> </td><td>" . strip_tags($q4) . "</td></tr>";
             $message .= "<tr style='background: #eee;'><td><strong>Is there anything else that you would to ask or tell us? :</strong> </td><td>" . strip_tags($q5) . "</td></tr>";
             $message .= "<tr style='background: #eee;'><td><strong>Sent From Community Name:</strong> </td><td>" . strip_tags($com_name) . "</td></tr>";
-
             $message .= "</table>";
             $message .= "</body></html>";
             mail($to,$subject,$message,$headers);
@@ -90,7 +89,7 @@
     }
 
 ?>
-
+ <?php if($login){ ?>
 <div class="text">
     <h3 class="text-center">Please give us your persional information !</h3>
     <h4 style="font-weight:bold;">Basic Information</h4>
@@ -236,6 +235,150 @@
         </form>
 <?php } ?>
 </div>
+ <?php } else {?>
+    <div class="text">
+    <h3 class="text-center">Please give us your persional information !</h3>
+    <h4 style="font-weight:bold;">Basic Information</h4>
+    <hr>
+    <form method="post" class="form-horizontal" action="">
+            <div style="padding-left:10%;">
+                <div class="form-group">
+                    <span class="form-control-span col-xs-3">First Name:</span>
+                    <div class="col-xs-8">
+                        <input class="text- form-control" value="" name="fname" type="text"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span class="form-control-span col-xs-3">Last Name:</span>
+
+                    <div class="col-xs-8">
+                        <input class="text- form-control" name="lname" type="text" value=""/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span class="form-control-span col-xs-3">Gender:</span>
+                    <div class="col-xs-8">
+                        <select class="form-control" name="gender">
+                            <option value="1">Male</option>
+                            <option value="2">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span class="form-control-span col-xs-3">Date of Birth:</span>
+                    <div class="col-xs-8">
+                        <input class="text- form-control" name="dob" type="date" value="<?php echo $value['birthday']; ?>"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span class="form-control-span col-xs-3">Country:</span>
+                    <div class="col-xs-8">
+                        <?php include_once 'country_list.php';?>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span class="form-control-span col-xs-3">Nationality:
+                    </span>
+                    <div class="col-xs-8">
+                        <select class="form-control">
+                            <?php foreach ($country_list as $value):
+                                echo '<option>'.$value.'</option>';
+                             endforeach ?>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span class="form-control-span col-xs-3">Email Address:</span>
+                    <div class="col-xs-8">
+                        <input class="text- form-control" name="email" type="email" value=""/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span class="form-control-span col-xs-3">Phone Number:</span>
+                    <div class="col-xs-2">
+                        <input type="text" name="usr_phone" id="inputCode" class="text-input form-control" style=" float: left;" value="" AUTOCOMPLETE='OFF'/>
+                    </div>
+                    <div class="col-xs-6">
+                        <input class="text- form-control" name="phone" type="text" value="" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span class="form-control-span col-xs-3">Mailing Address:</span>
+                    <div class="col-xs-8">
+                        <textarea style="height:80px;width:100%;  padding-left: 15px;" name="mailing"></textarea>
+                    </div>
+                </div>
+            </div>
+            <h4 style="font-weight:bold;">Support us</h4>
+            <hr>
+            <div style="padding-left:2%;">
+                <div class="form-group">
+                    <div class="col-xs-11">
+                        <span>How would you like to support us?<span style="color:red;">*</span></span>
+                    </div>
+                    <div class="col-xs-11">
+                        <input type="text" class="form-control" name="q1" placeholder="E.g Visit us, Donate us, Volunteer with us">
+                        <div class="error_message"><p class="text-danger"><?php echo $reg_error; ?></p></div>
+                    </div>
+                </div>
+            </div>
+
+            <h4 style="font-weight:bold;">Volunteer/Visit us </h4>
+            <hr>
+            <div class="form-group"style="padding-left:2%;">
+                <div class="col-xs-11">
+                    <span>If you would like to volunteer/visit us, when can you come?<span style="color:red;">*</span></span>
+                </div>
+                <div class="col-xs-11">
+                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q2"></textarea>
+                    <div class="error_message"><p class="text-danger"><?php echo $reg_error1; ?></p></div>
+                </div>
+            </div>
+            <div class="form-group"style="padding-left:2%;">
+                <div class="col-xs-11">
+                    <span>What would you like to do<span style="color:red;">*</span>?</span>
+                </div>
+                <div class="col-xs-11">
+                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q3"></textarea>
+                    <div class="error_message"><p class="text-danger"><?php echo $reg_error2; ?></p></div>
+                </div>
+            </div>
+            <div class="form-group"style="padding-left:2%;">
+                <div class="col-xs-11">
+                    <span>Why are you interesting in coming?<span style="color:red;">*</span></span>
+                </div>
+                <div class="col-xs-11">
+                    <textarea style="height:80px;width:100%;padding-left: 15px;" name="q4"></textarea>
+                    <div class="error_message"><p class="text-danger"><?php echo $reg_error3; ?></p></div>
+                </div>
+            </div>
+            <h4 style="font-weight:bold;">Other Information</h4>
+            <hr>
+            <div class="form-group"style="padding-left:2%;">
+                <div class="col-xs-11">
+                    <span>Is there anything else that you would like to ask or tell us?<span style="color:red;">*</span></span>
+                </div>
+                <div class="col-xs-11">
+                    <textarea style="height:80px;width:100%;  padding-left: 15px;" name="q5"></textarea>
+                    <div class="error_message"><p class="text-danger"><?php echo $reg_error4; ?></p></div>
+                </div>
+            </div>
+
+            <div class="form-group" style="padding-left:10%;">
+                <input type="checkbox" name="check" value='1'>
+                <span>I want to receive more volunteer opportunities from CPS</span>
+                <div class="error_message"><p class="text-danger"><?php echo $reg_error5; ?></p></div>
+            </div>
+            <div style="padding-left:30%;">
+                <input type="submit" id="submit" data-toggle="modal" data-target="#thanks" class="btn btn-primary btn_v" value="Submit" name="submit_volunteer_now">
+                <input type="reset" class="btn btn-danger btn_v" style="background-color:#FF359A !important; color:#fff !important;" value="Reset" name="reset">
+                <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=home"><input type="button" class="btn btn_v btn_back" style="background-color:#fff !important; border:1px solid #ccc;" value="Back" name="back"></a>
+            </div>
+
+
+        </form>
+</div>
+ <?php } ?>
 <style type="text/css">
     .btn_v{
         margin: 0px 30px 0px 0px;
