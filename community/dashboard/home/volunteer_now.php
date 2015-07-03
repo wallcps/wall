@@ -6,6 +6,7 @@
     $reg_error2=''; 
     $reg_error3='';
     $reg_error4='';
+    $reg_error5='';
     if (isset($_POST['submit_volunteer_now'])){
 
         $fname          = $_POST['fname'];
@@ -42,6 +43,11 @@
             $reg_error4 = 'This field is required!';
             $validation = false;
         }
+        if(!isset($_POST['check']))
+        {
+            $reg_error5 = 'This field is required!';
+            $validation = false;
+        }
         if($validation){
             $subject = 'Want To Volunteer';
             $to = "king.fc168@gmail.com";
@@ -72,8 +78,9 @@
             $message .= "</table>";
             $message .= "</body></html>";
             mail($to,$subject,$message,$headers);
-            
+            echo '<script>alert("Thank you very much for your kind interest. We are working on it and will get back to you via email soonest possible!")</script>';
             echo '<script>window.location = "'.$base_url.'community.php?gid='.$gid.'&com=dashboard&tab=welcome";</script>';
+
         }
         else{
 
@@ -215,12 +222,12 @@
             </div>
 
             <div class="form-group" style="padding-left:10%;">
-                <input type="checkbox">
+                <input type="checkbox" name="check" value='1'>
                 <span>I want to receive more volunteer opportunities from CPS</span>
-
+                <div class="error_message"><p class="text-danger"><?php echo $reg_error5; ?></p></div>
             </div>
             <div style="padding-left:30%;">
-                <input type="submit" class="btn btn-primary btn_v" value="Submit" name="submit_volunteer_now">
+                <input type="submit" id="submit" data-toggle="modal" data-target="#thanks" class="btn btn-primary btn_v" value="Submit" name="submit_volunteer_now">
                 <input type="reset" class="btn btn-danger btn_v" style="background-color:#FF359A !important; color:#fff !important;" value="Reset" name="reset">
                 <a href="<?php echo $base_url; ?>community.php?gid=<?php echo $gid; ?>&com=dashboard&side=home"><input type="button" class="btn btn_v btn_back" style="background-color:#fff !important; border:1px solid #ccc;" value="Back" name="back"></a>
             </div>
