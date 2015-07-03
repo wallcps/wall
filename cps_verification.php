@@ -12,6 +12,10 @@ include_once 'includes/User.php';
 include_once 'includes/Wall_Updates.php';
 session_start();
 $session_uid = $_SESSION['uid'];
+$users = mysqli_query($db,"select * from users where uid= ".$session_uid.";");
+foreach ($users as $user) {
+    $role = $user['user_role'];
+}
 $user_type = $_SESSION['user_role'];
 $User = new User($db);
 $Wall = new Wall_Updates($db);
@@ -26,9 +30,9 @@ if(isset($_POST['submit-for-verify']))
        $verification_status = $Wall->verify_status($session_uid);
         $uid = $session_uid;
         $_SESSION['login']=true;
-        if ($user_type == 3) {
+        if ($role == 3) {
             header("Location:community.php");
-        } elseif ($user_type == 1) {
+        } elseif ($role == 1) {
             header("location:index.php");
         }
     }else{
